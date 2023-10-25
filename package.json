@@ -1,0 +1,28 @@
+{
+  "name": "@lani.ground/lani.ground",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/go-lani/lani.ground.git"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "keywords": [
+    "packages"
+  ],
+  "author": "Lani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/go-lani/lani.ground/issues"
+  },
+  "homepage": "https://github.com/go-lani/lani.ground#readme"
+}
