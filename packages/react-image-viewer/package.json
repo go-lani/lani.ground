@@ -1,6 +1,6 @@
 {
   "name": "@lani.ground/react-image-viewer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "keywords": [
     "react",
@@ -18,6 +18,10 @@
     "email": "go.lani.developer@gmail.com",
     "name": "Lani",
     "url": "https://lanoground.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/go-lani/lani.ground.git"
   },
   "scripts": {
     "watch": "concurrently \"npm run watch:ems\" \"npm run watch:cjs\"  \"npm run watch:css\"",
