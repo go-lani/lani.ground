@@ -1,6 +1,6 @@
 {
   "name": "@lani.ground/react-image-viewer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "keywords": [
     "react",
@@ -9,6 +9,15 @@
     "viewer",
     "image viewer"
   ],
+  "bugs": {
+    "url": "https://github.com/go-lani/lani.ground/issues",
+    "email": "go.lani.developer@gmail.com"
+  },
+  "author": {
+    "email": "go.lani.developer@gmail.com",
+    "name": "Lani",
+    "url": "https://lanoground.com"
+  },
   "scripts": {
     "watch": "concurrently \"npm run watch:ems\" \"npm run watch:cjs\"  \"npm run watch:css\"",
     "watch:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext --watch",
