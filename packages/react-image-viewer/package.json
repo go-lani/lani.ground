@@ -1,6 +1,6 @@
 {
   "name": "@lani.ground/react-image-viewer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "keywords": [
     "react",
@@ -9,6 +9,7 @@
     "viewer",
     "image viewer"
   ],
+  "homepage": "https://github.com/go-lani/lani.ground/blob/master/packages/react-image-viewer/README.md",
   "bugs": {
     "url": "https://github.com/go-lani/lani.ground/issues",
     "email": "go.lani.developer@gmail.com"
