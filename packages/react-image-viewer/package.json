@@ -1,12 +1,74 @@
 {
   "name": "@lani.ground/react-image-viewer",
-  "version": "1.0.0",
-  "description": "react-image-viewer",
-  "main": "index.js",
+  "version": "0.1.1",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "next",
+    "image",
+    "viewer",
+    "image viewer"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "concurrently \"npm run watch:ems\" \"npm run watch:cjs\"  \"npm run watch:css\"",
+    "watch:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext --watch",
+    "watch:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs --watch",
+    "watch:css": "node ./helpers/copyAssets/css.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./css": "./dist/assets/css/react-image-viewer.css"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
+  "devDependencies": {
+    "@lani.ground/react-outside-click-handler": "^0.2.5",
+    "@types/node": "^16.18.53",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "chokidar": "^3.5.3",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^5.2.2"
+  }
 }
