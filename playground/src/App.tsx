@@ -1,13 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { ImageViewerProvider } from '@lani.ground/react-image-viewer';
+import { OutsideClickHandler } from '@lani.ground/react-outside-click-handler';
 import '@lani.ground/react-image-viewer/css';
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
 
 function App() {
+  const [selectedOption, setSelectedOption] = useState<string>('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const OPTIONS = ['option1', 'option2', 'option3'];
   return (
     <div className="App">
+      <button type="button" onClick={() => setIsOpen(true)}>
+        Click Me
+      </button>
+
+      {isOpen && (
+        <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
+          <ul className="bg-gray-500 px-5">
+            {OPTIONS.map((option) => (
+              <li key={option}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedOption(option);
+                    setIsOpen(false);
+                  }}
+                >
+                  {option}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </OutsideClickHandler>
+      )}
+
+      <p>
+        selected: <strong>{selectedOption}</strong>
+      </p>
+
       <Modal
         name="modal222"
         trigger={<button type="button">Click Me!</button>}
