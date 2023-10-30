@@ -62,6 +62,8 @@ export default function ImageViewerProvider({
     const $body = document.querySelector('body');
 
     if (!$body) return undefined;
+    if (document.querySelector(`#${GROUND_IMAGE_VIEWER_ROOT}`))
+      return undefined;
 
     const $imageViewerRoot = document.createElement('div');
     $imageViewerRoot.setAttribute('id', GROUND_IMAGE_VIEWER_ROOT);
