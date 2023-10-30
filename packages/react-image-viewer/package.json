@@ -1,6 +1,6 @@
 {
   "name": "@lani.ground/react-image-viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "keywords": [
     "react",
@@ -67,7 +67,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@lani.ground/react-outside-click-handler": "^1.0.0",
+    "@lani.ground/react-outside-click-handler": "^1.0.1",
     "@types/node": "^16.18.53",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
