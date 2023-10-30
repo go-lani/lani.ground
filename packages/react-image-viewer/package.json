@@ -67,7 +67,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@lani.ground/react-outside-click-handler": "^0.2.5",
+    "@lani.ground/react-outside-click-handler": "^1.0.0",
     "@types/node": "^16.18.53",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
