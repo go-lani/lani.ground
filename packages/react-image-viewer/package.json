@@ -39,7 +39,7 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./css": "./dist/assets/css/react-image-viewer.css"
+    "./css": "./dist/assets/css/ground-react-image-viewer.css"
   },
   "sideEffects": [
     "*.css"

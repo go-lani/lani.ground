@@ -59,19 +59,20 @@ export default function ImageViewerProvider({
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
 
-    const $body = document.querySelector('body');
+    let $imageViewerRoot = document.querySelector(
+      `#${GROUND_IMAGE_VIEWER_ROOT}`,
+    );
 
-    if (!$body) return undefined;
-    if (document.querySelector(`#${GROUND_IMAGE_VIEWER_ROOT}`))
-      return undefined;
-
-    const $imageViewerRoot = document.createElement('div');
-    $imageViewerRoot.setAttribute('id', GROUND_IMAGE_VIEWER_ROOT);
-
-    $body.appendChild($imageViewerRoot);
+    if (!$imageViewerRoot) {
+      $imageViewerRoot = document.createElement('div');
+      $imageViewerRoot.setAttribute('id', GROUND_IMAGE_VIEWER_ROOT);
+      document.body.append($imageViewerRoot);
+    }
 
     setModalRoot($imageViewerRoot);
     return () => {
+      if (!$imageViewerRoot) return;
+
       $imageViewerRoot.remove();
     };
   }, []);

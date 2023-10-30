@@ -2,10 +2,219 @@ import React from 'react';
 import './App.css';
 import { ImageViewerProvider } from '@lani.ground/react-image-viewer';
 import '@lani.ground/react-image-viewer/css';
+import { Modal } from '@lani.ground/react-modal';
+import '@lani.ground/react-modal/css';
 
 function App() {
   return (
     <div className="App">
+      <Modal
+        name="modal222"
+        trigger={<button type="button">Click Me!</button>}
+        component={(closeModal) => (
+          <div>
+            <p>hello</p>
+            <Modal
+              name="modddal2"
+              trigger={
+                <button type="button" style={{ color: '#fff' }}>
+                  Click Me 2
+                </button>
+              }
+              component={(closeModal2) => (
+                <div
+                  style={{
+                    width: 200,
+                    backgroundColor: '#fff',
+                    color: '#000',
+                    position: 'absolute',
+                  }}
+                >
+                  <p>
+                    hihihihi hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                    hihihihi
+                    <br />
+                  </p>
+                  <button onClick={closeModal2}>닫기</button>
+                </div>
+              )}
+              onAfterClose={() => {
+                // callback here
+                console.log('after close');
+              }}
+              dim="rgba(0, 0, 0, 0.8)"
+            />
+            <button
+              onClick={() => {
+                console.log('울림');
+                closeModal();
+              }}
+            >
+              닫기
+            </button>
+
+            <p>??</p>
+          </div>
+        )}
+        onAfterClose={() => {
+          // callback here
+          console.log('after close');
+        }}
+        dim="rgba(0, 0, 0, 0.8)"
+      />
       <ImageViewerProvider>
         <div className="inner">
           <p>
