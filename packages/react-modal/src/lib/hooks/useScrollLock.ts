@@ -45,6 +45,7 @@ export default function useScrollLock() {
       left: '',
       right: '',
     });
+
     window.scrollTo({ left: 0, top: scrollRef.current, behavior: 'instant' });
   };
 
