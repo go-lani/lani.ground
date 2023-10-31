@@ -1,0 +1,73 @@
+{
+  "name": "@lani.ground/react-hooks",
+  "description": "hooks",
+  "version": "0.1.1",
+  "keywords": [
+    "react-hooks",
+    "hooks",
+    "scroll",
+    "element",
+    "dom"
+  ],
+  "homepage": "https://github.com/go-lani/lani.ground/blob/master/packages/hooks/README.md",
+  "bugs": {
+    "url": "https://github.com/go-lani/lani.ground/issues",
+    "email": "go.lani.developer@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/go-lani/lani.ground.git"
+  },
+  "author": {
+    "email": "go.lani.developer@gmail.com",
+    "name": "Lani",
+    "url": "https://lanoground.com"
+  },
+  "scripts": {
+    "watch": "concurrently \"npm run watch:ems\" \"npm run watch:cjs\"",
+    "watch:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext --watch",
+    "watch:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs --watch",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.59",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "react": "^18.2.0",
+    "typescript": "^4.9.5"
+  }
+}
