@@ -1,5 +1,6 @@
 {
   "name": "@lani.ground/react-image-viewer",
+  "description": "A React component for viewing images in a modal",
   "version": "1.0.1",
   "license": "MIT",
   "keywords": [
