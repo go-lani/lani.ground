@@ -5,251 +5,34 @@ import { OutsideClickHandler } from '@lani.ground/react-outside-click-handler';
 import '@lani.ground/react-image-viewer/css';
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
+import Component from './Component';
+import { useVisibleElement } from '@lani.ground/react-hooks';
 
 function App() {
+  const { ref, activeKey, activeElement } = useVisibleElement({
+    activeClass: 'active',
+  });
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isVisibile, setIsVisible] = useState<boolean>(false);
 
   const OPTIONS = ['option1', 'option2', 'option3'];
+
+  console.log('activeKey', activeKey);
+  console.log('activeElement', activeElement);
+
   return (
     <div className="App">
-      <button type="button" onClick={() => setIsOpen(true)}>
-        Click Me
+      <button
+        type="button"
+        style={{ backgroundColor: 'red', color: '#fff', padding: '10px' }}
+        onClick={() => setIsVisible(true)}
+      >
+        버튼!
       </button>
-
-      {isOpen && (
-        <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-          <ul className="bg-gray-500 px-5">
-            {OPTIONS.map((option) => (
-              <li key={option}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedOption(option);
-                    setIsOpen(false);
-                  }}
-                >
-                  {option}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </OutsideClickHandler>
-      )}
-
-      <p>
-        selected: <strong>{selectedOption}</strong>
-      </p>
-
-      <Modal
-        name="modal222"
-        trigger={<button type="button">Click Me!</button>}
-        component={(closeModal) => (
-          <div>
-            <p>hello</p>
-            <Modal
-              name="modddal2"
-              trigger={
-                <button type="button" style={{ color: '#fff' }}>
-                  Click Me 2
-                </button>
-              }
-              component={(closeModal2) => (
-                <div
-                  style={{
-                    width: 200,
-                    backgroundColor: '#fff',
-                    color: '#000',
-                    position: 'absolute',
-                  }}
-                >
-                  <p>
-                    hihihihi hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                    hihihihi
-                    <br />
-                  </p>
-                  <button onClick={closeModal2}>닫기</button>
-                </div>
-              )}
-              onAfterClose={() => {
-                // callback here
-                console.log('after close');
-              }}
-              dim="rgba(0, 0, 0, 0.8)"
-            />
-            <button
-              onClick={() => {
-                console.log('울림');
-                closeModal();
-              }}
-            >
-              닫기
-            </button>
-
-            <p>??</p>
-          </div>
-        )}
-        onAfterClose={() => {
-          // callback here
-          console.log('after close');
-        }}
-        dim="rgba(0, 0, 0, 0.8)"
-      />
+      {isVisibile && <Component onClose={() => setIsVisible(false)} />}
       <ImageViewerProvider>
-        <div className="inner">
+        <div className="inner" ref={ref}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
             eu lectus sit amet elementum. Maecenas dictum imperdiet ipsum, sit
@@ -275,6 +58,14 @@ function App() {
             dolor, a rhoncus eros. Nam et mauris vitae est convallis maximus non
             vel leo.
           </p>
+          <button
+            type="button"
+            style={{ backgroundColor: 'red', color: '#fff', padding: '10px' }}
+            onClick={() => setIsVisible(true)}
+          >
+            버튼!
+          </button>
+          {isVisibile && <Component onClose={() => setIsVisible(false)} />}
           <img src="/images/image-2.jpg" alt="" />
           <p>
             Etiam at enim condimentum, sodales mi id, posuere neque. Ut
