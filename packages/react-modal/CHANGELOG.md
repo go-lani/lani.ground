@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.0.1...@lani.ground/react-modal@1.0.2) (2023-10-31)
+
+
+### Features
+
+* lerna test ([2c30310](https://github.com/go-lani/lani.ground/commit/2c30310c6cf2ee318714d580c7b7067c677edaab))
+
+
+
+
+
 ## 1.0.1 (2023-10-30)
 
 
