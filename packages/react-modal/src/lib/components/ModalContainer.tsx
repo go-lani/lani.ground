@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import useScrollLock from '../hooks/useScrollLock';
 
 interface Props {
   name: string;
   dim?: string;
   closeModal: (callback?: () => void) => void;
+  centerMode: boolean;
   children: React.ReactNode;
 }
 
@@ -12,6 +13,7 @@ export default function ModalContainer({
   name,
   dim,
   closeModal,
+  centerMode,
   children,
 }: Props) {
   const { lockScroll, unlockScroll } = useScrollLock();
@@ -25,19 +27,22 @@ export default function ModalContainer({
     };
   }, []);
 
-  const outsideClickHandler = (e: MouseEvent) => {
-    const $modal = (e.target as HTMLElement).closest('[data-type="modal"]');
+  const outsideClickHandler = useCallback(
+    (e: MouseEvent) => {
+      const $modal = (e.target as HTMLElement).closest('[data-type="modal"]');
 
-    if (
-      !$modalContents.current ||
-      $modalContents.current.contains(e.target as Node)
-    )
-      return;
+      if (
+        !$modalContents.current ||
+        $modalContents.current.contains(e.target as Node)
+      )
+        return;
 
-    if (($modal as HTMLElement).dataset.name === name) {
-      closeModal();
-    }
-  };
+      if (($modal as HTMLElement).dataset.name === name) {
+        closeModal();
+      }
+    },
+    [closeModal, name],
+  );
 
   useEffect(() => {
     document.addEventListener('click', outsideClickHandler, { capture: true });
@@ -47,7 +52,7 @@ export default function ModalContainer({
         capture: true,
       });
     };
-  }, [closeModal, name]);
+  }, [outsideClickHandler]);
 
   return (
     <div
@@ -56,7 +61,20 @@ export default function ModalContainer({
       className="react-modal__container"
       style={{ backgroundColor: dim }}
     >
-      <div ref={$modalContents}>{children}</div>
+      <div
+        ref={$modalContents}
+        className={`${
+          centerMode ? 'react-modal__outer' : 'react-modal__content'
+        }`}
+      >
+        {centerMode ? (
+          <div className="react-modal__inner">
+            <div className="react-modal__content">{children}</div>
+          </div>
+        ) : (
+          <>{children}</>
+        )}
+      </div>
     </div>
   );
 }

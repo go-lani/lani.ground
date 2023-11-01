@@ -11,6 +11,7 @@ type Props = {
   onAfterClose?: () => unknown;
   dim?: string;
   direct?: boolean;
+  centerMode?: boolean;
 };
 
 export default function Modal({
@@ -20,6 +21,7 @@ export default function Modal({
   onAfterClose,
   dim = '',
   direct = false,
+  centerMode = false,
 }: Props) {
   const [isOpen, setIsOpen] = useState(direct);
   const [modalRoot, setModalRoot] = useState<Element | null>(null);
@@ -63,7 +65,12 @@ export default function Modal({
       {isOpen &&
         modalRoot &&
         createPortal(
-          <ModalContainer name={name} dim={dim} closeModal={closeModal}>
+          <ModalContainer
+            name={name}
+            dim={dim}
+            closeModal={closeModal}
+            centerMode={centerMode}
+          >
             {component(closeModal)}
           </ModalContainer>,
           modalRoot,

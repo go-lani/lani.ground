@@ -4,9 +4,28 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99999;
-  display: flex;
+  z-index: 9999;
   height: 100%;
   width: 100%;
+}
+
+.react-modal__outer {
+  box-sizing: border-box;
+  display: flex;
+  padding: 30px;
+  align-items: center;
   justify-content: center;
+  min-height: 100%;
+  pointer-events: none;
+}
+
+.react-modal__inner {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.react-modal__content {
+  position: relative;
+  pointer-events: auto;
 }
