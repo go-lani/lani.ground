@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.0.2...@lani.ground/react-modal@1.0.3) (2023-11-01)
+
+
+### Features
+
+* centerMode 추가 ([8f1d7f2](https://github.com/go-lani/lani.ground/commit/8f1d7f204d8a578c30b4324bea75a9837e24e284))
+
+
+
+
+
 ## [1.0.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.0.1...@lani.ground/react-modal@1.0.2) (2023-10-31)
 
 
