@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.0.3...@lani.ground/react-modal@1.0.4) (2023-11-01)
+
+
+### Bug Fixes
+
+* modal outerHadler dataset bug fix ([7c796bf](https://github.com/go-lani/lani.ground/commit/7c796bf79a9271433eb4749259fa243e32bb9417))
+
+
+
+
+
 ## [1.0.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.0.2...@lani.ground/react-modal@1.0.3) (2023-11-01)
 
 
