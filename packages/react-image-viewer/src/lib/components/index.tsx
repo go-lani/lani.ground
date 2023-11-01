@@ -44,6 +44,7 @@ export default function ImageViewerProvider({
     );
 
     $images.forEach((img, index) => {
+      img.style.cursor = 'zoom-in';
       img.addEventListener('click', (e) => openImageViewer(e, index));
     });
 
@@ -70,11 +71,6 @@ export default function ImageViewerProvider({
     }
 
     setModalRoot($imageViewerRoot);
-    return () => {
-      if (!$imageViewerRoot) return;
-
-      $imageViewerRoot.remove();
-    };
   }, []);
 
   return (
