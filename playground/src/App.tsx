@@ -1,36 +1,35 @@
 import React, { useState } from 'react';
 import './App.css';
 import { ImageViewerProvider } from '@lani.ground/react-image-viewer';
-import { OutsideClickHandler } from '@lani.ground/react-outside-click-handler';
 import '@lani.ground/react-image-viewer/css';
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
 import Component from './Component';
 import { useVisibleElement } from '@lani.ground/react-hooks';
+import DummyComponent from './DummyComponent';
 
 function App() {
   const { ref, activeKey, activeElement } = useVisibleElement({
     activeClass: 'active',
   });
-  const [selectedOption, setSelectedOption] = useState<string>('');
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isVisibile, setIsVisible] = useState<boolean>(false);
-
-  const OPTIONS = ['option1', 'option2', 'option3'];
-
-  console.log('activeKey', activeKey);
-  console.log('activeElement', activeElement);
 
   return (
     <div className="App">
-      <button
-        type="button"
-        style={{ backgroundColor: 'red', color: '#fff', padding: '10px' }}
-        onClick={() => setIsVisible(true)}
-      >
-        버튼!
-      </button>
-      {isVisibile && <Component onClose={() => setIsVisible(false)} />}
+      <Modal
+        name="modal"
+        trigger={
+          <button type="button" style={{ color: 'blue' }}>
+            Click Me!
+          </button>
+        }
+        component={(closeModal) => <DummyComponent closeModal={closeModal} />}
+        onAfterClose={() => {
+          // callback here
+        }}
+        dim="rgba(0, 0, 0, 0.8)"
+        centerMode
+      />
       <ImageViewerProvider>
         <div className="inner" ref={ref}>
           <p>
