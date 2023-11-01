@@ -31,13 +31,18 @@ export default function ModalContainer({
     (e: MouseEvent) => {
       const $modal = (e.target as HTMLElement).closest('[data-type="modal"]');
 
+      if (!$modal) return;
+
       if (
         !$modalContents.current ||
         $modalContents.current.contains(e.target as Node)
       )
         return;
 
-      if (($modal as HTMLElement).dataset.name === name) {
+      if (
+        ($modal as HTMLElement).dataset.name &&
+        ($modal as HTMLElement).dataset.name === name
+      ) {
         closeModal();
       }
     },
