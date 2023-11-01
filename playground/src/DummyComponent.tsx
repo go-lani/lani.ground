@@ -1,36 +1,64 @@
+import { ImageViewerProvider } from '@lani.ground/react-image-viewer';
+import '@lani.ground/react-image-viewer/css';
+import { Modal } from '@lani.ground/react-modal';
+import '@lani.ground/react-modal/css';
+
 export default function DummyComponent({
   closeModal,
 }: {
   closeModal: () => Promise<void>;
 }) {
   return (
-    <div
-      style={{
-        maxWidth: '500px',
-        // width: '300px',
-        // position: 'absolute',
-        // top: '50%',
-        // left: '50%',
-        // transform: 'translate(-50%,-50%)',
-      }}
-    >
-      <button type="button" onClick={closeModal} style={{ color: 'red' }}>
-        X
-      </button>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum eu
-        lectus sit amet elementum. Maecenas dictum imperdiet ipsum, sit amet
-        venenatis turpis rutrum vitae. Aliquam id faucibus tellus. Cras
-        facilisis sed purus eu sagittis. Integer volutpat et enim vitae feugiat.
-        Pellentesque ac dapibus ligula. In a efficitur nibh. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus. Donec pharetra tellus
-        nec malesuada ultrices. Duis quis pellentesque turpis, vel efficitur
-        turpis. Sed viverra iaculis turpis, vitae pulvinar augue elementum sit
-        amet. Pellentesque fermentum lorem et pretium pulvinar. Etiam dictum sit
-        amet tellus vitae commodo.
-      </p>
-      <img src="/images/image-1.jpg" alt="" />
-      {/* <p>
+    <ImageViewerProvider>
+      <>
+        <Modal
+          name="sub-modal"
+          trigger={
+            <button type="button" style={{ color: 'blue' }}>
+              Click Me!
+            </button>
+          }
+          component={(closeModal) => (
+            <div>
+              <button type="button" onClick={closeModal}>
+                X
+              </button>
+              <p>test</p>
+            </div>
+          )}
+          onAfterClose={() => {
+            // callback here
+          }}
+          dim="rgba(0, 0, 0, 0.8)"
+          centerMode
+        />
+        <div
+          style={{
+            maxWidth: '500px',
+            // width: '300px',
+            // position: 'absolute',
+            // top: '50%',
+            // left: '50%',
+            // transform: 'translate(-50%,-50%)',
+          }}
+        >
+          <button type="button" onClick={closeModal} style={{ color: 'red' }}>
+            X
+          </button>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
+            eu lectus sit amet elementum. Maecenas dictum imperdiet ipsum, sit
+            amet venenatis turpis rutrum vitae. Aliquam id faucibus tellus. Cras
+            facilisis sed purus eu sagittis. Integer volutpat et enim vitae
+            feugiat. Pellentesque ac dapibus ligula. In a efficitur nibh.
+            Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec
+            pharetra tellus nec malesuada ultrices. Duis quis pellentesque
+            turpis, vel efficitur turpis. Sed viverra iaculis turpis, vitae
+            pulvinar augue elementum sit amet. Pellentesque fermentum lorem et
+            pretium pulvinar. Etiam dictum sit amet tellus vitae commodo.
+          </p>
+          <img src="/images/image-1.jpg" alt="" />
+          {/* <p>
         Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec eget
         diam feugiat nibh dictum dignissim. Morbi eget lorem at mauris tristique
         euismod id suscipit nulla. In eu egestas orci. Nullam mattis id nisi
@@ -124,6 +152,8 @@ export default function DummyComponent({
         augue tortor, varius porttitor nibh eleifend non. Phasellus eu pharetra
         erat. Curabitur nec consectetur justo.
       </p> */}
-    </div>
+        </div>
+      </>
+    </ImageViewerProvider>
   );
 }
