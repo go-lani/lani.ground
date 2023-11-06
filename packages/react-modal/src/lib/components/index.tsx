@@ -38,12 +38,16 @@ export default function Modal({
     });
   };
 
-  const closeModal = useCallback(async () => {
-    await close();
-    if (typeof onAfterClose === 'function') {
-      onAfterClose();
-    }
-  }, [onAfterClose]);
+  const closeModal = useCallback(
+    async (target: any) => {
+      console.log('target', target);
+      await close();
+      if (typeof onAfterClose === 'function') {
+        onAfterClose();
+      }
+    },
+    [onAfterClose],
+  );
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

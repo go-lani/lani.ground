@@ -4,7 +4,7 @@ import useScrollLock from '../hooks/useScrollLock';
 interface Props {
   name: string;
   dim?: string;
-  closeModal: (callback?: () => void) => void;
+  closeModal: (callback?: any) => void;
   centerMode: boolean;
   children: React.ReactNode;
 }
@@ -43,17 +43,20 @@ export default function ModalContainer({
         ($modal as HTMLElement).dataset.name &&
         ($modal as HTMLElement).dataset.name === name
       ) {
-        closeModal();
+        console.log('outside closest', $modal);
+        closeModal(e.target);
       }
     },
     [closeModal, name],
   );
 
   useEffect(() => {
-    document.addEventListener('click', outsideClickHandler, { capture: true });
+    document.addEventListener('mousedown', outsideClickHandler, {
+      capture: true,
+    });
 
     return () => {
-      document.removeEventListener('click', outsideClickHandler, {
+      document.removeEventListener('mousedown', outsideClickHandler, {
         capture: true,
       });
     };
