@@ -1,7 +1,7 @@
 {
   "name": "@lani.ground/react-outside-click-handler",
   "description": "Handler components that make it easier to control when you click on a component other than the one you want.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "keywords": [
     "react",
