@@ -1,31 +1,73 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import useScrollLock from '../hooks/useScrollLock';
 
 interface Props {
   name: string;
+  closeModal: () => Promise<void>;
   dim?: string;
-  closeModal: (callback?: any) => void;
   centerMode: boolean;
+  animation?: {
+    className?: string;
+    duration: number;
+  };
+  isEnter: boolean;
+  setIsEnter: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsAnimating: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
 }
 
 export default function ModalContainer({
   name,
-  dim,
   closeModal,
+  dim,
   centerMode,
+  animation,
+  isEnter,
+  setIsEnter,
+  setIsAnimating,
   children,
 }: Props) {
   const { lockScroll, unlockScroll } = useScrollLock();
   const $modalContents = useRef<HTMLDivElement>(null);
 
+  const classes = useMemo(
+    () =>
+      isEnter
+        ? `${
+            animation?.className
+              ? animation?.className
+              : 'react-modal__container'
+          }__enter`
+        : `${
+            animation?.className
+              ? animation?.className
+              : 'react-modal__container'
+          }__exit`,
+    [animation?.className, isEnter],
+  );
+
   useEffect(() => {
     lockScroll();
+    setIsEnter(true);
 
     return () => {
       unlockScroll();
     };
   }, []);
+
+  useEffect(() => {
+    if (!animation?.duration) return;
+
+    const timer = setTimeout(() => {
+      setIsAnimating(false);
+    }, animation.duration);
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [animation?.duration, setIsAnimating]);
 
   const outsideClickHandler = useCallback(
     (e: MouseEvent) => {
@@ -43,8 +85,7 @@ export default function ModalContainer({
         ($modal as HTMLElement).dataset.name &&
         ($modal as HTMLElement).dataset.name === name
       ) {
-        console.log('outside closest', $modal);
-        closeModal(e.target);
+        closeModal();
       }
     },
     [closeModal, name],
@@ -66,7 +107,7 @@ export default function ModalContainer({
     <div
       data-type="modal"
       data-name={name}
-      className="react-modal__container"
+      className={`react-modal__container ${classes}`}
       style={{ backgroundColor: dim }}
     >
       <div

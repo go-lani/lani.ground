@@ -26,6 +26,7 @@
 }
 
 .react-modal__content {
+  display: inline-block;
   position: relative;
   pointer-events: auto;
 }

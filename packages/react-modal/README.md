@@ -17,7 +17,7 @@ yarn add @lani.ground/react-modal
 
 ## Example
 
-![Modal Example](https://laniground.com/assets/example/react-modal-overlapping-example.gif)
+![Modal Example](https://laniground.com/assets/example/react-modal_new.gif)
 
 
 ## Usage
@@ -31,7 +31,7 @@ interface PopupProps {
 
 function Popup({closeModal}: PopupProps) {
   return (
-    <div>
+    <div className="sample-popup">
       <button
         type="button"
         onClick={closeModal}
@@ -55,9 +55,9 @@ function Popup({closeModal}: PopupProps) {
 ```
 
 ``` tsx
+// using modal
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
-
 
 <Modal
   name="modal"
@@ -67,9 +67,42 @@ import '@lani.ground/react-modal/css';
     // callback here
   }}
   dim="rgba(0, 0, 0, 0.8)"
-  direct
+  animation={{
+    duration: 500, // ms
+    className: 'sample-popup',
+  }}
   centerMode
+  direct
 />
+```
+
+``` css
+/* Examples of effects when modals appear and disappear */
+.sample-popup__enter {
+  opacity: 1;
+  transition: all 0.5s;
+  filter: blur(0);
+}
+
+.sample-popup__exit {
+  opacity: 0;
+  transition: all 0.5s;
+  filter: blur(1rem);
+}
+
+.sample-popup,
+.sample-popup__exit .sample-popup {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.5s;
+  filter: blur(1rem);
+}
+
+.sample-popup__enter .sample-popup {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0);
+}
 ```
 
 ## Props
@@ -84,3 +117,4 @@ import '@lani.ground/react-modal/css';
 |dim(optional)|string|Please enter the color to be used for dim.<br /> Dim 배경 색상|
 |direct(optional)|boolean (default: false)|Whether to immediately show the modal upon rendering<br /> 모달을 렌더링 즉시 노출시킬지 여부|
 |centerMode(optional)|boolean (default: false)|Whether to use the center mode<br /> 중앙 정렬 모드 사용 여부|
+|animation(optional)|{<br />className?: string<br />(default: react-modal__container), <br /> duration: number(ms)<br />}|You can set the animation option to add effects when a modal is displayed<br /> 모달이 표시될 때 효과를 추가하려면 애니메이션 옵션을 설정할 수 있습니다.|

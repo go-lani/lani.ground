@@ -1,6 +1,7 @@
 import { cloneElement, useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import ModalContainer from './ModalContainer';
+import { delay } from '../util/utils';
 
 export const GROUND_MODAL_ROOT = 'ground-modal-root';
 
@@ -10,8 +11,12 @@ type Props = {
   component: (closeModal: () => Promise<void>) => JSX.Element;
   onAfterClose?: () => unknown;
   dim?: string;
-  direct?: boolean;
   centerMode?: boolean;
+  animation?: {
+    className?: string;
+    duration: number;
+  };
+  direct?: boolean;
 };
 
 export default function Modal({
@@ -20,16 +25,27 @@ export default function Modal({
   component,
   onAfterClose,
   dim = '',
-  direct = false,
   centerMode = false,
+  animation,
+  direct = false,
 }: Props) {
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isEnter, setIsEnter] = useState(false);
   const [isOpen, setIsOpen] = useState(direct);
   const [modalRoot, setModalRoot] = useState<Element | null>(null);
 
-  const openModal = useCallback((e: MouseEvent) => {
-    e.stopPropagation();
-    setIsOpen(true);
-  }, []);
+  const openModal = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      if (!!animation && isAnimating) return;
+
+      if (!!animation) {
+        setIsAnimating(true);
+      }
+      setIsOpen(true);
+    },
+    [animation, isAnimating],
+  );
 
   const close = () => {
     return new Promise<void>((resolve) => {
@@ -38,16 +54,21 @@ export default function Modal({
     });
   };
 
-  const closeModal = useCallback(
-    async (target: any) => {
-      console.log('target', target);
-      await close();
-      if (typeof onAfterClose === 'function') {
-        onAfterClose();
-      }
-    },
-    [onAfterClose],
-  );
+  const closeModal = useCallback(async () => {
+    if (!isEnter || (!!animation && isAnimating)) return;
+
+    setIsEnter(false);
+
+    if (animation?.duration) {
+      await delay(animation?.duration);
+    }
+
+    await close();
+
+    if (typeof onAfterClose === 'function') {
+      onAfterClose();
+    }
+  }, [animation, isAnimating, isEnter, onAfterClose]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -71,9 +92,13 @@ export default function Modal({
         createPortal(
           <ModalContainer
             name={name}
-            dim={dim}
             closeModal={closeModal}
+            dim={dim}
             centerMode={centerMode}
+            animation={animation}
+            isEnter={isEnter}
+            setIsEnter={setIsEnter}
+            setIsAnimating={setIsAnimating}
           >
             {component(closeModal)}
           </ModalContainer>,
