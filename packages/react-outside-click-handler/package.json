@@ -1,0 +1,75 @@
+{
+  "name": "@lani.ground/react-outside-click-handler",
+  "description": "Handler components that make it easier to control when you click on a component other than the one you want.",
+  "version": "1.0.1",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "next",
+    "outside",
+    "click",
+    "handler"
+  ],
+  "homepage": "https://github.com/go-lani/lani.ground/blob/master/packages/react-outside-click-handler/README.md",
+  "bugs": {
+    "url": "https://github.com/go-lani/lani.ground/issues",
+    "email": "go.lani.developer@gmail.com"
+  },
+  "author": {
+    "email": "go.lani.developer@gmail.com",
+    "name": "Lani",
+    "url": "https://lanoground.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/go-lani/lani.ground.git"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "browser": "./browser/specific/main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "watch": "concurrently \"npm run watch:ems\" \"npm run watch:cjs\"",
+    "watch:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext --watch",
+    "watch:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs --watch",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/node": "^16.18.53",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "eslint-plugin-react": "^7.33.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  }
+}
