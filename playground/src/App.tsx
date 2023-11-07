@@ -16,21 +16,13 @@ function App() {
   const [test, isTest] = useState(false);
 
   return (
-    <div className="mx-auto">
+    <div className="flex flex-col items-center bg-neutral-900 text-white">
       <Modal
         name="modal"
         trigger={
           <button
             type="button"
-            style={{
-              color: 'white',
-              fontWeight: 700,
-              fontSize: '18px',
-              margin: '20px',
-              padding: '20px',
-              backgroundColor: 'lightseagreen',
-              cursor: 'pointer',
-            }}
+            className="rounded bg-green-500 px-4 py-2 text-lg font-bold text-white"
           >
             Click Me!
           </button>
