@@ -29,9 +29,9 @@ export default function Modal({
   animation,
   direct = false,
 }: Props) {
+  const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isEnter, setIsEnter] = useState(false);
-  const [isOpen, setIsOpen] = useState(direct);
   const [modalRoot, setModalRoot] = useState<Element | null>(null);
 
   const openModal = useCallback(
@@ -83,6 +83,10 @@ export default function Modal({
 
     setModalRoot($modalRoot);
   }, []);
+
+  useEffect(() => {
+    setIsOpen(direct);
+  }, [direct]);
 
   return (
     <>
