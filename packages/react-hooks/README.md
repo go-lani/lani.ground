@@ -7,6 +7,8 @@
 ### usage
 
 ```tsx
+import { useVisibleElement } from '@lani.ground/react-hooks';
+
 export default function Component() {
   const { ref, activeKey, activeElement } = useVisibleElement({
     activeClass: 'active',
@@ -16,16 +18,16 @@ export default function Component() {
 
   return (
     <div ref={ref}>
-      <section>
+      <section style={{height: '100vh'}}>
         <p>section 1</p>
       </section>
-      <section>
+      <section style={{height: '100vh'}}>
         <p>section 2</p>
       </section>
-      <section>
+      <section style={{height: '100vh'}}>
         <p>section 3</p>
       </section>
-      <section>
+      <section style={{height: '100vh'}}>
         <p>section 4</p>
       </section>
     </div>
@@ -39,6 +41,8 @@ export default function Component() {
 ### usage
 
 ```tsx
+import { useScrollLock } from '@lani.ground/react-hooks';
+
 export default function Component() {
   comst {lockScroll, unlockScroll} = useScrollLock();
 
