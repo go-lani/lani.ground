@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.0.4...@lani.ground/react-modal@1.1.0) (2023-11-07)
+
+
+### Features
+
+* add to animation effect ([8f6aa7c](https://github.com/go-lani/lani.ground/commit/8f6aa7c87420e7665f91d74504b4f8e6dcce73d2))
+
+
+
+## 1.0.5 (2023-11-06)
+
+
+### Bug Fixes
+
+* add degub console ([08a7c62](https://github.com/go-lani/lani.ground/commit/08a7c624a058eaecc21a7895ac5aec9e513af713))
+
+
+
+
+
 ## [1.0.4](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.0.3...@lani.ground/react-modal@1.0.4) (2023-11-01)
 
 
