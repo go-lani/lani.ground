@@ -13,21 +13,38 @@ function App() {
     activeClass: 'active',
   });
   const [isVisibile, setIsVisible] = useState<boolean>(false);
+  const [test, isTest] = useState(false);
 
   return (
     <div className="App">
       <Modal
         name="modal"
         trigger={
-          <button type="button" style={{ color: 'blue' }}>
+          <button
+            type="button"
+            style={{
+              color: 'white',
+              fontWeight: 700,
+              fontSize: '18px',
+              margin: '20px',
+              padding: '20px',
+              backgroundColor: 'lightseagreen',
+              cursor: 'pointer',
+            }}
+          >
             Click Me!
           </button>
         }
         component={(closeModal) => <DummyComponent closeModal={closeModal} />}
         onAfterClose={() => {
           // callback here
+          console.log('callback');
         }}
         dim="rgba(0, 0, 0, 0.8)"
+        animation={{
+          duration: 500,
+          className: 'sample-modal',
+        }}
         centerMode
       />
       <ImageViewerProvider>
@@ -57,13 +74,6 @@ function App() {
             dolor, a rhoncus eros. Nam et mauris vitae est convallis maximus non
             vel leo.
           </p>
-          <button
-            type="button"
-            style={{ backgroundColor: 'red', color: '#fff', padding: '10px' }}
-            onClick={() => setIsVisible(true)}
-          >
-            버튼!
-          </button>
           {isVisibile && <Component onClose={() => setIsVisible(false)} />}
           <img src="/images/image-2.jpg" alt="" />
           <p>

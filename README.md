@@ -11,3 +11,10 @@ yarn link
 ```bash
 yarn link mymodule
 ```
+
+
+## Publish(root)
+
+```bash
+learn publish
+```

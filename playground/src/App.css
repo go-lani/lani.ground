@@ -27,7 +27,7 @@ img {
 
 .inner {
   max-width: 100%;
-  width: 600px;
+  width: 500px;
   margin: 0 auto;
 }
 
@@ -60,4 +60,30 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+.sample-modal__enter {
+  opacity: 1;
+  transition: all 0.5s;
+  filter: blur(0);
+}
+
+.sample-modal__exit {
+  opacity: 0;
+  transition: all 0.5s;
+  filter: blur(1rem);
+}
+
+.sample-modal,
+.sample-modal__exit .sample-modal {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.5s;
+  filter: blur(1rem);
+}
+
+.sample-modal__enter .sample-modal {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0);
 }
