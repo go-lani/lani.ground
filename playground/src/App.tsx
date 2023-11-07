@@ -16,7 +16,7 @@ function App() {
   const [test, isTest] = useState(false);
 
   return (
-    <div className="App">
+    <div className="mx-auto">
       <Modal
         name="modal"
         trigger={
@@ -48,7 +48,7 @@ function App() {
         centerMode
       />
       <ImageViewerProvider>
-        <div className="inner" ref={ref}>
+        <div className="w-[500px]" ref={ref}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
             eu lectus sit amet elementum. Maecenas dictum imperdiet ipsum, sit
