@@ -8,7 +8,9 @@ export default function OutsideClickHandlerPage() {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <>
-      <h1 className="mb-14 text-3xl font-bold">@lani.ground/react-modal</h1>
+      <h1 className="mb-14 text-3xl font-bold">
+        @lani.ground/react-outside-click-handler
+      </h1>
       <div className="relative">
         <button
           type="button"
