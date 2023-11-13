@@ -1,103 +1,12 @@
 import { ImageViewerProvider } from '@lani.ground/react-image-viewer';
 import '@lani.ground/react-image-viewer/css';
-import { Modal } from '@lani.ground/react-modal';
-import '@lani.ground/react-modal/css';
 
-export default function DummyComponent({
-  closeModal,
-}: {
-  closeModal: () => Promise<void>;
-}) {
+export default function ImageViewer() {
   return (
-    <div className="sample-modal text-white">
-      <div className="relative max-w-[500px]">
-        <Modal
-          name="inner-modal"
-          trigger={
-            <button
-              type="button"
-              style={{
-                color: 'white',
-                fontWeight: 700,
-                fontSize: '18px',
-                padding: '20px',
-                backgroundColor: 'chocolate',
-                cursor: 'pointer',
-              }}
-            >
-              Click Me!
-            </button>
-          }
-          component={(closeModal) => (
-            <div
-              style={{
-                overflowY: 'auto',
-                width: 300,
-                maxHeight: 300,
-                background: 'gold',
-                color: 'sienna',
-                padding: '0 20px',
-              }}
-            >
-              <button
-                type="button"
-                onClick={closeModal}
-                style={{
-                  position: 'absolute',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  top: '-80px',
-                  zIndex: 1,
-                  width: '80px',
-                  height: '80px',
-                  cursor: 'pointer',
-                }}
-              >
-                <img
-                  src="/icons/close.svg"
-                  alt=""
-                  style={{ objectFit: 'fill' }}
-                />
-              </button>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                interdum eu lectus sit amet elementum. Maecenas dictum imperdiet
-                ipsum, sit amet venenatis turpis rutrum vitae. Aliquam id
-                faucibus tellus. Cras facilisis sed purus eu sagittis. Integer
-                volutpat et enim vitae feugiat. Pellentesque ac dapibus ligula.
-                In a efficitur nibh. Interdum et malesuada fames ac ante ipsum
-                primis in faucibus. Donec pharetra tellus nec malesuada
-                ultrices. Duis quis pellentesque turpis, vel efficitur turpis.
-                Sed viverra iaculis turpis, vitae pulvinar augue elementum sit
-                amet. Pellentesque fermentum lorem et pretium pulvinar. Etiam
-                dictum sit amet tellus vitae commodo.
-              </p>
-            </div>
-          )}
-          centerMode
-          dim="rgba(0,0,0,0.8)"
-          animation={{
-            duration: 500,
-            className: 'sample-modal',
-          }}
-        />
-        <button
-          type="button"
-          onClick={closeModal}
-          style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            top: '-80px',
-            zIndex: 1,
-            width: '80px',
-            height: '80px',
-            cursor: 'pointer',
-          }}
-        >
-          <img src="/icons/close.svg" alt="" style={{ objectFit: 'fill' }} />
-        </button>
-        <p>
+    <ImageViewerProvider>
+      <section>
+        <h1 className="text-3xl font-bold">@lani.ground/react-image-viewer</h1>
+        <p className="mt-14">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
           eu lectus sit amet elementum. Maecenas dictum imperdiet ipsum, sit
           amet venenatis turpis rutrum vitae. Aliquam id faucibus tellus. Cras
@@ -109,8 +18,8 @@ export default function DummyComponent({
           elementum sit amet. Pellentesque fermentum lorem et pretium pulvinar.
           Etiam dictum sit amet tellus vitae commodo.
         </p>
-        <img src="/images/image-10.jpg" alt="" />
-        {/* <p>
+        <img src="/images/image-1.jpg" alt="" />
+        <p>
           Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec
           eget diam feugiat nibh dictum dignissim. Morbi eget lorem at mauris
           tristique euismod id suscipit nulla. In eu egestas orci. Nullam mattis
@@ -203,8 +112,8 @@ export default function DummyComponent({
           scelerisque quam. Maecenas faucibus malesuada eros lobortis accumsan.
           In gravida augue tortor, varius porttitor nibh eleifend non. Phasellus
           eu pharetra erat. Curabitur nec consectetur justo.
-        </p> */}
-      </div>
-    </div>
+        </p>
+      </section>
+    </ImageViewerProvider>
   );
 }
