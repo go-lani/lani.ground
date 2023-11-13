@@ -1,7 +1,7 @@
 {
   "name": "@lani.ground/react-image-viewer",
   "description": "A React component for viewing images in a modal",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "keywords": [
     "react",
@@ -68,7 +68,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@lani.ground/react-outside-click-handler": "^1.1.0",
+    "@lani.ground/react-outside-click-handler": "^1.1.1",
     "@types/node": "^16.18.53",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",

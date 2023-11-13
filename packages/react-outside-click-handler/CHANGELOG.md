@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-outside-click-handler@1.1.0...@lani.ground/react-outside-click-handler@1.1.1) (2023-11-13)
+
+**Note:** Version bump only for package @lani.ground/react-outside-click-handler
+
+
+
+
+
 # [1.1.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-outside-click-handler@1.0.2...@lani.ground/react-outside-click-handler@1.1.0) (2023-11-13)
 
 
