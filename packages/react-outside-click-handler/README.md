@@ -69,3 +69,5 @@ const OPTIONS = ["option1", "option2", "option3"];
 | ------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | onOutsideClick<b>(required)</b> | () => void  | Function called when a click occurs outside the consumer's area<br /> 소비자 컴포넌트의 영역을 제외한 영역을 클릭했을 때 호출되는 함수 |
 | children<b>(required)</b>       | JSX.Element | Consumer Component<br /> 소비자 컴포넌트                                                                                               |
+| disabled<b>(optional)</b>       | boolean(default: false) | ouside click disabled<br /> 외부 영역 클릭 비활성화 |                                                                      |
+| capture<b>(optional)</b>       | boolean(default: true) | Whether capturing is enabled<br /> 캡처링 사용 여부 |
