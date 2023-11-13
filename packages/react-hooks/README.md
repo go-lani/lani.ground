@@ -100,3 +100,23 @@ export default function Hooks() {
 }
 
 ```
+
+
+## useString
+
+### usage
+
+``` tsx
+import { useString } from '@lani.ground/react-hooks';
+
+export default function String() {
+  const { ellipsis } = useString();
+  return (
+    <>
+      <p>{ellipsis({ value: 'String', length: 3, dir: 'left' })}</p> {/* ...ing */}
+      <p>{ellipsis({ value: 'String', length: 3, dir: 'right' })}</p> {/* Str... */}
+    </>
+  )
+}
+
+```
