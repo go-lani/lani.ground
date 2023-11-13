@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.2.1...@lani.ground/react-hooks@0.3.0) (2023-11-13)
+
+
+### Features
+
+* add useString Hook > ellipsis function ([1249b63](https://github.com/go-lani/lani.ground/commit/1249b6332411e3ab70e3dddee787b83224fd0f36))
+
+
+
+
+
 ## [0.2.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.2.0...@lani.ground/react-hooks@0.2.1) (2023-11-09)
 
 **Note:** Version bump only for package @lani.ground/react-hooks

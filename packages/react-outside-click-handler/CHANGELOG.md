@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-outside-click-handler@1.0.2...@lani.ground/react-outside-click-handler@1.1.0) (2023-11-13)
+
+
+### Features
+
+* changed event handler(click > mousedown&mouseup) ([3a5337c](https://github.com/go-lani/lani.ground/commit/3a5337ca0ca4c1277b0d69bf620e789c507e00b7))
+
+
+
+
+
 ## [1.0.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-outside-click-handler@1.0.1...@lani.ground/react-outside-click-handler@1.0.2) (2023-11-07)
 
 
