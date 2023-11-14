@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.3.0...@lani.ground/react-hooks@0.3.1) (2023-11-14)
+
+
+### Bug Fixes
+
+* remove console ([6e09bb7](https://github.com/go-lani/lani.ground/commit/6e09bb746b1778c16212e1f1cee2bf0efa74b7f8))
+
+
+
+
+
 # [0.3.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.2.1...@lani.ground/react-hooks@0.3.0) (2023-11-13)
 
 
