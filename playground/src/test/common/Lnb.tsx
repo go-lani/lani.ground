@@ -1,5 +1,5 @@
-import { Link, useMatch, useLocation } from 'react-router-dom';
-import { TEST_COMPONENTS } from '.';
+import { Link, useLocation } from 'react-router-dom';
+import { TEST_COMPONENTS } from '../..';
 import { useMemo } from 'react';
 
 export default function Lnb() {

@@ -2,13 +2,16 @@ import { useEffect } from 'react';
 import {
   useCookies,
   useString,
+  useVisibleElement,
   useWindowScroll,
 } from '@lani.ground/react-hooks';
+import ContentLayout from './common/ContentLayout';
 
-export default function Hooks() {
+export default function HooksPage() {
   const { ellipsis } = useString();
   const { getCookie, setCookie, hasCookie, deleteCookie } = useCookies();
   const { lockScroll, unlockScroll } = useWindowScroll();
+  const { ref, activeElement, activeKey } = useVisibleElement();
   const setTestCookie = () => {
     const day = new Date();
     day.setMinutes(day.getMinutes() + 1);
@@ -26,9 +29,8 @@ export default function Hooks() {
   }, []);
 
   return (
-    <>
-      <h1 className="text-3xl font-bold">@lani.ground/react-hooks</h1>
-      <section className="mt-14 rounded-xl bg-gray-600 p-4 text-lg">
+    <ContentLayout packageName="react-hooks">
+      <div className="rounded-xl bg-gray-600 p-4 text-lg">
         <h2 className="text-2xl font-bold">react-hooks/useCookie</h2>
         <div className="mt-4 flex flex-col items-start gap-4">
           <button
@@ -53,8 +55,8 @@ export default function Hooks() {
             Delete Cookie
           </button>
         </div>
-      </section>
-      <section className="mt-14 rounded-xl bg-gray-600 p-4 text-lg">
+      </div>
+      <div className="mt-10 rounded-xl bg-gray-600 p-4 text-lg">
         <h2 className="text-2xl font-bold">react-hooks/useString</h2>
         <div className="mt-4 flex flex-col gap-4">
           <p>original: String</p>
@@ -67,8 +69,8 @@ export default function Hooks() {
             {ellipsis({ value: 'String', length: 3, dir: 'right' })}
           </p>
         </div>
-      </section>
-      <section className="mt-14 rounded-xl bg-gray-600 p-4 text-lg">
+      </div>
+      <div className="mt-10 rounded-xl bg-gray-600 p-4 text-lg">
         <h2 className="text-2xl font-bold">react-hooks/useWindowScroll</h2>
         <div className="mt-4 flex gap-4">
           <button
@@ -85,9 +87,26 @@ export default function Hooks() {
           >
             unlockScroll
           </button>
-          <div className="h-[100vh]"></div>
+          <div className="h-[100vh]" />
         </div>
-      </section>
-    </>
+      </div>
+      <div className="mt-10 rounded-xl bg-gray-600 p-4 text-lg">
+        <h2 className="text-2xl font-bold">react-hooks/useVisibleElement</h2>
+        <div className="mt-4 flex flex-col">
+          <div className="sticky top-0 bg-yellow-400 p-4">
+            <p>activeKey: {activeKey}</p>
+            <p>
+              activeElement: {`${JSON.stringify(activeElement?.outerHTML)}`}
+            </p>
+          </div>
+          <div ref={ref}>
+            <div className="h-[100vh] bg-red-200">section 1</div>
+            <div className="h-[100vh] bg-red-300">section 2</div>
+            <div className="h-[100vh] bg-red-400">section 3</div>
+            <div className="h-[100vh] bg-red-500">section 4</div>
+          </div>
+        </div>
+      </div>
+    </ContentLayout>
   );
 }

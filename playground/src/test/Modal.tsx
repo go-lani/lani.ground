@@ -1,11 +1,11 @@
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
-import DummyComponent from '../DummyComponent';
+import DummyComponent from './mock/DummyComponent';
+import ContentLayout from './common/ContentLayout';
 
-export default function Modals() {
+export default function ModalPage() {
   return (
-    <>
-      <h1 className="mb-14 text-3xl font-bold">@lani.ground/react-modal</h1>
+    <ContentLayout packageName="react-modal">
       <Modal
         name="modal"
         trigger={
@@ -28,6 +28,6 @@ export default function Modals() {
         }}
         centerMode
       />
-    </>
+    </ContentLayout>
   );
 }

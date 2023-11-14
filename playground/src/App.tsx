@@ -1,6 +1,6 @@
 import './App.css';
 import { Outlet, useLocation } from 'react-router-dom';
-import Lnb from './Lnb';
+import Lnb from './test/common/Lnb';
 
 function App() {
   const location = useLocation();

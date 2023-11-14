@@ -1,5 +1,3 @@
-import { ImageViewerProvider } from '@lani.ground/react-image-viewer';
-import '@lani.ground/react-image-viewer/css';
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
 
@@ -54,7 +52,7 @@ export default function DummyComponent({
                 }}
               >
                 <img
-                  src="/icons/close.svg"
+                  src="/assets/images/icons/close.svg"
                   alt=""
                   style={{ objectFit: 'fill' }}
                 />
@@ -95,7 +93,11 @@ export default function DummyComponent({
             cursor: 'pointer',
           }}
         >
-          <img src="/icons/close.svg" alt="" style={{ objectFit: 'fill' }} />
+          <img
+            src="/assets/images/icons/close.svg"
+            alt=""
+            style={{ objectFit: 'fill' }}
+          />
         </button>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
@@ -109,7 +111,7 @@ export default function DummyComponent({
           elementum sit amet. Pellentesque fermentum lorem et pretium pulvinar.
           Etiam dictum sit amet tellus vitae commodo.
         </p>
-        <img src="/images/image-10.jpg" alt="" />
+        <img src="/assets/images/sample/image-10.jpg" alt="" />
         {/* <p>
           Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec
           eget diam feugiat nibh dictum dignissim. Morbi eget lorem at mauris
@@ -121,7 +123,7 @@ export default function DummyComponent({
           efficitur euismod convallis. Nunc non fringilla dolor, a rhoncus eros.
           Nam et mauris vitae est convallis maximus non vel leo.
         </p>
-        <img src="/images/image-2.jpg" alt="" />
+        <img src="/assets/images/sample/image-2.jpg" alt="" />
         <p>
           Etiam at enim condimentum, sodales mi id, posuere neque. Ut tincidunt
           risus sit amet libero cursus, quis dignissim urna fermentum.
@@ -137,7 +139,7 @@ export default function DummyComponent({
           Phasellus fringilla magna orci, sed scelerisque neque hendrerit ac.
           Aenean tristique erat fermentum porttitor iaculis.
         </p>
-        <img src="/images/image-3.jpg" alt="" />
+        <img src="/assets/images/sample/image-3.jpg" alt="" />
         <p>
           Vivamus ut massa fermentum, posuere ex vel, efficitur sem. Interdum et
           malesuada fames ac ante ipsum primis in faucibus. Pellentesque
@@ -145,7 +147,7 @@ export default function DummyComponent({
           Integer semper ornare feugiat. Nullam et ante risus. Phasellus quis
           iaculis ex. Aenean et mollis leo.
         </p>
-        <img src="/images/image-4.jpg" alt="" />
+        <img src="/assets/images/sample/image-4.jpg" alt="" />
         <p>
           Nulla consequat, orci a aliquam sodales, justo mauris eleifend mauris,
           et molestie metus odio ac massa. Suspendisse potenti. Vestibulum ante
@@ -157,7 +159,7 @@ export default function DummyComponent({
           In gravida augue tortor, varius porttitor nibh eleifend non. Phasellus
           eu pharetra erat. Curabitur nec consectetur justo.
         </p>
-        <img src="/images/image-5.jpg" alt="" />
+        <img src="/assets/images/sample/image-5.jpg" alt="" />
         <p>
           Curabitur id purus id ligula venenatis venenatis vel sit amet lorem.
           Suspendisse vitae dui metus. Curabitur laoreet sit amet risus eu
@@ -168,7 +170,7 @@ export default function DummyComponent({
           sed tristique ornare. Curabitur tempus erat non tellus fringilla, quis
           rhoncus enim efficitur. Etiam cursus varius rutrum.
         </p>
-        <img src="/images/image-6.jpg" alt="" />
+        <img src="/assets/images/sample/image-6.jpg" alt="" />
         <p>
           Nulla consequat, orci a aliquam sodales, justo mauris eleifend mauris,
           et molestie metus odio ac massa. Suspendisse potenti. Vestibulum ante
@@ -180,7 +182,7 @@ export default function DummyComponent({
           In gravida augue tortor, varius porttitor nibh eleifend non. Phasellus
           eu pharetra erat. Curabitur nec consectetur justo.
         </p>
-        <img src="/images/image-7.jpg" alt="" />
+        <img src="/assets/images/sample/image-7.jpg" alt="" />
         <p>
           Nulla consequat, orci a aliquam sodales, justo mauris eleifend mauris,
           et molestie metus odio ac massa. Suspendisse potenti. Vestibulum ante
@@ -192,7 +194,7 @@ export default function DummyComponent({
           In gravida augue tortor, varius porttitor nibh eleifend non. Phasellus
           eu pharetra erat. Curabitur nec consectetur justo.
         </p>
-        <img src="/images/image-8.jpg" alt="" />
+        <img src="/assets/images/sample/image-8.jpg" alt="" />
         <p>
           Nulla consequat, orci a aliquam sodales, justo mauris eleifend mauris,
           et molestie metus odio ac massa. Suspendisse potenti. Vestibulum ante
