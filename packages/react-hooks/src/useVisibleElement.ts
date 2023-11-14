@@ -15,7 +15,6 @@ export default function useVisibleElement(props?: Props) {
   const callback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       const key = entry.target.getAttribute('data-key');
-
       if (entry.isIntersecting) {
         if (activeClass) {
           entry.target.classList.add(activeClass);
