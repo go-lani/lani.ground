@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.8](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.0.7...@lani.ground/react-image-viewer@1.0.8) (2023-11-14)
+
+
+### Bug Fixes
+
+* overscroll blocking ([eeca4d5](https://github.com/go-lani/lani.ground/commit/eeca4d502b23897b7a5e282f94434d2b27f778a3))
+
+
+
+
+
 ## [1.0.7](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.0.6...@lani.ground/react-image-viewer@1.0.7) (2023-11-14)
 
 **Note:** Version bump only for package @lani.ground/react-image-viewer
