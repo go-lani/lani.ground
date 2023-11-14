@@ -101,6 +101,8 @@
   border-width: 2px;
   border-color: transparent;
   opacity: 0.7;
+  user-drag: none;
+  -webkit-user-drag: none;
 }
 
 .react-image-viewer__pagination button img.current {

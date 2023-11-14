@@ -186,19 +186,18 @@ export default function ImgViewer({
   }, [activeIndex]);
 
   useEffect(() => {
-    const preventZoom = (e: TouchEvent) => {
-      if (e.touches.length > 1) {
-        e.preventDefault();
-      }
+    const cancelEvent = (e: TouchEvent) => {
+      e.preventDefault();
     };
-    document.addEventListener('touchmove', preventZoom as EventListener, {
+
+    document.addEventListener('touchmove', cancelEvent as EventListener, {
       passive: false,
     });
 
     lockScroll();
 
     return () => {
-      document.removeEventListener('touchmove', preventZoom as EventListener);
+      document.removeEventListener('touchmove', cancelEvent as EventListener);
       unlockScroll();
     };
   }, []);
