@@ -4,6 +4,12 @@
 
 Image Viewer for viewing images inside react components
 
+[Demo](https://laniground.com/playground/react-image-viewer)
+
+## Example
+
+![Viewer Example](https://laniground.com/assets/example/react-image-viewer-example.gif)
+
 ## Installation
 
 ```bash
@@ -13,10 +19,6 @@ npm install @lani.ground/react-image-viewer
 
 yarn add @lani.ground/react-image-viewer
 ```
-
-## Example
-
-![Viewer Example](https://laniground.com/assets/example/react-image-viewer-example.gif)
 
 ## Usage
 

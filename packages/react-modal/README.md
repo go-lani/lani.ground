@@ -5,6 +5,12 @@
 
 Modal components used in reactjs.
 
+[Demo](https://laniground.com/playground/react-modal)
+
+## Example
+
+![Modal Example](https://laniground.com/assets/example/react-modal_new.gif)
+
 ## Installation
 
 ``` bash
@@ -14,11 +20,6 @@ npm install @lani.ground/react-modal
 
 yarn add @lani.ground/react-modal
 ```
-
-## Example
-
-![Modal Example](https://laniground.com/assets/example/react-modal_new.gif)
-
 
 ## Usage
 

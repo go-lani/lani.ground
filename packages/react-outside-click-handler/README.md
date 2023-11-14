@@ -1,13 +1,11 @@
-<span></span>
+# react-outside-click-handler
 
-<h1>
-    @lani.ground/react-outside-click-handler
-</h1>
 
 ![npm version](https://img.shields.io/npm/v/%40lani.ground/react-outside-click-handler)
 
 Handler component that make it easier to control when you click on a component other than the one you want.
 
+[Demo](https://laniground.com/playground/react-outside-click-handler)
 
 ## Example
 
