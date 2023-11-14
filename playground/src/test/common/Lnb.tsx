@@ -14,7 +14,7 @@ export default function Lnb() {
     <ul className="flex flex-col gap-2">
       {TEST_COMPONENT_PATHS.map((component) => {
         return (
-          <li>
+          <li key={component.path}>
             <Link
               to={component.path}
               className={`block rounded-md ${
