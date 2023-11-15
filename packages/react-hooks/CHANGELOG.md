@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.3.1...@lani.ground/react-hooks@0.3.2) (2023-11-15)
+
+
+### Bug Fixes
+
+* mobile device overscroll block ([244f30d](https://github.com/go-lani/lani.ground/commit/244f30d9a8e8bc42460acee57eac9dec11f9a0bf))
+
+
+
+
+
 ## [0.3.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.3.0...@lani.ground/react-hooks@0.3.1) (2023-11-14)
 
 
