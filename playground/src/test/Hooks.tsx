@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import {
   useCookies,
   useString,
@@ -12,10 +12,12 @@ export default function HooksPage() {
   const { getCookie, setCookie, hasCookie, deleteCookie } = useCookies();
   const { lockScroll, unlockScroll } = useWindowScroll();
   const { ref, activeElement, activeKey } = useVisibleElement();
+  const [flag, setFlag] = useState(false);
   const setTestCookie = () => {
     const day = new Date();
     day.setMinutes(day.getMinutes() + 1);
     setCookie('test', 'true', { expires: 'today' });
+    setFlag(!flag);
   };
 
   const checkCookie = () => {
@@ -23,10 +25,8 @@ export default function HooksPage() {
     console.log('hasTest', hasTest); // true | false
   };
 
-  useEffect(() => {
-    const testCookie = getCookie('test');
-    console.log('testCookie', testCookie); // true | false
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const cookie = useMemo(() => getCookie('test'), [flag]);
 
   return (
     <ContentLayout packageName="react-hooks">
@@ -41,22 +41,26 @@ export default function HooksPage() {
               className="rounded bg-green-500 px-4 py-2"
               onClick={() => checkCookie()}
             >
-              Check Cookie
+              hasCookie("test")
             </button>
             <button
               type="button"
               className="rounded bg-blue-500 px-4 py-2"
               onClick={() => setTestCookie()}
             >
-              Set Cookie
+              Set Cookie("test": "true")
             </button>
             <button
               type="button"
               className="rounded bg-red-500 px-4 py-2"
-              onClick={() => deleteCookie('test')}
+              onClick={() => {
+                deleteCookie('test');
+                setFlag(!flag);
+              }}
             >
-              Delete Cookie
+              Delete Cookie("test")
             </button>
+            <p>getCookie("test"): {String(cookie)}</p>
           </div>
         </div>
         <div className="rounded-lg bg-neutral-700 px-6 py-4 text-lg">

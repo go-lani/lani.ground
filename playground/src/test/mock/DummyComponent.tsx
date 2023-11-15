@@ -8,68 +8,45 @@ export default function DummyComponent({
 }) {
   return (
     <div className="sample-modal text-white">
-      <div className="relative max-w-[500px]">
+      <div className="relative max-w-[500px] py-[80px]">
         <Modal
           name="inner-modal"
           trigger={
             <button
               type="button"
-              style={{
-                color: 'white',
-                fontWeight: 700,
-                fontSize: '18px',
-                padding: '20px',
-                backgroundColor: 'chocolate',
-                cursor: 'pointer',
-              }}
+              className="cursor-pointer bg-yellow-800 p-4 text-lg font-bold text-white"
             >
               Click Me!
             </button>
           }
           component={(closeModal) => (
-            <div
-              style={{
-                overflowY: 'auto',
-                width: 300,
-                maxHeight: 300,
-                background: 'gold',
-                color: 'sienna',
-                padding: '0 20px',
-              }}
-            >
+            <div className="text-sienna relative w-[300px] py-[80px]">
               <button
                 type="button"
                 onClick={closeModal}
-                style={{
-                  position: 'absolute',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  top: '-80px',
-                  zIndex: 1,
-                  width: '80px',
-                  height: '80px',
-                  cursor: 'pointer',
-                }}
+                className="absolute left-[50%] top-0 z-10 h-[80px] w-[80px] translate-x-[-50%] cursor-pointer"
               >
                 <img
                   src="/assets/images/icons/close.svg"
                   alt=""
-                  style={{ objectFit: 'fill' }}
+                  className="object-fill"
                 />
               </button>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                interdum eu lectus sit amet elementum. Maecenas dictum imperdiet
-                ipsum, sit amet venenatis turpis rutrum vitae. Aliquam id
-                faucibus tellus. Cras facilisis sed purus eu sagittis. Integer
-                volutpat et enim vitae feugiat. Pellentesque ac dapibus ligula.
-                In a efficitur nibh. Interdum et malesuada fames ac ante ipsum
-                primis in faucibus. Donec pharetra tellus nec malesuada
-                ultrices. Duis quis pellentesque turpis, vel efficitur turpis.
-                Sed viverra iaculis turpis, vitae pulvinar augue elementum sit
-                amet. Pellentesque fermentum lorem et pretium pulvinar. Etiam
-                dictum sit amet tellus vitae commodo.
-              </p>
+              <div className="max-h-[300px] overflow-y-auto bg-amber-600 px-[20px]">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                  interdum eu lectus sit amet elementum. Maecenas dictum
+                  imperdiet ipsum, sit amet venenatis turpis rutrum vitae.
+                  Aliquam id faucibus tellus. Cras facilisis sed purus eu
+                  sagittis. Integer volutpat et enim vitae feugiat. Pellentesque
+                  ac dapibus ligula. In a efficitur nibh. Interdum et malesuada
+                  fames ac ante ipsum primis in faucibus. Donec pharetra tellus
+                  nec malesuada ultrices. Duis quis pellentesque turpis, vel
+                  efficitur turpis. Sed viverra iaculis turpis, vitae pulvinar
+                  augue elementum sit amet. Pellentesque fermentum lorem et
+                  pretium pulvinar. Etiam dictum sit amet tellus vitae commodo.
+                </p>
+              </div>
             </div>
           )}
           centerMode
@@ -82,16 +59,7 @@ export default function DummyComponent({
         <button
           type="button"
           onClick={closeModal}
-          style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            top: '-80px',
-            zIndex: 1,
-            width: '80px',
-            height: '80px',
-            cursor: 'pointer',
-          }}
+          className="absolute left-[50%] top-0 z-10 h-[80px] w-[80px] translate-x-[-50%] cursor-pointer"
         >
           <img
             src="/assets/images/icons/close.svg"
