@@ -16,14 +16,27 @@ export default function useWindowScroll() {
     }
   }, []);
 
+  const cancelScrollEvent = useCallback((event: TouchEvent) => {
+    event.preventDefault();
+  }, []);
+
   const lockScroll = () => {
+    const isScrollLocked = document.body.style.position === 'fixed';
+
+    if (isScrollLocked) return;
+
     scrollRef.current = window.scrollY;
+
     modifyBodyStyle({
       overflowY: 'hidden',
       position: 'fixed',
       top: `-${scrollRef.current}px`,
       left: '0',
       right: '0',
+    });
+
+    document.addEventListener('touchmove', cancelScrollEvent, {
+      passive: false,
     });
   };
 
@@ -37,6 +50,10 @@ export default function useWindowScroll() {
     });
 
     window.scrollTo({ left: 0, top: scrollRef.current, behavior: 'instant' });
+
+    document.addEventListener('touchmove', cancelScrollEvent, {
+      passive: false,
+    });
   };
 
   return {
