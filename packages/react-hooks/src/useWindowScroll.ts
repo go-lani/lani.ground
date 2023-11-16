@@ -51,9 +51,7 @@ export default function useWindowScroll() {
 
     window.scrollTo({ left: 0, top: scrollRef.current, behavior: 'instant' });
 
-    document.addEventListener('touchmove', cancelScrollEvent, {
-      passive: false,
-    });
+    document.removeEventListener('touchmove', cancelScrollEvent);
   };
 
   return {
