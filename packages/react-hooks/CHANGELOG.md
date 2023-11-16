@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.3.2...@lani.ground/react-hooks@0.3.3) (2023-11-16)
+
+
+### Bug Fixes
+
+* unscrollLock debug remove eventListener ([bfb7900](https://github.com/go-lani/lani.ground/commit/bfb7900754463f113407a3d1ae3f708ef618e30c))
+
+
+
+
+
 ## [0.3.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-hooks@0.3.1...@lani.ground/react-hooks@0.3.2) (2023-11-15)
 
 
