@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
-import useScrollLock from '../hooks/useScrollLock';
 
 interface Props {
   name: string;
@@ -12,6 +11,7 @@ interface Props {
   };
   isEnter: boolean;
   setIsEnter: React.Dispatch<React.SetStateAction<boolean>>;
+  isAnimating: boolean;
   setIsAnimating: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
 }
@@ -24,11 +24,10 @@ export default function ModalContainer({
   animation,
   isEnter,
   setIsEnter,
-  setIsAnimating,
   children,
 }: Props) {
-  const { lockScroll, unlockScroll } = useScrollLock();
   const $modalContents = useRef<HTMLDivElement>(null);
+  const $modalContainer = useRef<HTMLDivElement>(null);
 
   const classes = useMemo(
     () =>
@@ -43,31 +42,12 @@ export default function ModalContainer({
               ? animation?.className
               : 'react-modal__container'
           }__exit`,
-    [animation?.className, isEnter],
+    [animation, isEnter],
   );
 
   useEffect(() => {
-    lockScroll();
     setIsEnter(true);
-
-    return () => {
-      unlockScroll();
-    };
   }, []);
-
-  useEffect(() => {
-    if (!animation?.duration) return;
-
-    const timer = setTimeout(() => {
-      setIsAnimating(false);
-    }, animation.duration);
-
-    return () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-  }, [animation?.duration, setIsAnimating]);
 
   const outsideClickHandler = useCallback(
     (e: MouseEvent) => {
@@ -92,12 +72,12 @@ export default function ModalContainer({
   );
 
   useEffect(() => {
-    document.addEventListener('mousedown', outsideClickHandler, {
+    document.addEventListener('click', outsideClickHandler, {
       capture: true,
     });
 
     return () => {
-      document.removeEventListener('mousedown', outsideClickHandler, {
+      document.removeEventListener('click', outsideClickHandler, {
         capture: true,
       });
     };
@@ -107,6 +87,7 @@ export default function ModalContainer({
     <div
       data-type="modal"
       data-name={name}
+      ref={$modalContainer}
       className={`react-modal__container ${classes}`}
       style={{ backgroundColor: dim }}
     >

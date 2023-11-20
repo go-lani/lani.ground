@@ -6,7 +6,7 @@ type CSSProperties = {
 };
 
 export default function useScrollLock() {
-  const scrollRef = useRef(0);
+  const scrollRef = useRef<number>(0);
 
   const modifyBodyStyle = useCallback((style: CSSProperties) => {
     const $body = document.querySelector('body');
@@ -22,7 +22,7 @@ export default function useScrollLock() {
     const $modalCounts =
       document.querySelector(`#${GROUND_MODAL_ROOT}`)?.childElementCount || 0;
 
-    if ($modalCounts > 1) return;
+    if ($modalCounts >= 1) return;
 
     modifyBodyStyle({
       overflowY: 'hidden',
@@ -36,7 +36,7 @@ export default function useScrollLock() {
   const unlockScroll = () => {
     const $modalCounts =
       document.querySelector(`#${GROUND_MODAL_ROOT}`)?.childElementCount || 0;
-    if ($modalCounts >= 1) return;
+    if ($modalCounts > 1) return;
 
     modifyBodyStyle({
       overflowY: '',

@@ -2,6 +2,7 @@ import { cloneElement, useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import ModalContainer from './ModalContainer';
 import { delay } from '../util/utils';
+import useScrollLock from '../hooks/useScrollLock';
 
 export const GROUND_MODAL_ROOT = 'ground-modal-root';
 
@@ -33,42 +34,43 @@ export default function Modal({
   const [isAnimating, setIsAnimating] = useState(false);
   const [isEnter, setIsEnter] = useState(false);
   const [modalRoot, setModalRoot] = useState<Element | null>(null);
+  const { lockScroll, unlockScroll } = useScrollLock();
 
   const openModal = useCallback(
-    (e: MouseEvent) => {
+    async (e: MouseEvent) => {
       e.stopPropagation();
-      if (!!animation && isAnimating) return;
+      if (isAnimating) return;
 
-      if (!!animation) {
-        setIsAnimating(true);
-      }
+      lockScroll();
       setIsOpen(true);
+      setIsAnimating(true);
+
+      setTimeout(
+        () => {
+          setIsAnimating(false);
+        },
+        animation?.duration || 0,
+      );
     },
-    [animation, isAnimating],
+    [animation?.duration, isAnimating, lockScroll],
   );
 
-  const close = () => {
-    return new Promise<void>((resolve) => {
-      setIsOpen(false);
-      resolve();
-    });
-  };
-
   const closeModal = useCallback(async () => {
-    if (!isEnter || (!!animation && isAnimating)) return;
+    if (isAnimating) return;
 
+    setIsAnimating(true);
     setIsEnter(false);
+    unlockScroll();
 
-    if (animation?.duration) {
-      await delay(animation?.duration);
-    }
+    await delay(animation?.duration || 0);
 
-    await close();
+    setIsOpen(false);
+    setIsAnimating(false);
 
     if (typeof onAfterClose === 'function') {
       onAfterClose();
     }
-  }, [animation, isAnimating, isEnter, onAfterClose]);
+  }, [animation?.duration, isAnimating, onAfterClose, unlockScroll]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -102,6 +104,7 @@ export default function Modal({
             animation={animation}
             isEnter={isEnter}
             setIsEnter={setIsEnter}
+            isAnimating={isAnimating}
             setIsAnimating={setIsAnimating}
           >
             {component(closeModal)}
