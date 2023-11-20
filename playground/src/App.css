@@ -16,28 +16,38 @@ code {
     monospace;
 }
 
-.sample-modal__enter {
+.react-modal__container__enter.sample,
+.react-modal__container__exit.sample {
+  transition-duration: 1s;
+}
+
+.react-modal__container__enter {
   opacity: 1;
-  transition: all 0.5s;
+  transition-property: all;
   filter: blur(0);
 }
 
-.sample-modal__exit {
-  opacity: 0;
-  transition: all 0.5s;
-  filter: blur(1rem);
-}
-
-.sample-modal,
-.sample-modal__exit .sample-modal {
-  transform: scale(0);
-  opacity: 0;
-  transition: all 0.5s;
-  filter: blur(1rem);
-}
-
-.sample-modal__enter .sample-modal {
+.react-modal__container__enter .sample-modal-inner {
   transform: scale(1);
   opacity: 1;
   filter: blur(0);
+  transition: all 1s;
+}
+
+.react-modal__container__exit {
+  opacity: 0;
+  transition-property: all;
+  filter: blur(1rem);
+}
+
+.react-modal__container__exit .sample-modal-inner {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 1s;
+  filter: blur(1rem);
+}
+
+.react-modal__container__enter.something,
+.react-modal__container__exit.something {
+  transition-duration: 2s;
 }

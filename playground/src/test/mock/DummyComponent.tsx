@@ -7,7 +7,7 @@ export default function DummyComponent({
   closeModal: () => Promise<void>;
 }) {
   return (
-    <div className="sample-modal text-white">
+    <div className="sample-modal-inner text-white">
       <div className="relative max-w-[500px] py-[80px]">
         <Modal
           name="inner-modal"
@@ -52,8 +52,8 @@ export default function DummyComponent({
           centerMode
           dim="rgba(0,0,0,0.8)"
           animation={{
-            duration: 500,
-            className: 'sample-modal',
+            duration: 1000, // 해당 duration 시간 동안 모달을 재오픈하거나 닫을 수 없습니다.
+            className: 'something',
           }}
         />
         <button

@@ -6,6 +6,7 @@ import ContentLayout from './common/ContentLayout';
 export default function ModalPage() {
   return (
     <ContentLayout packageName="react-modal">
+      <div className="h-[100vh] bg-red-200">section 1</div>
       <Modal
         name="modal"
         trigger={
@@ -19,15 +20,18 @@ export default function ModalPage() {
         component={(closeModal) => <DummyComponent closeModal={closeModal} />}
         onAfterClose={() => {
           // callback here
-          console.log('callback');
+          // console.log('callback');
         }}
         dim="rgba(0, 0, 0, 0.8)"
         animation={{
-          duration: 500,
-          className: 'sample-modal',
+          duration: 1000,
+          className: 'sample',
         }}
         centerMode
       />
+      <div className="h-[100vh] bg-red-300">section 2</div>
+      <div className="h-[100vh] bg-red-400">section 3</div>
+      <div className="h-[100vh] bg-red-500">section 4</div>
     </ContentLayout>
   );
 }
