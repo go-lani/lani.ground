@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.2...@lani.ground/react-modal@1.1.3) (2023-11-20)
+
+
+### Bug Fixes
+
+* animation option bug fix ([250c507](https://github.com/go-lani/lani.ground/commit/250c50717cf32ec14d7433b52ac6254845deea23))
+
+
+
+
+
 ## [1.1.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.1...@lani.ground/react-modal@1.1.2) (2023-11-14)
 
 **Note:** Version bump only for package @lani.ground/react-modal
