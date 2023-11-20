@@ -32,16 +32,8 @@ export default function ModalContainer({
   const classes = useMemo(
     () =>
       isEnter
-        ? `${
-            animation?.className
-              ? animation?.className
-              : 'react-modal__container'
-          }__enter`
-        : `${
-            animation?.className
-              ? animation?.className
-              : 'react-modal__container'
-          }__exit`,
+        ? `react-modal__container__enter ${animation?.className}`
+        : `react-modal__container__exit ${animation?.className}`,
     [animation, isEnter],
   );
 
