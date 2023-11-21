@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.4...@lani.ground/react-modal@1.1.5) (2023-11-21)
+
+
+### Bug Fixes
+
+* react-modal scrollLock bug fix ([545f7f2](https://github.com/go-lani/lani.ground/commit/545f7f26ad811aaf4beab91537ad5946ddcdde33))
+
+
+
+
+
 ## [1.1.4](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.3...@lani.ground/react-modal@1.1.4) (2023-11-20)
 
 
