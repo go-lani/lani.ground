@@ -6,6 +6,19 @@ import ContentLayout from './common/ContentLayout';
 export default function ModalPage() {
   return (
     <ContentLayout packageName="react-modal">
+      <Modal
+        name="modal-default"
+        trigger={
+          <button
+            type="button"
+            className="rounded bg-green-500 px-4 py-2 text-lg font-bold text-white"
+          >
+            Click Me!
+          </button>
+        }
+        component={(closeModal) => <DummyComponent closeModal={closeModal} />}
+        dim="rgba(0, 0, 0, 0.8)"
+      />
       <div className="h-[100vh] bg-red-200">section 1</div>
       <Modal
         name="modal"
