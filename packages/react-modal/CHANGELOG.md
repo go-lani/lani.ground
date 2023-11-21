@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.5...@lani.ground/react-modal@1.1.6) (2023-11-21)
+
+
+### Bug Fixes
+
+* react-modal className bug ([2dd7afb](https://github.com/go-lani/lani.ground/commit/2dd7afbe33b639999e701c78fe7edee965703071))
+
+
+
+
+
 ## [1.1.5](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.4...@lani.ground/react-modal@1.1.5) (2023-11-21)
 
 
