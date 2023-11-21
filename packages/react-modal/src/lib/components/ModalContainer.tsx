@@ -39,7 +39,7 @@ export default function ModalContainer({
 
   useEffect(() => {
     setIsEnter(true);
-  }, []);
+  }, [setIsEnter]);
 
   const outsideClickHandler = useCallback(
     (e: MouseEvent) => {

@@ -4,10 +4,8 @@ import { GROUND_MODAL_ROOT } from '../components';
 type CSSProperties = {
   [key: string]: string | number;
 };
-
 export default function useScrollLock() {
-  const scrollRef = useRef<number>(0);
-
+  const scrollRef = useRef<number | null>(null);
   const modifyBodyStyle = useCallback((style: CSSProperties) => {
     const $body = document.querySelector('body');
     if ($body) {
@@ -18,35 +16,30 @@ export default function useScrollLock() {
   }, []);
 
   const lockScroll = () => {
-    scrollRef.current = window.scrollY;
     const $modalCounts =
       document.querySelector(`#${GROUND_MODAL_ROOT}`)?.childElementCount || 0;
 
-    if ($modalCounts >= 1) return;
+    if ($modalCounts !== 0) return;
 
+    scrollRef.current = window.scrollY;
     modifyBodyStyle({
       overflowY: 'hidden',
-      position: 'fixed',
-      top: `-${scrollRef.current}px`,
-      left: '0',
-      right: '0',
     });
   };
 
   const unlockScroll = () => {
     const $modalCounts =
       document.querySelector(`#${GROUND_MODAL_ROOT}`)?.childElementCount || 0;
-    if ($modalCounts > 1) return;
+    const nextCounts = $modalCounts > 0 ? $modalCounts - 1 : 0;
+
+    if (!(nextCounts === 0 || scrollRef.current !== null)) return;
 
     modifyBodyStyle({
       overflowY: '',
-      position: '',
-      top: '',
-      left: '',
-      right: '',
     });
 
-    window.scrollTo({ left: 0, top: scrollRef.current, behavior: 'instant' });
+    window.scrollTo({ top: scrollRef.current || 0, behavior: 'instant' });
+    scrollRef.current = null;
   };
 
   return {

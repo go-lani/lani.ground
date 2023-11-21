@@ -58,18 +58,21 @@ export default function Modal({
   const closeModal = useCallback(async () => {
     if (isAnimating) return;
 
+    unlockScroll();
     setIsAnimating(true);
     setIsEnter(false);
-    unlockScroll();
 
-    await delay(animation?.duration || 0);
+    setTimeout(
+      async () => {
+        setIsAnimating(false);
+        setIsOpen(false);
 
-    setIsOpen(false);
-    setIsAnimating(false);
-
-    if (typeof onAfterClose === 'function') {
-      onAfterClose();
-    }
+        if (typeof onAfterClose === 'function') {
+          onAfterClose();
+        }
+      },
+      animation?.duration || 0,
+    );
   }, [animation?.duration, isAnimating, onAfterClose, unlockScroll]);
 
   useEffect(() => {
