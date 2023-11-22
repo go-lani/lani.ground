@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.0.8...@lani.ground/react-image-viewer@1.1.0) (2023-11-22)
+
+
+### Features
+
+* add to disabledGallery option ([63c3cd8](https://github.com/go-lani/lani.ground/commit/63c3cd82c1961e313fddef62f4f507f18bfe5149))
+
+
+
+
+
 ## [1.0.8](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.0.7...@lani.ground/react-image-viewer@1.0.8) (2023-11-14)
 
 
