@@ -220,89 +220,85 @@ export default function ImgViewer({
             {...dragHandlers}
             alt=""
           />
-          <div className="react-image-viewer__footer">
-            {!disableGallery && (
-              <>
-                <div className="react-image-viewer__arrows">
-                  {!controller && (
-                    <>
-                      <button
-                        type="button"
-                        className="react-image-viewer__arrow"
-                        disabled={activeIndex === 0}
-                        onClick={() => setActiveIndex(activeIndex - 1)}
-                      >
-                        <img
-                          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTI4cHQiIGhlaWdodD0iMTI4cHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8cGF0aCBkPSJtNzMuODYzIDM4LjU3IDUuNjkxNCA1LjcxODgtMTkuNzIzIDE5LjcyMyAxOS43MjMgMTkuNjk5LTUuNjkxNCA1LjcxODgtMjUuNDE4LTI1LjQxOCAyLjg0NzctMi44NzExeiIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4K"
-                          alt="prev"
-                        />
-                      </button>
-                      <button
-                        type="button"
-                        className="react-image-viewer__arrow"
-                        disabled={activeIndex + 1 === images.length}
-                        onClick={() => setActiveIndex(activeIndex + 1)}
-                      >
-                        <img
-                          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTI4cHQiIGhlaWdodD0iMTI4cHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8cGF0aCBkPSJtNTQuMTM3IDM4LjU3LTUuNjkxNCA1LjcxODggMTkuNzIzIDE5LjcyMy0xOS43MjMgMTkuNjk5IDUuNjkxNCA1LjcxODggMjUuNDE4LTI1LjQxOC0yLjg0NzctMi44NzExeiIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4K"
-                          alt="next"
-                        />
-                      </button>
-                    </>
-                  )}
-                  {controller && (
-                    <>
-                      {cloneElement(controller.prev, {
-                        onClick: () => {
-                          if (activeIndex === 0) return;
+          {!disableGallery && (
+            <div className="react-image-viewer__footer">
+              <div className="react-image-viewer__arrows">
+                {!controller && (
+                  <>
+                    <button
+                      type="button"
+                      className="react-image-viewer__arrow"
+                      disabled={activeIndex === 0}
+                      onClick={() => setActiveIndex(activeIndex - 1)}
+                    >
+                      <img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTI4cHQiIGhlaWdodD0iMTI4cHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8cGF0aCBkPSJtNzMuODYzIDM4LjU3IDUuNjkxNCA1LjcxODgtMTkuNzIzIDE5LjcyMyAxOS43MjMgMTkuNjk5LTUuNjkxNCA1LjcxODgtMjUuNDE4LTI1LjQxOCAyLjg0NzctMi44NzExeiIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4K"
+                        alt="prev"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      className="react-image-viewer__arrow"
+                      disabled={activeIndex + 1 === images.length}
+                      onClick={() => setActiveIndex(activeIndex + 1)}
+                    >
+                      <img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTI4cHQiIGhlaWdodD0iMTI4cHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8cGF0aCBkPSJtNTQuMTM3IDM4LjU3LTUuNjkxNCA1LjcxODggMTkuNzIzIDE5LjcyMy0xOS43MjMgMTkuNjk5IDUuNjkxNCA1LjcxODggMjUuNDE4LTI1LjQxOC0yLjg0NzctMi44NzExeiIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4K"
+                        alt="next"
+                      />
+                    </button>
+                  </>
+                )}
+                {controller && (
+                  <>
+                    {cloneElement(controller.prev, {
+                      onClick: () => {
+                        if (activeIndex === 0) return;
 
-                          controller.prev.props.onClick?.();
-                          setActiveIndex(activeIndex - 1);
-                        },
-                        className: `${controller.prev.props.className ?? ''} ${
-                          activeIndex === 0 ? 'disabled' : ''
-                        }`,
-                      })}
+                        controller.prev.props.onClick?.();
+                        setActiveIndex(activeIndex - 1);
+                      },
+                      className: `${controller.prev.props.className ?? ''} ${
+                        activeIndex === 0 ? 'disabled' : ''
+                      }`,
+                    })}
 
-                      {cloneElement(controller.next, {
-                        onClick: () => {
-                          if (activeIndex + 1 === images.length) return;
+                    {cloneElement(controller.next, {
+                      onClick: () => {
+                        if (activeIndex + 1 === images.length) return;
 
-                          controller.next.props.onClick?.();
-                          setActiveIndex(activeIndex + 1);
-                        },
-                        className: `${controller.next.props.className ?? ''} ${
-                          activeIndex + 1 === images.length ? 'disabled' : ''
-                        }`,
-                      })}
-                    </>
-                  )}
-                </div>
-                <div
-                  className="react-image-viewer__pagination"
-                  ref={thumbnailContainer}
-                >
-                  {images.length > 0 &&
-                    images.map((image, index) => (
-                      <button
-                        type="button"
-                        className="react-image-viewer__pagination_thumbnail"
-                        key={image.src}
-                        onClick={() => onClickThumbnail(index)}
-                      >
-                        <img
-                          src={image.src}
-                          alt=""
-                          className={`${
-                            activeIndex === index ? 'current' : ''
-                          }`}
-                        />
-                      </button>
-                    ))}
-                </div>
-              </>
-            )}
-          </div>
+                        controller.next.props.onClick?.();
+                        setActiveIndex(activeIndex + 1);
+                      },
+                      className: `${controller.next.props.className ?? ''} ${
+                        activeIndex + 1 === images.length ? 'disabled' : ''
+                      }`,
+                    })}
+                  </>
+                )}
+              </div>
+              <div
+                className="react-image-viewer__pagination"
+                ref={thumbnailContainer}
+              >
+                {images.length > 0 &&
+                  images.map((image, index) => (
+                    <button
+                      type="button"
+                      className="react-image-viewer__pagination_thumbnail"
+                      key={image.src}
+                      onClick={() => onClickThumbnail(index)}
+                    >
+                      <img
+                        src={image.src}
+                        alt=""
+                        className={`${activeIndex === index ? 'current' : ''}`}
+                      />
+                    </button>
+                  ))}
+              </div>
+            </div>
+          )}
         </>
       </OutsideClickHandler>
     </div>
