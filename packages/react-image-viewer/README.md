@@ -35,6 +35,7 @@ import '@lani.ground/react-image-viewer/css';
     ),
     next: <button type="button" onClick={() => console.log('next')}></button>,
   }}
+  disabledGallery={false}
 >
   ...
 </ImageViewerProvider>;
@@ -45,3 +46,4 @@ import '@lani.ground/react-image-viewer/css';
 | Name                 | type                                                     | description                                                                                                                                    |
 | -------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | controller(optional) | {<br />next: JSX.Element;<br />prev: JSX.Element;<br />} | To customize the arrow, pass the element through the controller props<br /> 화살표를 커스텀하려면 JSX.Element를 controller props에 전달합니다. |
+| disabledGallery(optional) | boolean(default: false)  | Check to disable gallery mode (switches to single image viewer upon deactivation)<br /> 갤러리 모드를 해제할지 여부(해제시 단일 이미지 뷰어로 전환됩니다.) |

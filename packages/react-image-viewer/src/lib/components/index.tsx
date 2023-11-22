@@ -12,11 +12,13 @@ type Props = {
     next: JSX.Element;
     prev: JSX.Element;
   };
+  disableGallery?: boolean;
 } & React.ComponentProps<'div'>;
 
 export default function ImageViewerProvider({
   children,
   controller,
+  disableGallery = false,
   ...props
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,6 +86,7 @@ export default function ImageViewerProvider({
             controller={controller}
             images={images}
             currentIndex={currentIndex || 0}
+            disableGallery={disableGallery}
             onCloseImgViewer={onCloseImgViewer}
           />,
           modalRoot,
