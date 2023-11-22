@@ -5,8 +5,11 @@ import ContentLayout from './common/ContentLayout';
 export default function ImageViewerPage() {
   return (
     <ContentLayout packageName="react-image-viewer">
-      <ImageViewerProvider>
-        <div className="flex flex-col gap-4 text-sm md:text-base">
+      <ImageViewerProvider disableGallery>
+        <div className="flex flex-col gap-4 border border-zinc-700 p-4 text-sm md:text-base">
+          <p className="bg-zinc-700 p-4 text-2xl font-bold">
+            Single Image Viewer
+          </p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
             eu lectus sit amet elementum. Maecenas dictum imperdiet ipsum, sit
@@ -57,6 +60,11 @@ export default function ImageViewerPage() {
             Integer semper ornare feugiat. Nullam et ante risus. Phasellus quis
             iaculis ex. Aenean et mollis leo.
           </p>
+        </div>
+      </ImageViewerProvider>
+      <ImageViewerProvider>
+        <div className="mt-14 flex flex-col gap-4 border border-zinc-700 p-4 text-sm md:text-base">
+          <p className="bg-zinc-700 p-4 text-2xl font-bold">Gallery viewer</p>
           <img src="/assets/images/sample/image-4.jpg" alt="" />
           <p>
             Nulla consequat, orci a aliquam sodales, justo mauris eleifend
