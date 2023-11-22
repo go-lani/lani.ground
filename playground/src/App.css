@@ -16,22 +16,9 @@ code {
     monospace;
 }
 
-.react-modal__container__enter.sample,
-.react-modal__container__exit.sample {
-  transition-duration: 1s;
-}
-
 .react-modal__container__enter {
   opacity: 1;
-  transition-property: all;
   filter: blur(0);
-}
-
-.react-modal__container__enter .sample-modal-inner {
-  transform: scale(1);
-  opacity: 1;
-  filter: blur(0);
-  transition: all 1s;
 }
 
 .react-modal__container__exit {
@@ -40,14 +27,33 @@ code {
   filter: blur(1rem);
 }
 
+.react-modal__container__enter.sample,
+.react-modal__container__enter .sample-modal-inner,
+.react-modal__container__exit.sample,
 .react-modal__container__exit .sample-modal-inner {
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.react-modal__container__enter .sample-modal-inner,
+.react-modal__container__enter .sample-modal-inner2 {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0);
+}
+
+.react-modal__container__exit .sample-modal-inner,
+.react-modal__container__exit .sample-modal-inner2 {
   transform: scale(0);
   opacity: 0;
-  transition: all 1s;
+  transition-property: all;
   filter: blur(1rem);
 }
 
-.react-modal__container__enter.something,
-.react-modal__container__exit.something {
-  transition-duration: 2s;
+.react-modal__container__enter.sample2,
+.react-modal__container__enter .sample-modal-inner2,
+.react-modal__container__exit.sample2,
+.react-modal__container__exit .sample-modal-inner2 {
+  transition-property: all;
+  transition-duration: 0.3s;
 }

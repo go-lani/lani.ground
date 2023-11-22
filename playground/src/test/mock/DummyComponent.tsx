@@ -7,8 +7,8 @@ export default function DummyComponent({
   closeModal: () => Promise<void>;
 }) {
   return (
-    <div className="sample-modal-inner text-white">
-      <div className="relative max-w-[500px] py-[80px]">
+    <div className="sample-modal-inner bg-stone-700 text-white">
+      <div className="relative max-w-[500px] p-4">
         <Modal
           name="inner-modal"
           trigger={
@@ -20,11 +20,11 @@ export default function DummyComponent({
             </button>
           }
           component={(closeModal) => (
-            <div className="text-sienna relative w-[300px] py-[80px]">
+            <div className="text-sienna relative mt-[60px] w-[300px]">
               <button
                 type="button"
                 onClick={closeModal}
-                className="absolute left-[50%] top-0 z-10 h-[80px] w-[80px] translate-x-[-50%] cursor-pointer"
+                className="absolute left-[50%] top-[-70px] z-10 h-[70px] w-[70px] translate-x-[-50%] cursor-pointer"
               >
                 <img
                   src="/assets/images/icons/close.svg"
@@ -52,14 +52,14 @@ export default function DummyComponent({
           centerMode
           dim="rgba(0,0,0,0.8)"
           animation={{
-            duration: 1000, // 해당 duration 시간 동안 모달을 재오픈하거나 닫을 수 없습니다.
-            className: 'something',
+            duration: 300,
+            className: 'sample2',
           }}
         />
         <button
           type="button"
           onClick={closeModal}
-          className="absolute left-[50%] top-0 z-10 h-[80px] w-[80px] translate-x-[-50%] cursor-pointer"
+          className="absolute right-0 top-0 z-10 h-[70px] w-[70px] cursor-pointer"
         >
           <img
             src="/assets/images/icons/close.svg"

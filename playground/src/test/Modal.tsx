@@ -37,7 +37,8 @@ export default function ModalPage() {
         }}
         dim="rgba(0, 0, 0, 0.8)"
         animation={{
-          duration: 1000,
+          className: 'sample',
+          duration: 300,
         }}
         centerMode
       />
