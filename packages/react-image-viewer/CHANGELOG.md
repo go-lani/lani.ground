@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.1.1...@lani.ground/react-image-viewer@1.1.2) (2023-11-22)
+
+
+### Bug Fixes
+
+* selector refactoring ([a0aac37](https://github.com/go-lani/lani.ground/commit/a0aac377b446071f67d21e93d3748668004e35bd))
+
+
+
+
+
 ## [1.1.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.1.0...@lani.ground/react-image-viewer@1.1.1) (2023-11-22)
 
 
