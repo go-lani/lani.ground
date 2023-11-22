@@ -121,7 +121,9 @@ export default function ImgViewer({
   }, [scale, dragPosition]);
 
   useEffect(() => {
-    if (!imgViewer.current) return () => {};
+    const $imageViewer = imgViewer.current;
+
+    if (!$imageViewer) return () => {};
 
     const getDistance = (e: TouchEvent): number => {
       const touch1 = e.touches[0];
@@ -154,14 +156,14 @@ export default function ImgViewer({
       }
     };
 
-    imgViewer.current.addEventListener(
+    $imageViewer.addEventListener(
       'touchstart',
       handleTouchStart as EventListener,
       {
         passive: false,
       },
     );
-    imgViewer.current.addEventListener(
+    $imageViewer.addEventListener(
       'touchmove',
       handleTouchMove as EventListener,
       {
@@ -170,11 +172,11 @@ export default function ImgViewer({
     );
 
     return () => {
-      imgViewer?.current?.removeEventListener(
+      $imageViewer.removeEventListener(
         'touchstart',
         handleTouchStart as EventListener,
       );
-      imgViewer?.current?.removeEventListener(
+      $imageViewer.removeEventListener(
         'touchmove',
         handleTouchMove as EventListener,
       );
