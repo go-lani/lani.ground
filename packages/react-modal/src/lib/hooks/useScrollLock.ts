@@ -15,10 +15,6 @@ export default function useScrollLock() {
     }
   }, []);
 
-  const cancelScrollEvent = useCallback((event: TouchEvent) => {
-    event.preventDefault();
-  }, []);
-
   const lockScroll = () => {
     const $modalCounts =
       document.querySelector(`#${GROUND_MODAL_ROOT}`)?.childElementCount || 0;
@@ -34,7 +30,6 @@ export default function useScrollLock() {
       left: '0',
       right: '0',
     });
-    document.body.addEventListener('touchmove', cancelScrollEvent);
   };
 
   const unlockScroll = () => {
@@ -54,7 +49,6 @@ export default function useScrollLock() {
 
     window.scrollTo({ top: scrollRef.current || 0, behavior: 'instant' });
     scrollRef.current = null;
-    document.body.removeEventListener('touchmove', cancelScrollEvent);
   };
 
   return {
