@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.8...@lani.ground/react-modal@1.1.9) (2023-11-22)
+
+
+### Bug Fixes
+
+* delete touchmove eventListener ([182f6f5](https://github.com/go-lani/lani.ground/commit/182f6f597163f003b284f3967391af5934e09012))
+
+
+
+
+
 ## [1.1.8](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.7...@lani.ground/react-modal@1.1.8) (2023-11-21)
 
 
