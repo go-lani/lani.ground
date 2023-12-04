@@ -110,6 +110,30 @@ import '@lani.ground/react-modal/css';
 }
 ```
 
+### Isolating components by state
+
+``` tsx
+const [isVaild, setIsValid] = useState<boolean>(false);
+
+<Modal
+  trigger={
+    <button
+      type="button"
+      onClick={() => {
+        setIsValid(!!Math.round(Math.random())); // random boolean
+      }}
+    >
+      Click Me!
+    </button>
+  }
+  component={(closeModal) => {
+    if (isVaild) return <div>Vaild!</div>;
+    return <div>Not vaild!</div>;
+  }}
+/>
+```
+
+
 ## Props
 
 | Name                   | type                                                                                                   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

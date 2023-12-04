@@ -2,8 +2,11 @@ import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
 import DummyComponent from './mock/DummyComponent';
 import ContentLayout from './common/ContentLayout';
+import { useState } from 'react';
 
 export default function ModalPage() {
+  const [isVaild, setIsValid] = useState<boolean>(false);
+
   return (
     <ContentLayout packageName="react-modal">
       <Modal
@@ -12,11 +15,17 @@ export default function ModalPage() {
           <button
             type="button"
             className="rounded bg-green-500 px-4 py-2 text-lg font-bold text-white"
+            onClick={() => {
+              setIsValid(!!Math.round(Math.random())); // random boolean
+            }}
           >
             Click Me!
           </button>
         }
-        component={(closeModal) => <DummyComponent closeModal={closeModal} />}
+        component={(closeModal) => {
+          if (isVaild) return <div className="text-blue-500">Vaild!</div>;
+          return <div className="text-red-500">Not vaild!</div>;
+        }}
         dim="rgba(0, 0, 0, 0.8)"
       />
       <div className="h-[100vh] bg-red-200">section 1</div>

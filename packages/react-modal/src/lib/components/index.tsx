@@ -1,7 +1,6 @@
 import { cloneElement, useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import ModalContainer from './ModalContainer';
-import { delay } from '../util/utils';
 import useScrollLock from '../hooks/useScrollLock';
 
 export const GROUND_MODAL_ROOT = 'ground-modal-root';
@@ -95,7 +94,14 @@ export default function Modal({
 
   return (
     <>
-      {cloneElement(trigger, { onClick: openModal })}
+      {cloneElement(trigger, {
+        onClick: (e: MouseEvent) => {
+          if (trigger.props.onClick) {
+            trigger.props.onClick(e);
+          }
+          openModal(e);
+        },
+      })}
       {isOpen &&
         modalRoot &&
         createPortal(
