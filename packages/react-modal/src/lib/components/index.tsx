@@ -7,7 +7,7 @@ export const GROUND_MODAL_ROOT = 'ground-modal-root';
 
 type Props = {
   name?: string;
-  trigger: JSX.Element;
+  trigger?: JSX.Element;
   component: (closeModal: () => Promise<void>) => JSX.Element;
   onAfterClose?: () => unknown;
   dim?: string;
@@ -94,14 +94,15 @@ export default function Modal({
 
   return (
     <>
-      {cloneElement(trigger, {
-        onClick: (e: MouseEvent) => {
-          if (trigger.props.onClick) {
-            trigger.props.onClick(e);
-          }
-          openModal(e);
-        },
-      })}
+      {trigger &&
+        cloneElement(trigger, {
+          onClick: (e: MouseEvent) => {
+            if (trigger.props.onClick) {
+              trigger.props.onClick(e);
+            }
+            openModal(e);
+          },
+        })}
       {isOpen &&
         modalRoot &&
         createPortal(
