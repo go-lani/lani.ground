@@ -6,9 +6,30 @@ import { useState } from 'react';
 
 export default function ModalPage() {
   const [isVaild, setIsValid] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <ContentLayout packageName="react-modal">
+      <button type="button" onClick={() => setIsOpen(true)}>
+        is modal open
+      </button>
+      <Modal
+        name="modal-default"
+        component={(closeModal) => (
+          <div className="bg-white">다이렉트 모달</div>
+        )}
+        onAfterClose={() => {
+          setIsOpen(false);
+        }}
+        animation={{
+          className: 'sample',
+          duration: 300,
+        }}
+        dim="rgba(0, 0, 0, 0.8)"
+        direct={isOpen}
+        centerMode
+      />
+
       <Modal
         name="modal-default"
         trigger={
