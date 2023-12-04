@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.9...@lani.ground/react-modal@1.2.0) (2023-12-04)
+
+
+### Features
+
+* add Isolating components ([7b3468e](https://github.com/go-lani/lani.ground/commit/7b3468e3f6926792e41ba6439e515a60c9abe681))
+
+
+
+
+
 ## [1.1.9](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.1.8...@lani.ground/react-modal@1.1.9) (2023-11-22)
 
 
