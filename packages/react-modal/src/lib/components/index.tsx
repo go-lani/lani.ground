@@ -7,43 +7,43 @@ export const GROUND_MODAL_ROOT = 'ground-modal-root';
 
 type Props = {
   name?: string;
-  trigger?: JSX.Element;
   component: (closeModal: () => Promise<void>) => JSX.Element;
-  onAfterClose?: () => unknown;
+  onClose?: () => unknown;
   dim?: string;
   centerMode?: boolean;
   animation?: {
     className?: string;
     duration: number;
   };
-  direct?: boolean;
+  isOpen: boolean;
 };
 
 export default function Modal({
   name = 'modal',
-  trigger,
   component,
-  onAfterClose,
+  onClose,
   dim = '',
   centerMode = false,
   animation,
-  direct = false,
+  isOpen = false,
 }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isShow, setIsShow] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isEnter, setIsEnter] = useState(false);
   const [modalRoot, setModalRoot] = useState<Element | null>(null);
   const { lockScroll, unlockScroll } = useScrollLock();
 
   const openModal = useCallback(
-    async (e: MouseEvent) => {
-      e.stopPropagation();
+    async (e?: MouseEvent) => {
+      console.log(typeof window === 'undefined');
+      e?.stopPropagation();
       if (isAnimating) return;
 
       lockScroll();
-      setIsOpen(true);
+      setIsShow(true);
       setIsAnimating(true);
 
+      // console.log('animation?.duration', animation?.duration);
       setTimeout(
         () => {
           setIsAnimating(false);
@@ -64,15 +64,15 @@ export default function Modal({
     setTimeout(
       async () => {
         setIsAnimating(false);
-        setIsOpen(false);
+        setIsShow(false);
 
-        if (typeof onAfterClose === 'function') {
-          onAfterClose();
+        if (typeof onClose === 'function') {
+          onClose();
         }
       },
       animation?.duration || 0,
     );
-  }, [animation?.duration, isAnimating, onAfterClose, unlockScroll]);
+  }, [animation?.duration, isAnimating, onClose, unlockScroll]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -89,22 +89,15 @@ export default function Modal({
   }, []);
 
   useEffect(() => {
-    setIsOpen(direct);
-  }, [direct]);
+    if (isOpen) {
+      openModal();
+    }
+  }, [isOpen]);
 
   return (
     <>
-      {trigger &&
-        cloneElement(trigger, {
-          onClick: (e: MouseEvent) => {
-            if (trigger.props.onClick) {
-              trigger.props.onClick(e);
-            }
-            openModal(e);
-          },
-        })}
-      {isOpen &&
-        modalRoot &&
+      {modalRoot &&
+        isShow &&
         createPortal(
           <ModalContainer
             name={name}

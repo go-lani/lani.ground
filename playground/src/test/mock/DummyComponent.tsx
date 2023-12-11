@@ -1,24 +1,26 @@
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
+import { useState } from 'react';
 
 export default function DummyComponent({
   closeModal,
 }: {
   closeModal: () => Promise<void>;
 }) {
+  const [innerModalOpen, setInnerModalOpen] = useState<boolean>(false);
   return (
     <div className="sample-modal-inner bg-stone-700 text-white">
       <div className="relative max-w-[500px] p-4">
+        <button
+          type="button"
+          className="cursor-pointer bg-yellow-800 p-4 text-lg font-bold text-white"
+          onClick={() => setInnerModalOpen(true)}
+        >
+          Click Me!??
+        </button>
         <Modal
           name="inner-modal"
-          trigger={
-            <button
-              type="button"
-              className="cursor-pointer bg-yellow-800 p-4 text-lg font-bold text-white"
-            >
-              Click Me!
-            </button>
-          }
+          onClose={() => setInnerModalOpen(false)}
           component={(closeModal) => (
             <div className="text-sienna relative mt-[60px] w-[300px]">
               <button
@@ -55,6 +57,7 @@ export default function DummyComponent({
             duration: 300,
             className: 'sample2',
           }}
+          isOpen={innerModalOpen}
         />
         <button
           type="button"
