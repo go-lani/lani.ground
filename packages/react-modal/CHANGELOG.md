@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.2.1...@lani.ground/react-modal@1.2.2) (2023-12-12)
+
+
+### Bug Fixes
+
+* react-modal enter animation no-effect ([1b99e0f](https://github.com/go-lani/lani.ground/commit/1b99e0fa17562043ca179920a70b108d912bbaa3))
+* react-modal trigger component 분리 ([369dc74](https://github.com/go-lani/lani.ground/commit/369dc74efc7716411334591748ab26ec0c047bf2))
+
+
+
+
+
 ## [1.2.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.2.0...@lani.ground/react-modal@1.2.1) (2023-12-04)
 
 
