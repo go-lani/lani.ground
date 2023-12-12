@@ -34,7 +34,7 @@ export default function Modal({
   const { lockScroll, unlockScroll } = useScrollLock();
 
   const openModal = useCallback(
-    async (e?: MouseEvent) => {
+    (e?: MouseEvent) => {
       console.log(typeof window === 'undefined');
       e?.stopPropagation();
       if (isAnimating) return;
@@ -43,7 +43,6 @@ export default function Modal({
       setIsShow(true);
       setIsAnimating(true);
 
-      // console.log('animation?.duration', animation?.duration);
       setTimeout(
         () => {
           setIsAnimating(false);
@@ -89,9 +88,8 @@ export default function Modal({
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      openModal();
-    }
+    if (!isOpen) return;
+    openModal();
   }, [isOpen]);
 
   return (
@@ -107,8 +105,6 @@ export default function Modal({
             animation={animation}
             isEnter={isEnter}
             setIsEnter={setIsEnter}
-            isAnimating={isAnimating}
-            setIsAnimating={setIsAnimating}
           >
             {component(closeModal)}
           </ModalContainer>,

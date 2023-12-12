@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 interface Props {
   name: string;
@@ -11,8 +11,6 @@ interface Props {
   };
   isEnter: boolean;
   setIsEnter: React.Dispatch<React.SetStateAction<boolean>>;
-  isAnimating: boolean;
-  setIsAnimating: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
 }
 
@@ -28,20 +26,35 @@ export default function ModalContainer({
 }: Props) {
   const $modalContents = useRef<HTMLDivElement>(null);
   const $modalContainer = useRef<HTMLDivElement>(null);
+  const [isRender, setIsRender] = useState(false);
 
   const classes = useMemo(
     () =>
       animation?.duration
-        ? isEnter
+        ? isRender
           ? `react-modal__container__enter ${animation.className ?? ''}`
           : `react-modal__container__exit ${animation.className ?? ''}`
         : '',
-    [animation?.className, animation?.duration, isEnter],
+    [animation?.className, animation?.duration, isRender],
   );
 
   useEffect(() => {
     setIsEnter(true);
   }, []);
+
+  useEffect(() => {
+    if (isEnter) {
+      const nextTick = setTimeout(() => {
+        setIsRender(true);
+      }, 10);
+
+      return () => {
+        clearTimeout(nextTick);
+      };
+    } else {
+      setIsRender(false);
+    }
+  }, [isEnter]);
 
   const outsideClickHandler = useCallback(
     (e: MouseEvent) => {
