@@ -35,7 +35,6 @@ export default function Modal({
 
   const openModal = useCallback(
     (e?: MouseEvent) => {
-      console.log(typeof window === 'undefined');
       e?.stopPropagation();
       if (isAnimating) return;
 

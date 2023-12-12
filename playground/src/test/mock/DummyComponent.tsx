@@ -16,7 +16,7 @@ export default function DummyComponent({
           className="cursor-pointer bg-yellow-800 p-4 text-lg font-bold text-white"
           onClick={() => setInnerModalOpen(true)}
         >
-          Click Me!??
+          Click Me!
         </button>
         <Modal
           name="inner-modal"

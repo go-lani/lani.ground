@@ -59,21 +59,34 @@ function Popup({closeModal}: PopupProps) {
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
 
-<Modal
-  name="modal"
-  trigger={<button type="button">Click Me!</button>}
-  component={(closeModal) => <Popup closeModal={closeModal} />}
-  onAfterClose={() => {
-    // callback here
-  }}
-  dim="rgba(0, 0, 0, 0.8)"
-  animation={{
-    duration: 1000, // Modals cannot be re-opened or closed for the specified time.(ms)
-    className: 'sample',
-  }}
-  centerMode
-  direct
-/>;
+
+export default function Component({
+  closeModal,
+}: {
+  closeModal: () => Promise<void>;
+}) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  return (
+    <>
+      <button type="button" onClick={() => setIsOpen(true)}>Click Me!</button>
+      <Modal
+        name="modal"
+        component={(closeModal) => <Popup closeModal={closeModal} />}
+        onClose={() => {
+          // callback here
+          setIsOpen(false);
+        }}
+        dim="rgba(0, 0, 0, 0.8)"
+        animation={{
+          duration: 1000, // Modals cannot be re-opened or closed for the specified time.(ms)
+          className: 'sample',
+        }}
+        centerMode
+        isOpen={isOpen}
+      />
+    </>
+  );
+}
 ```
 
 ```css
@@ -116,21 +129,36 @@ import '@lani.ground/react-modal/css';
 const [isVaild, setIsValid] = useState<boolean>(false);
 
 <Modal
-  trigger={
-    <button
-      type="button"
-      onClick={() => {
-        setIsValid(!!Math.round(Math.random())); // random boolean
-      }}
-    >
-      Click Me!
-    </button>
-  }
+  {/* ... */}
   component={(closeModal) => {
     if (isVaild) return <div>Vaild!</div>;
     return <div>Not vaild!</div>;
   }}
 />
+```
+
+### If you want to show the modal as soon as the screen is rendered
+
+``` tsx
+<Modal
+  {/* ... */}
+  isOpen={true}
+/>
+
+// or
+
+const [isOpen, setIsOpen] = useState<boolean>(true);
+
+<Modal
+  component={(closeModal) => (
+    {/* component */}
+  )}
+  onClose={() => {
+    setIsOpen(false);
+  }}
+  isOpen={isOpen}
+/>
+
 ```
 
 

@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 export default function ModalPage() {
   const [isVaild, setIsValid] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isOpen2, setIsOpen2] = useState<boolean>(false);
   const [isOpen3, setIsOpen3] = useState<boolean>(false);
 
@@ -16,28 +15,35 @@ export default function ModalPage() {
 
   return (
     <ContentLayout packageName="react-modal">
-      <button type="button" onClick={() => setIsOpen(true)}>
-        is modal open
-      </button>
       <Modal
-        name="modal-default"
         component={(closeModal) => (
-          <div className="bg-white">다이렉트 모달</div>
+          <button type="button" className="bg-white" onClick={closeModal}>
+            Direct Modal
+          </button>
         )}
         onClose={() => {
-          setIsOpen(false);
+          console.log('close');
         }}
         animation={{
           className: 'sample',
           duration: 300,
         }}
         dim="rgba(0, 0, 0, 0.8)"
-        isOpen={isOpen}
+        isOpen
         centerMode
       />
 
+      <button
+        type="button"
+        className="rounded bg-green-500 px-4 py-2 text-lg font-bold text-white"
+        onClick={() => {
+          setIsValid(!!Math.round(Math.random())); // random boolean
+          setIsOpen2(true);
+        }}
+      >
+        Click Me!
+      </button>
       <Modal
-        name="modal-default"
         component={(closeModal) => {
           if (isVaild) return <div className="text-blue-500">Vaild!</div>;
           return <div className="text-red-500">Not vaild!</div>;
@@ -57,7 +63,6 @@ export default function ModalPage() {
         Click Me!
       </button>
       <Modal
-        name="modal"
         component={(closeModal) => <DummyComponent closeModal={closeModal} />}
         onClose={() => {
           setIsOpen3(false);
