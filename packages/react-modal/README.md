@@ -129,7 +129,6 @@ export default function Component({
 const [isVaild, setIsValid] = useState<boolean>(false);
 
 <Modal
-  {/* ... */}
   component={(closeModal) => {
     if (isVaild) return <div>Vaild!</div>;
     return <div>Not vaild!</div>;
@@ -150,9 +149,6 @@ const [isVaild, setIsValid] = useState<boolean>(false);
 const [isOpen, setIsOpen] = useState<boolean>(true);
 
 <Modal
-  component={(closeModal) => (
-    {/* component */}
-  )}
   onClose={() => {
     setIsOpen(false);
   }}
