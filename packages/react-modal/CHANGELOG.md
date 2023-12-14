@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.0.0...@lani.ground/react-modal@2.0.1) (2023-12-14)
+
+
+### Bug Fixes
+
+* change props order ([87093dd](https://github.com/go-lani/lani.ground/commit/87093dd632edae951e0017bef8853b18b40dbb50))
+
+
+
+
+
 # [2.0.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@1.3.1...@lani.ground/react-modal@2.0.0) (2023-12-12)
 
 **Note:** Version bump only for package @lani.ground/react-modal
