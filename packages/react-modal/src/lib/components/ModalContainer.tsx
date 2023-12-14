@@ -92,9 +92,9 @@ export default function ModalContainer({
 
   return (
     <div
+      ref={$modalContainer}
       data-type="modal"
       data-name={name}
-      ref={$modalContainer}
       className={`react-modal__container ${classes}`}
       style={{ backgroundColor: dim }}
     >
