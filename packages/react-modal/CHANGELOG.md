@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.0.1...@lani.ground/react-modal@2.1.0) (2023-12-28)
+
+
+### Features
+
+* add isUnlockScroll Props ([d9366d3](https://github.com/go-lani/lani.ground/commit/d9366d380b43deaf7123a07556a5a0cdac304265))
+
+
+
+
+
 ## [2.0.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.0.0...@lani.ground/react-modal@2.0.1) (2023-12-14)
 
 
