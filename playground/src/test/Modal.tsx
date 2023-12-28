@@ -31,6 +31,7 @@ export default function ModalPage() {
         dim="rgba(0, 0, 0, 0.8)"
         isOpen
         centerMode
+        isUnlockScroll
       />
 
       <button

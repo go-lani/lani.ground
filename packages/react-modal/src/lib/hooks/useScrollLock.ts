@@ -24,11 +24,7 @@ export default function useScrollLock() {
     scrollRef.current = window.scrollY;
 
     modifyBodyStyle({
-      overflowY: 'hidden',
-      position: 'fixed',
-      top: `-${scrollRef.current}px`,
-      left: '0',
-      right: '0',
+      overflow: 'hidden',
     });
   };
 
@@ -40,11 +36,7 @@ export default function useScrollLock() {
     if (!(nextCounts === 0 || scrollRef.current !== null)) return;
 
     modifyBodyStyle({
-      overflowY: '',
-      position: '',
-      top: '',
-      left: '',
-      right: '',
+      overflow: '',
     });
 
     window.scrollTo({ top: scrollRef.current || 0, behavior: 'instant' });

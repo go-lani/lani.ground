@@ -1,4 +1,4 @@
-import { cloneElement, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import ModalContainer from './ModalContainer';
 import useScrollLock from '../hooks/useScrollLock';
@@ -16,16 +16,18 @@ type Props = {
     duration: number;
   };
   isOpen: boolean;
+  isUnlockScroll?: boolean;
 };
 
 export default function Modal({
-  name = 'modal',
   component,
   onClose,
+  animation,
+  name = 'modal',
   dim = '',
   centerMode = false,
-  animation,
   isOpen = false,
+  isUnlockScroll = false,
 }: Props) {
   const [isShow, setIsShow] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -38,7 +40,9 @@ export default function Modal({
       e?.stopPropagation();
       if (isAnimating) return;
 
-      lockScroll();
+      if (!isUnlockScroll) {
+        lockScroll();
+      }
       setIsShow(true);
       setIsAnimating(true);
 
@@ -49,13 +53,16 @@ export default function Modal({
         animation?.duration || 0,
       );
     },
-    [animation?.duration, isAnimating, lockScroll],
+    [animation?.duration, isAnimating, isUnlockScroll, lockScroll],
   );
 
   const closeModal = useCallback(async () => {
     if (isAnimating) return;
 
-    unlockScroll();
+    if (!isUnlockScroll) {
+      unlockScroll();
+    }
+
     setIsAnimating(true);
     setIsEnter(false);
 
@@ -70,7 +77,7 @@ export default function Modal({
       },
       animation?.duration || 0,
     );
-  }, [animation?.duration, isAnimating, onClose, unlockScroll]);
+  }, [animation?.duration, isAnimating, onClose, unlockScroll, isUnlockScroll]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
