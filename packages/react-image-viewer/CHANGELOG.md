@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.1.2...@lani.ground/react-image-viewer@1.1.3) (2024-01-18)
+
+
+### Bug Fixes
+
+* remove position fixed scrollLock hooks ([1f32d25](https://github.com/go-lani/lani.ground/commit/1f32d2561c57b7069f2fd22fedce6bd11e2e4a32))
+
+
+
+
+
 ## [1.1.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.1.1...@lani.ground/react-image-viewer@1.1.2) (2023-11-22)
 
 
