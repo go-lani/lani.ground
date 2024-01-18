@@ -26,11 +26,7 @@ export default function useScrollLock() {
     if ($modalCounts > 1) return;
 
     modifyBodyStyle({
-      overflowY: 'hidden',
-      position: 'fixed',
-      top: `-${scrollRef.current}px`,
-      left: '0',
-      right: '0',
+      overflow: 'hidden',
     });
   };
 
@@ -41,11 +37,7 @@ export default function useScrollLock() {
     if ($modalCounts >= 1) return;
 
     modifyBodyStyle({
-      overflowY: '',
-      position: '',
-      top: '',
-      left: '',
-      right: '',
+      overflow: '',
     });
     window.scrollTo({ left: 0, top: scrollRef.current, behavior: 'instant' });
   };
