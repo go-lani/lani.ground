@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.2.0...@lani.ground/react-image-viewer@1.2.1) (2024-01-18)
+
+
+### Features
+
+* Edit react-image-viewer thumbnail image mobile css ([1646297](https://github.com/go-lani/lani.ground/commit/164629773450a148ca9be22c5e05bbc2dcb243d9))
+
+
+
+
+
 # [1.2.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.1.3...@lani.ground/react-image-viewer@1.2.0) (2024-01-18)
 
 
