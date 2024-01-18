@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.1.3...@lani.ground/react-image-viewer@1.2.0) (2024-01-18)
+
+
+### Features
+
+* react-image-viewer image 드래그 기능 및 select 기능 제거 ([c77c9c2](https://github.com/go-lani/lani.ground/commit/c77c9c27fb8a44d34c9f01f070eb6b01196cd569))
+
+
+
+
+
 ## [1.1.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-image-viewer@1.1.2...@lani.ground/react-image-viewer@1.1.3) (2024-01-18)
 
 
