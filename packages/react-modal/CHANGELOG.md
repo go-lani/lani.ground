@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.1...@lani.ground/react-modal@2.1.2) (2024-02-05)
+
+
+### Bug Fixes
+
+* update modal wrapper css ([01c7d0e](https://github.com/go-lani/lani.ground/commit/01c7d0ea20872a9b9a6ccbe06981fa6bbc981766))
+
+
+
+
+
 ## [2.1.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.0...@lani.ground/react-modal@2.1.1) (2024-02-05)
 
 
