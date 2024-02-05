@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.2...@lani.ground/react-modal@2.1.3) (2024-02-05)
+
+
+### Bug Fixes
+
+* center mode css update ([57ea0cf](https://github.com/go-lani/lani.ground/commit/57ea0cfd66b4f2b5e78f6f2efa597c3bd6c743dd))
+
+
+
+
+
 ## [2.1.2](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.1...@lani.ground/react-modal@2.1.2) (2024-02-05)
 
 
