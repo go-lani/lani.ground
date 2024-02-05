@@ -11,6 +11,7 @@ interface Props {
   };
   isEnter: boolean;
   setIsEnter: React.Dispatch<React.SetStateAction<boolean>>;
+  containerPadding?: string;
   children: React.ReactNode;
 }
 
@@ -22,6 +23,7 @@ export default function ModalContainer({
   animation,
   isEnter,
   setIsEnter,
+  containerPadding,
   children,
 }: Props) {
   const $modalContents = useRef<HTMLDivElement>(null);
@@ -90,28 +92,22 @@ export default function ModalContainer({
     };
   }, [outsideClickHandler]);
 
+  const styles = {
+    backgroundColor: dim,
+    padding: containerPadding,
+  };
+
   return (
     <div
       ref={$modalContainer}
       data-type="modal"
       data-name={name}
-      className={`react-modal__container ${classes}`}
-      style={{ backgroundColor: dim }}
+      className={`react-modal__container ${classes} ${
+        centerMode ? 'center-mode' : ''
+      }`}
+      style={{ ...styles }}
     >
-      <div
-        ref={$modalContents}
-        className={`${
-          centerMode ? 'react-modal__outer' : 'react-modal__content'
-        }`}
-      >
-        {centerMode ? (
-          <div className="react-modal__inner">
-            <div className="react-modal__content">{children}</div>
-          </div>
-        ) : (
-          <>{children}</>
-        )}
-      </div>
+      <div ref={$modalContents}>{children}</div>
     </div>
   );
 }

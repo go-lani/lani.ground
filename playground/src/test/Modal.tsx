@@ -64,6 +64,7 @@ export default function ModalPage() {
         Click Me!
       </button>
       <Modal
+        containerPadding="20px"
         component={(closeModal) => <DummyComponent closeModal={closeModal} />}
         onClose={() => {
           setIsOpen3(false);

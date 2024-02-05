@@ -6,8 +6,9 @@ import useScrollLock from '../hooks/useScrollLock';
 export const GROUND_MODAL_ROOT = 'ground-modal-root';
 
 type Props = {
-  name?: string;
   component: (closeModal: () => Promise<void>) => JSX.Element;
+  isOpen: boolean;
+  name?: string;
   onClose?: () => unknown;
   dim?: string;
   centerMode?: boolean;
@@ -15,7 +16,7 @@ type Props = {
     className?: string;
     duration: number;
   };
-  isOpen: boolean;
+  containerPadding?: string;
   isUnlockScroll?: boolean;
 };
 
@@ -23,6 +24,7 @@ export default function Modal({
   component,
   onClose,
   animation,
+  containerPadding,
   name = 'modal',
   dim = '',
   centerMode = false,
@@ -109,6 +111,7 @@ export default function Modal({
             dim={dim}
             centerMode={centerMode}
             animation={animation}
+            containerPadding={containerPadding}
             isEnter={isEnter}
             setIsEnter={setIsEnter}
           >
