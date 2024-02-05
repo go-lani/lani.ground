@@ -9,8 +9,13 @@
   width: 100%;
   flex-wrap: wrap;
 }
+
 .react-modal__container.center-mode {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.react-modal__container > div {
+  display: contents;
 }

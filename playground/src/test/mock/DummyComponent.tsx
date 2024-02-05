@@ -9,7 +9,7 @@ export default function DummyComponent({
 }) {
   const [innerModalOpen, setInnerModalOpen] = useState<boolean>(false);
   return (
-    <div className="sample-modal-inner w-full  bg-stone-700 text-white">
+    <div className="sample-modal-inner w-full max-w-[800px] bg-stone-700 text-white">
       <div className="relative p-4">
         <button
           type="button"
