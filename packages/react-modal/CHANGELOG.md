@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.0...@lani.ground/react-modal@2.1.1) (2024-02-05)
+
+
+### Features
+
+* centerMode contents Layout style bugfix 및 containerPadding props 추가 ([3797087](https://github.com/go-lani/lani.ground/commit/3797087b41914e0142e41ebb08c4938cbeb39134))
+
+
+
+
+
 # [2.1.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.0.1...@lani.ground/react-modal@2.1.0) (2023-12-28)
 
 
