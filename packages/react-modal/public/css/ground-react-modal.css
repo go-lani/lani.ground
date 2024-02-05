@@ -7,13 +7,13 @@
   z-index: 9999;
   height: 100%;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 .react-modal__container.center-mode {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .react-modal__container > div {
