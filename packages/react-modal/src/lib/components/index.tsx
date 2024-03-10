@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import ModalContainer from './ModalContainer';
 import useScrollLock from '../hooks/useScrollLock';
+import ModalContainer from './ModalContainer';
 
 export const GROUND_MODAL_ROOT = 'ground-modal-root';
 
