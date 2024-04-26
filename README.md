@@ -4,6 +4,8 @@
 
 ```bash
 yarn link
+# and
+yarn watch
 ```
 
 ## Linking Test(Playground)
@@ -16,5 +18,5 @@ yarn link mymodule
 ## Publish(root)
 
 ```bash
-learn publish
+lerna publish
 ```
