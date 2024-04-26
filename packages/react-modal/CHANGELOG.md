@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.4...@lani.ground/react-modal@2.1.5) (2024-04-26)
+
+
+### Bug Fixes
+
+* react-modal body style initialize in popstate event ([3eda14e](https://github.com/go-lani/lani.ground/commit/3eda14eb86c77b28d78bb1383387d4dd3d390a20))
+
+
+
+
+
 ## [2.1.4](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.3...@lani.ground/react-modal@2.1.4) (2024-03-10)
 
 
