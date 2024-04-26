@@ -42,7 +42,7 @@ export default function ModalContainer({
 
   useEffect(() => {
     setIsEnter(true);
-  }, []);
+  }, [setIsEnter]);
 
   useEffect(() => {
     if (isEnter) {
@@ -91,6 +91,17 @@ export default function ModalContainer({
       });
     };
   }, [outsideClickHandler]);
+
+  useEffect(() => {
+    const bodyCheck = () => {
+      if (document.body.style.overflow !== 'hidden') return;
+
+      document.body.style.overflow = '';
+    };
+
+    window.addEventListener('popstate', bodyCheck);
+    return () => window.removeEventListener('popstate', bodyCheck);
+  }, []);
 
   const styles = {
     backgroundColor: dim,
