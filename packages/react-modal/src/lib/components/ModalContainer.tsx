@@ -12,6 +12,7 @@ interface Props {
   isEnter: boolean;
   setIsEnter: React.Dispatch<React.SetStateAction<boolean>>;
   containerPadding?: string;
+  disabledOutsideClose: boolean;
   children: React.ReactNode;
 }
 
@@ -24,6 +25,7 @@ export default function ModalContainer({
   isEnter,
   setIsEnter,
   containerPadding,
+  disabledOutsideClose,
   children,
 }: Props) {
   const $modalContents = useRef<HTMLDivElement>(null);
@@ -81,6 +83,8 @@ export default function ModalContainer({
   );
 
   useEffect(() => {
+    if (disabledOutsideClose) return;
+
     document.addEventListener('click', outsideClickHandler, {
       capture: true,
     });

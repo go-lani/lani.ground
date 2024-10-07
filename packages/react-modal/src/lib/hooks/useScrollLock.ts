@@ -39,7 +39,10 @@ export default function useScrollLock() {
       overflow: '',
     });
 
-    window.scrollTo({ top: scrollRef.current || 0, behavior: 'instant' });
+    window.scrollTo({
+      top: scrollRef.current || 0,
+      behavior: 'instant' as ScrollBehavior,
+    });
     scrollRef.current = null;
   };
 

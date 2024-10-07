@@ -18,6 +18,7 @@ type Props = {
   };
   containerPadding?: string;
   isUnlockScroll?: boolean;
+  disabledOutsideClose?: boolean;
 };
 
 export default function Modal({
@@ -30,6 +31,7 @@ export default function Modal({
   centerMode = false,
   isOpen = false,
   isUnlockScroll = false,
+  disabledOutsideClose = false,
 }: Props) {
   const [isShow, setIsShow] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -114,6 +116,7 @@ export default function Modal({
             containerPadding={containerPadding}
             isEnter={isEnter}
             setIsEnter={setIsEnter}
+            disabledOutsideClose={disabledOutsideClose}
           >
             {component(closeModal)}
           </ModalContainer>,

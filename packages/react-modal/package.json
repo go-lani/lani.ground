@@ -1,7 +1,7 @@
 {
   "name": "@lani.ground/react-modal",
   "description": "Modal components used in reactjs",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "license": "MIT",
   "keywords": [
     "react",
@@ -41,6 +41,10 @@
     "watch:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext --watch",
     "watch:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs --watch",
     "watch:css": "node ./helpers/copyAssets/css.js",
+    "build": "concurrently \"npm run build:ems\" \"npm run build:cjs\"  \"npm run build:css\"",
+    "build:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext",
+    "build:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs",
+    "build:css": "node ./helpers/copyAssets/css.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

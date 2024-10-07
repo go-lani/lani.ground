@@ -1,8 +1,8 @@
 import { Modal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
-import DummyComponent from './mock/DummyComponent';
-import ContentLayout from './common/ContentLayout';
 import { useEffect, useState } from 'react';
+import ContentLayout from './common/ContentLayout';
+import DummyComponent from './mock/DummyComponent';
 
 export default function ModalPage() {
   const [isVaild, setIsValid] = useState<boolean>(false);
@@ -76,6 +76,7 @@ export default function ModalPage() {
         }}
         centerMode
         isOpen={isOpen3}
+        disabledOutsideClose
       />
       <div className="h-[100vh] bg-red-300">section 2</div>
       <div className="h-[100vh] bg-red-400">section 3</div>
