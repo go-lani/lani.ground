@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.5...@lani.ground/react-modal@2.2.0) (2024-10-07)
+
+
+### Features
+
+* react-modal disabledOutsideClose 옵션 추가 ([1e040fa](https://github.com/go-lani/lani.ground/commit/1e040fae64610458ae0cf75e53303ddecf4ad182))
+
+
+
+
+
 ## [2.1.5](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.4...@lani.ground/react-modal@2.1.5) (2024-04-26)
 
 
