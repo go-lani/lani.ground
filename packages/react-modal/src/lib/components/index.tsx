@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import useScrollLock from '../hooks/useScrollLock';
 import ModalContainer from './ModalContainer';
 
-export const GROUND_MODAL_ROOT = 'ground-modal-root';
+export const MODAL_ROOT = 'modal-root';
 
 type Props = {
   component: (closeModal: () => Promise<void>) => JSX.Element;
@@ -50,9 +50,12 @@ export default function Modal({
       setIsShow(true);
       setIsAnimating(true);
 
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, animation?.duration || 0);
+      setTimeout(
+        () => {
+          setIsAnimating(false);
+        },
+        animation?.duration || 0,
+      );
     },
     [animation?.duration, isAnimating, isUnlockScroll, lockScroll],
   );
@@ -67,24 +70,27 @@ export default function Modal({
     setIsAnimating(true);
     setIsEnter(false);
 
-    setTimeout(async () => {
-      setIsAnimating(false);
-      setIsShow(false);
+    setTimeout(
+      async () => {
+        setIsAnimating(false);
+        setIsShow(false);
 
-      if (typeof onClose === 'function') {
-        onClose();
-      }
-    }, animation?.duration || 0);
+        if (typeof onClose === 'function') {
+          onClose();
+        }
+      },
+      animation?.duration || 0,
+    );
   }, [animation?.duration, isAnimating, onClose, unlockScroll, isUnlockScroll]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    let $modalRoot = document.querySelector(`#${GROUND_MODAL_ROOT}`);
+    let $modalRoot = document.querySelector(`#${MODAL_ROOT}`);
 
     if (!$modalRoot) {
       $modalRoot = document.createElement('div');
-      $modalRoot.setAttribute('id', `${GROUND_MODAL_ROOT}`);
+      $modalRoot.setAttribute('id', `${MODAL_ROOT}`);
       document.body.append($modalRoot);
     }
 
@@ -98,11 +104,11 @@ export default function Modal({
 
   useEffect(() => {
     return () => {
-      if (isOpen && isShow) {
+      if (isShow && isEnter) {
         closeModal();
       }
     };
-  }, [closeModal, isOpen, isShow]);
+  }, [closeModal, isEnter, isShow]);
 
   return (
     <>
