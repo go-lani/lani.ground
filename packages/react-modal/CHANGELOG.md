@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.4](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.2.3...@lani.ground/react-modal@2.2.4) (2024-12-11)
+
+
+### Bug Fixes
+
+* react-modal close시 스크롤 상단이동 버그 수정 ([90c3543](https://github.com/go-lani/lani.ground/commit/90c3543a5bc388dfa19b712a880fb66093e09b83))
+
+
+
+
+
 ## [2.2.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.2.1...@lani.ground/react-modal@2.2.3) (2024-12-11)
 
 
