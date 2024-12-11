@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import useScrollLock from '../hooks/useScrollLock';
 import ModalContainer from './ModalContainer';
 
-export const MODAL_ROOT = 'modal-root';
+export const GROUND_MODAL_ROOT = 'ground-modal-root';
 
 type Props = {
   component: (closeModal: () => Promise<void>) => JSX.Element;
@@ -86,11 +86,11 @@ export default function Modal({
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    let $modalRoot = document.querySelector(`#${MODAL_ROOT}`);
+    let $modalRoot = document.querySelector(`#${GROUND_MODAL_ROOT}`);
 
     if (!$modalRoot) {
       $modalRoot = document.createElement('div');
-      $modalRoot.setAttribute('id', `${MODAL_ROOT}`);
+      $modalRoot.setAttribute('id', `${GROUND_MODAL_ROOT}`);
       document.body.append($modalRoot);
     }
 

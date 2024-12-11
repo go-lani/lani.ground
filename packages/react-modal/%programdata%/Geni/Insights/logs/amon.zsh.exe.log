@@ -1,0 +1,25 @@
+[39152:1] 2024-12-11 15:47:23.315 [0x9D88(0) CxCommonApi::LogModuleInfo] [MODULE LOADING] ModuleName amon64.dll, Version [2.0.0.1], ModulePath C:\Program Files\Geni\Insights\temp\amon64.dll ModifiedTime 2023-09-15 09:58:06
+[39152:1] 2024-12-11 15:47:23.316 [0x9D88(0) CxSensorPipeClient::Initialize] [Initialize]
+[39152:1] 2024-12-11 15:47:23.317 [0x9D88(0) CxThreadPool::Initialize] Queue init : OutputQue 0, nThreadPoolSize : 1
+[39152:1] 2024-12-11 15:47:23.317 [0x9D88(183) CxThreadPool::CreateThreadPool] Create 1 WorkerThread
+[39152:1] 2024-12-11 15:47:23.318 [0x9D88(0) CAttachMonitor::_InstallHook] [INSTALL_HOOK] GetOpenFileNameW : zsh.exe:39152
+[39152:1] 2024-12-11 15:47:23.329 [0x9D88(183) CAttachMonitor::_InstallHook] [INSTALL_HOOK] CoCreateInstance : zsh.exe:39152
+[39152:1] 2024-12-11 15:47:23.329 [0x9D88(183) CAttachMonitor::_InstallHook] [INSTALL_HOOK] DoDragDrop : zsh.exe:39152
+[39152:1] 2024-12-11 15:47:23.330 [0x9D88(183) CUIAManager::Initialize] [Initialize]
+[39152:1] 2024-12-11 15:47:23.330 [0x9D88(183) CUIAManager::Initialize] [/Initialize] SUCCESS
+[39152:1] 2024-12-11 15:47:23.330 [0x9D88(536871044) CxDllNotifier::Initialize] [Initialize]
+[39152:1] 2024-12-11 15:47:23.331 [0x9D88(183) CxDllNotifier::Initialize] [RegisterDllNotification] 00000000006F0F90
+[39152:1] 2024-12-11 15:47:23.331 [0x9D88(183) CxDllNotifier::RegisterCallback] [RegisterCallback] Callback 00007FFD953D5160 Context 0000000000703140
+[39152:1] 2024-12-11 15:47:23.333 [0x9D60(0) CxThreadPool::ThreadEntry] Worker Thread begins
+[39152:1] 2024-12-11 15:47:23.334 [0x9D60(1) CxSensorPipeClient::SendJson] [SEND][ReqType:10] {
+   "PID" : 39152,
+   "ProcPath" : "C:\\Program Files\\Git\\usr\\bin\\zsh.exe",
+   "ReqType" : "xSensorRequestType_GetAmonProfile"
+}
+
+[39152:1] 2024-12-11 15:47:23.334 [0x9D60(183) CxSensorPipeClient::SendJson] [RECV] {
+   "DetectionProcessList" : ""
+}
+
+[39152:1] 2024-12-11 15:47:23.335 [0x9D60(183) CAttachMonitor::_PipeResponseCallback] Addtional DetectionProcessList is empty
+[39152:1] 2024-12-11 15:47:23.335 [0x9D60(183) CAttachMonitor::_PipeResponseCallback] Not Target Process[myself]
