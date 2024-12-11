@@ -84,7 +84,6 @@ export default function ModalContainer({
 
   useEffect(() => {
     if (disabledOutsideClose) return;
-
     document.addEventListener('click', outsideClickHandler, {
       capture: true,
     });

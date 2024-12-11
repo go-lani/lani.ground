@@ -32,17 +32,20 @@ export default function useScrollLock() {
     const $modalCounts =
       document.querySelector(`#${GROUND_MODAL_ROOT}`)?.childElementCount || 0;
     const nextCounts = $modalCounts > 0 ? $modalCounts - 1 : 0;
+    const currentScroll = scrollRef.current;
 
-    if (!(nextCounts === 0 || scrollRef.current !== null)) return;
+    if (!(nextCounts === 0 || currentScroll !== null)) return;
 
     modifyBodyStyle({
       overflow: '',
     });
 
-    window.scrollTo({
-      top: scrollRef.current || 0,
-      behavior: 'instant' as ScrollBehavior,
-    });
+    if (currentScroll !== null) {
+      window.scrollTo({
+        top: currentScroll,
+        behavior: 'instant' as ScrollBehavior,
+      });
+    }
     scrollRef.current = null;
   };
 

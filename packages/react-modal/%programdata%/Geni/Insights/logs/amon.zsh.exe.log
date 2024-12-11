@@ -23,3 +23,28 @@
 
 [39152:1] 2024-12-11 15:47:23.335 [0x9D60(183) CAttachMonitor::_PipeResponseCallback] Addtional DetectionProcessList is empty
 [39152:1] 2024-12-11 15:47:23.335 [0x9D60(183) CAttachMonitor::_PipeResponseCallback] Not Target Process[myself]
+[42648:1] 2024-12-11 16:04:48.812 [0x99F4(0) CxCommonApi::LogModuleInfo] [MODULE LOADING] ModuleName amon64.dll, Version [2.0.0.1], ModulePath C:\Program Files\Geni\Insights\temp\amon64.dll ModifiedTime 2023-09-15 09:58:06
+[42648:1] 2024-12-11 16:04:48.813 [0x99F4(183) CxSensorPipeClient::Initialize] [Initialize]
+[42648:1] 2024-12-11 16:04:48.813 [0x99F4(0) CxThreadPool::Initialize] Queue init : OutputQue 0, nThreadPoolSize : 1
+[42648:1] 2024-12-11 16:04:48.814 [0x99F4(183) CxThreadPool::CreateThreadPool] Create 1 WorkerThread
+[42648:1] 2024-12-11 16:04:48.814 [0x99F4(0) CAttachMonitor::_InstallHook] [INSTALL_HOOK] GetOpenFileNameW : zsh.exe:42648
+[42648:1] 2024-12-11 16:04:48.815 [0x99F4(183) CAttachMonitor::_InstallHook] [INSTALL_HOOK] CoCreateInstance : zsh.exe:42648
+[42648:1] 2024-12-11 16:04:48.815 [0x99F4(183) CAttachMonitor::_InstallHook] [INSTALL_HOOK] DoDragDrop : zsh.exe:42648
+[42648:1] 2024-12-11 16:04:48.815 [0x99F4(183) CUIAManager::Initialize] [Initialize]
+[42648:1] 2024-12-11 16:04:48.816 [0x99F4(183) CUIAManager::Initialize] [/Initialize] SUCCESS
+[42648:1] 2024-12-11 16:04:48.816 [0x99F4(536871044) CxDllNotifier::Initialize] [Initialize]
+[42648:1] 2024-12-11 16:04:48.817 [0x99F4(183) CxDllNotifier::Initialize] [RegisterDllNotification] 00000000007E0CC0
+[42648:1] 2024-12-11 16:04:48.817 [0x99F4(183) CxDllNotifier::RegisterCallback] [RegisterCallback] Callback 00007FFD953D5160 Context 00000000007F3140
+[42648:1] 2024-12-11 16:04:48.819 [0x8888(0) CxThreadPool::ThreadEntry] Worker Thread begins
+[42648:1] 2024-12-11 16:04:48.820 [0x8888(233) CxSensorPipeClient::SendJson] [SEND][ReqType:10] {
+   "PID" : 42648,
+   "ProcPath" : "C:\\Program Files\\Git\\usr\\bin\\zsh.exe",
+   "ReqType" : "xSensorRequestType_GetAmonProfile"
+}
+
+[42648:1] 2024-12-11 16:04:48.821 [0x8888(183) CxSensorPipeClient::SendJson] [RECV] {
+   "DetectionProcessList" : ""
+}
+
+[42648:1] 2024-12-11 16:04:48.821 [0x8888(183) CAttachMonitor::_PipeResponseCallback] Addtional DetectionProcessList is empty
+[42648:1] 2024-12-11 16:04:48.821 [0x8888(183) CAttachMonitor::_PipeResponseCallback] Not Target Process[myself]
