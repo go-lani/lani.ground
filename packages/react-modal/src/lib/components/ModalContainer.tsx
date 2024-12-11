@@ -94,7 +94,7 @@ export default function ModalContainer({
         capture: true,
       });
     };
-  }, [outsideClickHandler]);
+  }, [disabledOutsideClose, outsideClickHandler]);
 
   useEffect(() => {
     const bodyCheck = () => {

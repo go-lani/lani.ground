@@ -50,12 +50,9 @@ export default function Modal({
       setIsShow(true);
       setIsAnimating(true);
 
-      setTimeout(
-        () => {
-          setIsAnimating(false);
-        },
-        animation?.duration || 0,
-      );
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, animation?.duration || 0);
     },
     [animation?.duration, isAnimating, isUnlockScroll, lockScroll],
   );
@@ -70,17 +67,14 @@ export default function Modal({
     setIsAnimating(true);
     setIsEnter(false);
 
-    setTimeout(
-      async () => {
-        setIsAnimating(false);
-        setIsShow(false);
+    setTimeout(async () => {
+      setIsAnimating(false);
+      setIsShow(false);
 
-        if (typeof onClose === 'function') {
-          onClose();
-        }
-      },
-      animation?.duration || 0,
-    );
+      if (typeof onClose === 'function') {
+        onClose();
+      }
+    }, animation?.duration || 0);
   }, [animation?.duration, isAnimating, onClose, unlockScroll, isUnlockScroll]);
 
   useEffect(() => {
@@ -101,6 +95,14 @@ export default function Modal({
     if (!isOpen) return;
     openModal();
   }, [isOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (isOpen && isShow) {
+        closeModal();
+      }
+    };
+  }, [closeModal, isOpen, isShow]);
 
   return (
     <>
