@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.2.0...@lani.ground/react-modal@2.2.1) (2024-12-11)
+
+
+### Bug Fixes
+
+* Modal 오픈 상태에서 페이지 전환시 scroll block되는 버그 수정 ([61021b6](https://github.com/go-lani/lani.ground/commit/61021b6763bc2d55a61ae3727e178e23a8125bce))
+
+
+
+
+
 # [2.2.0](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.1.5...@lani.ground/react-modal@2.2.0) (2024-10-07)
 
 
