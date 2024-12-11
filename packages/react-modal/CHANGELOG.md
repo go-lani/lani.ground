@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.2.1...@lani.ground/react-modal@2.2.3) (2024-12-11)
+
+
+### Bug Fixes
+
+* 분기점 변경 ([f6f94e5](https://github.com/go-lani/lani.ground/commit/f6f94e5f5f86745bdab0055c79083698ecc2f869))
+* build 에러 수정 ([8dc75ac](https://github.com/go-lani/lani.ground/commit/8dc75ac5980dd0d08c720ee194df0bfb106587b6))
+
+
+
+
+
 ## [2.2.1](https://github.com/go-lani/lani.ground/compare/@lani.ground/react-modal@2.2.0...@lani.ground/react-modal@2.2.1) (2024-12-11)
 
 
