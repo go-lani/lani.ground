@@ -3,6 +3,9 @@
   "version": "independent",
   "npmClient": "yarn",
   "packages": ["packages/**"],
+  "publishConfig": {
+    "access": "public"
+  },
   "command": {
     "publish": {
       "conventionalCommits": true
