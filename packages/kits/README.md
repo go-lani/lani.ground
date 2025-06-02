@@ -1,11 +1,11 @@
-# utils
+# Kits
 
 ## Installation
 
 ```bash
-npm install @wmfe-kit/utils
+npm install @lani.ground/kits
 
 // or
 
-yarn add @wmfe-kit/utils
+yarn add @lani.ground/kits
 ```
