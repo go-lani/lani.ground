@@ -1,0 +1,86 @@
+{
+  "name": "@lani.ground/react-picker",
+  "description": "Picker components used in reactjs",
+  "version": "1.0.0-alpha.1",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "next",
+    "modal"
+  ],
+  "homepage": "https://github.com/go-lani/lani.ground/blob/master/packages/react-picker/README.md",
+  "bugs": {
+    "url": "https://github.com/go-lani/lani.ground/issues",
+    "email": "go.lani.developer@gmail.com"
+  },
+  "author": {
+    "email": "go.lani.developer@gmail.com",
+    "name": "Lani",
+    "url": "https://laniground.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/go-lani/lani.ground.git"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "browser": "./browser/specific/main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./styles/DatePicker.css": "./dist/styles/DatePicker.css",
+    "./styles/DateTimePicker.css": "./dist/styles/DateTimePicker.css",
+    "./styles/RangePicker.css": "./dist/styles/RangePicker.css",
+    "./styles/TimePicker.css": "./dist/styles/TimePicker.css",
+    "./styles/Calendar.css": "./dist/styles/Calendar.css"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "watch": "concurrently \"npm run watch:ems\" \"npm run watch:cjs\"  \"npm run watch:css\"",
+    "watch:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext --watch",
+    "watch:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs --watch",
+    "watch:css": "node ./helpers/copyAssets/css.js",
+    "build": "concurrently \"npm run build:ems\" \"npm run build:cjs\"  \"npm run build:css\"",
+    "build:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext",
+    "build:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs",
+    "build:css": "node ./helpers/copyAssets/css.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/node": "^16.18.53",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "eslint-plugin-react": "^7.33.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "@lani.ground/kits",
+  "description": "Lani Ground Util Kits",
+  "version": "1.0.0-alpha.1",
+  "license": "MIT",
+  "keywords": [
+    "Utils",
+    "Typescript",
+    "Kits"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "browser": "./browser/specific/main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "watch": "concurrently \"npm run watch:ems\" \"npm run watch:cjs\"",
+    "watch:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext --watch",
+    "watch:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs --watch",
+    "build": "concurrently \"npm run build:ems\" \"npm run build:cjs\"",
+    "build:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext",
+    "build:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ]
+}
