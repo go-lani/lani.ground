@@ -14,6 +14,45 @@ export default function Lnb() {
     new Set(['/react-picker']),
   );
 
+  // 패키지별 색상과 아이콘 매핑
+  const packageStyles = {
+    '/react-picker': {
+      icon: '📅',
+      color: 'from-blue-500 to-cyan-500',
+      bgColor: 'bg-blue-500/10',
+      hoverColor: 'hover:bg-blue-500/20',
+      activeColor: 'bg-blue-600',
+    },
+    '/react-modal': {
+      icon: '🪟',
+      color: 'from-purple-500 to-pink-500',
+      bgColor: 'bg-purple-500/10',
+      hoverColor: 'hover:bg-purple-500/20',
+      activeColor: 'bg-purple-600',
+    },
+    '/react-hooks': {
+      icon: '🎣',
+      color: 'from-emerald-500 to-teal-500',
+      bgColor: 'bg-emerald-500/10',
+      hoverColor: 'hover:bg-emerald-500/20',
+      activeColor: 'bg-emerald-600',
+    },
+    '/react-image-viewer': {
+      icon: '🖼️',
+      color: 'from-orange-500 to-red-500',
+      bgColor: 'bg-orange-500/10',
+      hoverColor: 'hover:bg-orange-500/20',
+      activeColor: 'bg-orange-600',
+    },
+    '/react-outside-click-handler': {
+      icon: '👆',
+      color: 'from-violet-500 to-indigo-500',
+      bgColor: 'bg-violet-500/10',
+      hoverColor: 'hover:bg-violet-500/20',
+      activeColor: 'bg-violet-600',
+    },
+  };
+
   const organizedComponents = useMemo(() => {
     const components = TEST_COMPONENTS.filter((component) => component.path);
     const organized: ComponentItem[] = [];
@@ -52,76 +91,123 @@ export default function Lnb() {
     return organized;
   }, []);
 
-  const toggleExpanded = (path: string) => {
-    const newExpanded = new Set(expandedItems);
-    if (newExpanded.has(path)) {
-      newExpanded.delete(path);
-    } else {
-      newExpanded.add(path);
-    }
-    setExpandedItems(newExpanded);
-  };
+  // const toggleExpanded = (path: string) => {
+  //   const newExpanded = new Set(expandedItems);
+  //   if (newExpanded.has(path)) {
+  //     newExpanded.delete(path);
+  //   } else {
+  //     newExpanded.add(path);
+  //   }
+  //   setExpandedItems(newExpanded);
+  // };
 
   const isActive = (path: string) => location.pathname === path;
   const isParentActive = (parentPath: string, children: ComponentItem[]) => {
     return children.some((child) => location.pathname === child.path);
   };
 
+  const getPackageStyle = (path: string) => {
+    return (
+      packageStyles[path as keyof typeof packageStyles] ||
+      packageStyles['/react-picker']
+    );
+  };
+
   return (
-    <ul className="flex flex-col gap-1">
-      {organizedComponents.map((component) => {
-        const hasChildren = component.children && component.children.length > 0;
-        const isExpanded = expandedItems.has(component.path);
-        const isParentActiveState =
-          hasChildren && isParentActive(component.path, component.children!);
+    <div className="space-y-2">
+      {/* 헤더 */}
+      <div className="mb-6 rounded-xl border border-neutral-700/50 bg-gradient-to-br from-neutral-800/30 to-neutral-900/50 p-4 backdrop-blur-sm">
+        <h2 className="mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-lg font-bold text-transparent">
+          패키지 목록
+        </h2>
+        <p className="text-sm text-gray-400">
+          @lani.ground 컴포넌트 라이브러리
+        </p>
+      </div>
 
-        return (
-          <li key={component.path}>
-            <div className="flex items-center">
-              <Link
-                to={component.path}
-                className={`block flex-1 rounded-md px-4 py-2 transition-colors ${
-                  isActive(component.path)
-                    ? 'bg-blue-600 text-white'
-                    : isParentActiveState
-                    ? 'bg-blue-500/20 text-blue-300'
-                    : 'hover:bg-gray-600'
-                }`}
-              >
-                @lani.ground{component.path}
-              </Link>
-              {/* {hasChildren && (
-                <button
-                  onClick={() => toggleExpanded(component.path)}
-                  className="ml-2 px-2 py-2 text-gray-400 transition-colors hover:text-white"
+      {/* 네비게이션 목록 */}
+      <ul className="space-y-2">
+        {organizedComponents.map((component) => {
+          const hasChildren =
+            component.children && component.children.length > 0;
+          const isExpanded = expandedItems.has(component.path);
+          const isParentActiveState =
+            hasChildren && isParentActive(component.path, component.children!);
+          const packageStyle = getPackageStyle(component.path);
+
+          return (
+            <li key={component.path}>
+              <div className="flex items-center">
+                <Link
+                  to={component.path}
+                  className={`group flex flex-1 items-center gap-3 rounded-xl border border-transparent px-4 py-3 transition-all duration-200 ${
+                    isActive(component.path)
+                      ? `${packageStyle.activeColor} border-neutral-600 text-white shadow-lg`
+                      : isParentActiveState
+                      ? `${packageStyle.bgColor} border-neutral-700/50 text-white`
+                      : `hover:border-neutral-700/50 ${packageStyle.hoverColor} text-gray-300 hover:text-white`
+                  }`}
                 >
-                  {isExpanded ? '▼' : '▶'}
-                </button>
-              )} */}
-            </div>
+                  {/* 아이콘 */}
+                  <div
+                    className={`flex h-8 w-8 items-center justify-center rounded-lg text-lg transition-transform group-hover:scale-110 ${
+                      isActive(component.path)
+                        ? 'bg-white/20'
+                        : 'bg-neutral-800/50'
+                    }`}
+                  >
+                    {packageStyle.icon}
+                  </div>
 
-            {hasChildren && isExpanded && (
-              <ul className="ml-4 mt-1 flex flex-col gap-1">
-                {component.children!.map((child) => (
-                  <li key={child.path}>
-                    <Link
-                      to={child.path}
-                      className={`block rounded-md px-4 py-2 pl-6 text-sm transition-colors ${
-                        isActive(child.path)
-                          ? 'bg-blue-600 text-white'
-                          : 'text-gray-300 hover:bg-gray-600 hover:text-white'
-                      }`}
-                    >
-                      <span className="mr-2 text-gray-500">└</span>
-                      {child.path.split('/').pop()}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        );
-      })}
-    </ul>
+                  {/* 패키지명 */}
+                  <div className="flex-1">
+                    <div className="text-sm font-medium">
+                      @lani.ground{component.path}
+                    </div>
+                  </div>
+
+                  {/* 활성 상태 표시 */}
+                  {(isActive(component.path) || isParentActiveState) && (
+                    <div
+                      className={`h-2 w-2 rounded-full bg-gradient-to-r ${packageStyle.color}`}
+                    />
+                  )}
+                </Link>
+              </div>
+
+              {hasChildren && isExpanded && (
+                <ul className="ml-4 mt-2 space-y-1">
+                  {component.children!.map((child) => {
+                    const childStyle = getPackageStyle(component.path);
+                    return (
+                      <li key={child.path}>
+                        <Link
+                          to={child.path}
+                          className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm transition-all duration-200 ${
+                            isActive(child.path)
+                              ? `${childStyle.activeColor} text-white`
+                              : `text-gray-400 hover:text-white ${childStyle.hoverColor}`
+                          }`}
+                        >
+                          <span className="text-gray-500">└</span>
+                          <span className="capitalize">
+                            {child.path.split('/').pop()}
+                          </span>
+                          {isActive(child.path) && (
+                            <div
+                              className={`ml-auto h-1.5 w-1.5 rounded-full bg-gradient-to-r ${childStyle.color}`}
+                            />
+                          )}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }

@@ -72,8 +72,9 @@ export default function CustomPickerModal({
         </div>
 
         <Calendar
-          date={range[0]}
-          onDateChange={(date) => handleRangeChange([date, range[1]])}
+          type="range"
+          range={range}
+          onRangeChange={handleRangeChange}
           calendarType="scroll"
           weekendColor="#6B8EFF"
           holidayColor="#FF8B8B"

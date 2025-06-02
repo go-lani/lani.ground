@@ -1,136 +1,151 @@
 import { ImageViewerProvider } from '@lani.ground/react-image-viewer';
 import '@lani.ground/react-image-viewer/css';
 import ContentLayout from './common/ContentLayout';
+import ExampleSection from './common/ExampleSection';
 
 export default function ImageViewerPage() {
+  const examples = [
+    {
+      title: 'Single Image Viewer',
+      description:
+        '개별 이미지 뷰어 모드입니다. 각 이미지를 독립적으로 확대/축소하여 볼 수 있습니다.',
+      icon: '🖼️',
+      color: 'from-orange-500 to-red-500',
+      bgColor: 'bg-orange-500/5',
+      borderColor: 'border-orange-500/20',
+      disableGallery: true,
+      images: [
+        '/assets/images/sample/image-1.jpg',
+        '/assets/images/sample/image-2.jpg',
+        '/assets/images/sample/image-3.jpg',
+      ],
+      features: ['개별 이미지 뷰', '확대/축소', '드래그 이동'],
+    },
+    {
+      title: 'Gallery Viewer',
+      description:
+        '갤러리 모드 이미지 뷰어입니다. 이미지들을 연속적으로 탐색할 수 있으며, 썸네일 네비게이션을 제공합니다.',
+      icon: '🎨',
+      color: 'from-violet-500 to-indigo-500',
+      bgColor: 'bg-violet-500/5',
+      borderColor: 'border-violet-500/20',
+      disableGallery: false,
+      images: [
+        '/assets/images/sample/image-4.jpg',
+        '/assets/images/sample/image-5.jpg',
+        '/assets/images/sample/image-6.jpg',
+        '/assets/images/sample/image-7.jpg',
+        '/assets/images/sample/image-8.jpg',
+      ],
+      features: ['갤러리 네비게이션', '슬라이드쇼'],
+    },
+  ];
+
   return (
     <ContentLayout packageName="react-image-viewer">
-      <ImageViewerProvider disableGallery>
-        <div className="flex flex-col gap-4 border border-zinc-700 p-4 text-sm md:text-base">
-          <p className="bg-zinc-700 p-4 text-2xl font-bold">
-            Single Image Viewer
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum
-            eu lectus sit amet elementum. Maecenas dictum imperdiet ipsum, sit
-            amet venenatis turpis rutrum vitae. Aliquam id faucibus tellus. Cras
-            facilisis sed purus eu sagittis. Integer volutpat et enim vitae
-            feugiat. Pellentesque ac dapibus ligula. In a efficitur nibh.
-            Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec
-            pharetra tellus nec malesuada ultrices. Duis quis pellentesque
-            turpis, vel efficitur turpis. Sed viverra iaculis turpis, vitae
-            pulvinar augue elementum sit amet. Pellentesque fermentum lorem et
-            pretium pulvinar. Etiam dictum sit amet tellus vitae commodo.
-          </p>
-          <img src="/assets/images/sample/image-1.jpg" alt="" />
-          <p>
-            Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec
-            eget diam feugiat nibh dictum dignissim. Morbi eget lorem at mauris
-            tristique euismod id suscipit nulla. In eu egestas orci. Nullam
-            mattis id nisi quis condimentum. Donec porttitor purus sit amet ante
-            eleifend ornare sed id sapien. Nam mattis arcu sit amet iaculis
-            blandit. Proin mattis velit eu massa semper efficitur. Class aptent
-            taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-            himenaeos. Proin efficitur euismod convallis. Nunc non fringilla
-            dolor, a rhoncus eros. Nam et mauris vitae est convallis maximus non
-            vel leo.
-          </p>
-          <img src="/assets/images/sample/image-2.jpg" alt="" />
-          <p>
-            Etiam at enim condimentum, sodales mi id, posuere neque. Ut
-            tincidunt risus sit amet libero cursus, quis dignissim urna
-            fermentum. Pellentesque sed velit sit amet sapien tempus porta. Ut
-            interdum sollicitudin tellus, vehicula tempus ex dignissim
-            ullamcorper. Integer facilisis nisi vel lorem ornare mattis. Nullam
-            consequat commodo eros, sed finibus diam feugiat id. Curabitur et
-            tortor non ante egestas efficitur. Pellentesque a posuere ex.
-            Vivamus elementum eros ac sapien malesuada, sollicitudin auctor
-            lacus semper. Integer ac sagittis dui. Nunc id erat efficitur dui
-            imperdiet consectetur. Proin vel elementum felis, quis faucibus mi.
-            Vivamus maximus erat nec molestie suscipit. Phasellus ultrices urna
-            quis est lacinia, vel ultrices justo aliquet. Phasellus fringilla
-            magna orci, sed scelerisque neque hendrerit ac. Aenean tristique
-            erat fermentum porttitor iaculis.
-          </p>
-          <img src="/assets/images/sample/image-3.jpg" alt="" />
-          <p>
-            Vivamus ut massa fermentum, posuere ex vel, efficitur sem. Interdum
-            et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
-            imperdiet at nisl sit amet consectetur. Cras quis iaculis erat.
-            Integer semper ornare feugiat. Nullam et ante risus. Phasellus quis
-            iaculis ex. Aenean et mollis leo.
-          </p>
+      <ExampleSection title="ImageViewer Examples">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-1 lg:gap-8">
+          {examples.map((example, index) => (
+            <ImageViewerProvider
+              key={index}
+              disableGallery={example.disableGallery}
+            >
+              <div
+                key={index}
+                className={`rounded-lg border sm:rounded-xl ${example.borderColor} ${example.bgColor} p-4 transition-all duration-300 hover:shadow-lg sm:p-6`}
+              >
+                {/* 헤더 */}
+                <div className="mb-3 flex items-start gap-2 sm:mb-4 sm:items-center sm:gap-3">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                    {example.icon}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3
+                      className={`bg-gradient-to-r text-base font-bold sm:text-lg ${example.color} bg-clip-text leading-tight text-transparent`}
+                    >
+                      {example.title}
+                    </h3>
+                    <p className="mt-1 text-xs leading-relaxed text-gray-400 sm:text-sm">
+                      {example.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* 인터랙션 영역 */}
+                <div className="space-y-3 sm:space-y-4">
+                  {/* 이미지 그리드 */}
+                  <div className="xs:grid-cols-3 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-5">
+                    {example.images.map((image, imageIndex) => (
+                      <div
+                        key={imageIndex}
+                        className="group cursor-pointer overflow-hidden rounded-lg border border-neutral-700/50 bg-neutral-800/30 transition-all duration-300 hover:scale-105 hover:border-white/20"
+                      >
+                        <img
+                          src={image}
+                          alt={`Example ${imageIndex + 1}`}
+                          className="h-16 w-full object-cover transition-all duration-300 group-hover:brightness-110 sm:h-20"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* 기능 설명 */}
+                  <div className="rounded-lg bg-neutral-800/30 p-3 sm:p-4">
+                    <h4 className="mb-2 text-xs font-medium text-gray-300 sm:text-sm">
+                      주요 기능
+                    </h4>
+                    <ul className="space-y-1 text-xs text-gray-400">
+                      {example.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-center gap-2"
+                        >
+                          <div
+                            className={`h-1 w-1 rounded-full bg-gradient-to-r sm:h-1.5 sm:w-1.5 ${example.color} flex-shrink-0`}
+                          />
+                          <span className="leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </ImageViewerProvider>
+          ))}
         </div>
-      </ImageViewerProvider>
-      <ImageViewerProvider>
-        <div className="mt-14 flex flex-col gap-4 border border-zinc-700 p-4 text-sm md:text-base">
-          <p className="bg-zinc-700 p-4 text-2xl font-bold">Gallery viewer</p>
-          <img src="/assets/images/sample/image-4.jpg" alt="" />
-          <p>
-            Nulla consequat, orci a aliquam sodales, justo mauris eleifend
-            mauris, et molestie metus odio ac massa. Suspendisse potenti.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia curae; Sed varius, ipsum id fringilla imperdiet,
-            nisl justo facilisis est, a volutpat mi erat vitae sem. Sed luctus
-            lorem ac arcu pellentesque tempor. Sed varius nulla ac nibh gravida
-            viverra. Sed in scelerisque quam. Maecenas faucibus malesuada eros
-            lobortis accumsan. In gravida augue tortor, varius porttitor nibh
-            eleifend non. Phasellus eu pharetra erat. Curabitur nec consectetur
-            justo.
-          </p>
-          <img src="/assets/images/sample/image-5.jpg" alt="" />
-          <p>
-            Curabitur id purus id ligula venenatis venenatis vel sit amet lorem.
-            Suspendisse vitae dui metus. Curabitur laoreet sit amet risus eu
-            vehicula. Phasellus in enim turpis. Nunc urna eros, aliquet at
-            sodales non, ultricies aliquam diam. Etiam sed dapibus dolor. Mauris
-            varius velit enim, sit amet volutpat nulla ultricies facilisis.
-            Mauris ut massa ex. Proin vehicula ultrices eros eu placerat. Ut
-            accumsan metus sed tristique ornare. Curabitur tempus erat non
-            tellus fringilla, quis rhoncus enim efficitur. Etiam cursus varius
-            rutrum.
-          </p>
-          <img src="/assets/images/sample/image-6.jpg" alt="" />
-          <p>
-            Nulla consequat, orci a aliquam sodales, justo mauris eleifend
-            mauris, et molestie metus odio ac massa. Suspendisse potenti.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia curae; Sed varius, ipsum id fringilla imperdiet,
-            nisl justo facilisis est, a volutpat mi erat vitae sem. Sed luctus
-            lorem ac arcu pellentesque tempor. Sed varius nulla ac nibh gravida
-            viverra. Sed in scelerisque quam. Maecenas faucibus malesuada eros
-            lobortis accumsan. In gravida augue tortor, varius porttitor nibh
-            eleifend non. Phasellus eu pharetra erat. Curabitur nec consectetur
-            justo.
-          </p>
-          <img src="/assets/images/sample/image-7.jpg" alt="" />
-          <p>
-            Nulla consequat, orci a aliquam sodales, justo mauris eleifend
-            mauris, et molestie metus odio ac massa. Suspendisse potenti.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia curae; Sed varius, ipsum id fringilla imperdiet,
-            nisl justo facilisis est, a volutpat mi erat vitae sem. Sed luctus
-            lorem ac arcu pellentesque tempor. Sed varius nulla ac nibh gravida
-            viverra. Sed in scelerisque quam. Maecenas faucibus malesuada eros
-            lobortis accumsan. In gravida augue tortor, varius porttitor nibh
-            eleifend non. Phasellus eu pharetra erat. Curabitur nec consectetur
-            justo.
-          </p>
-          <img src="/assets/images/sample/image-8.jpg" alt="" />
-          <p>
-            Nulla consequat, orci a aliquam sodales, justo mauris eleifend
-            mauris, et molestie metus odio ac massa. Suspendisse potenti.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia curae; Sed varius, ipsum id fringilla imperdiet,
-            nisl justo facilisis est, a volutpat mi erat vitae sem. Sed luctus
-            lorem ac arcu pellentesque tempor. Sed varius nulla ac nibh gravida
-            viverra. Sed in scelerisque quam. Maecenas faucibus malesuada eros
-            lobortis accumsan. In gravida augue tortor, varius porttitor nibh
-            eleifend non. Phasellus eu pharetra erat. Curabitur nec consectetur
-            justo.
-          </p>
-        </div>
-      </ImageViewerProvider>
+      </ExampleSection>
+
+      {/* 추가 설명 섹션 */}
+      <div className="mt-4 sm:mt-6 lg:mt-8">
+        <ExampleSection title="사용법 안내">
+          <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                💡
+              </div>
+              <div className="min-w-0 space-y-2 sm:space-y-3">
+                <h3 className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  Image Viewer 사용 팁
+                </h3>
+                <div className="space-y-1 text-xs text-gray-300 sm:space-y-2 sm:text-sm">
+                  <p>
+                    • <strong>확대/축소:</strong> 마우스 휠 또는 핀치 제스처를
+                    사용하세요
+                  </p>
+                  <p>
+                    • <strong>이동:</strong> 이미지를 드래그하여 원하는 부분을
+                    볼 수 있습니다
+                  </p>
+                  <p>
+                    • <strong>갤러리 모드:</strong> 같은 ImageViewerProvider
+                    안의 모든 이미지가 연결됩니다
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ExampleSection>
+      </div>
     </ContentLayout>
   );
 }

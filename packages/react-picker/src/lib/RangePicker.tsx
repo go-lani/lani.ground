@@ -137,8 +137,8 @@ const RangePickerComponent: React.FC<RangePickerProps> = ({
           targetMonth !== undefined
             ? targetMonth
             : direction === 'prev'
-              ? 11
-              : 0;
+            ? 11
+            : 0;
 
         // 년도 변경 (항상 +1 또는 -1)
         const newYear = currentYear + (direction === 'prev' ? -1 : 1);
@@ -305,18 +305,18 @@ const RangePickerComponent: React.FC<RangePickerProps> = ({
     // range 값 변경 시 baseViewMonth 업데이트
     let newBaseViewDate: Date;
 
-    if (range?.[1]) {
-      // endDate가 있으면 endDate 기준
-      newBaseViewDate = new Date(
-        range[1].getFullYear(),
-        range[1].getMonth(),
-        1,
-      );
-    } else if (range?.[0]) {
-      // endDate가 없고 startDate가 있으면 startDate 기준
+    if (range?.[0]) {
+      // startDate가 있으면 startDate 기준
       newBaseViewDate = new Date(
         range[0].getFullYear(),
         range[0].getMonth(),
+        1,
+      );
+    } else if (range?.[1]) {
+      // startDate가 없고 endDate가 있으면 endDate 기준
+      newBaseViewDate = new Date(
+        range[1].getFullYear(),
+        range[1].getMonth(),
         1,
       );
     } else if (minDate && maxDate) {
@@ -378,15 +378,15 @@ const RangePickerComponent: React.FC<RangePickerProps> = ({
 
     let newBaseViewDate: Date;
 
-    // 값이 설정되어 있는 경우 우선순위: endDate > startDate
-    if (endDate) {
-      newBaseViewDate = new Date(endDate.getFullYear(), endDate.getMonth(), 1);
-    } else if (startDate) {
+    // 값이 설정되어 있는 경우 우선순위: startDate > endDate
+    if (startDate) {
       newBaseViewDate = new Date(
         startDate.getFullYear(),
         startDate.getMonth(),
         1,
       );
+    } else if (endDate) {
+      newBaseViewDate = new Date(endDate.getFullYear(), endDate.getMonth(), 1);
     } else {
       // 값이 설정되어 있지 않은 경우 요구사항에 따른 설정
       newBaseViewDate = getInitialViewMonth(null, minDate, maxDate);
@@ -465,7 +465,9 @@ const RangePickerComponent: React.FC<RangePickerProps> = ({
       ref={containerRef}
     >
       <div
-        className={`picker-popup ${isMultiple ? 'multiple' : ''} ${shouldWrap ? 'wrap' : ''}`}
+        className={`picker-popup ${isMultiple ? 'multiple' : ''} ${
+          shouldWrap ? 'wrap' : ''
+        }`}
         ref={popupRef}
       >
         <div className="picker-popup-content">
@@ -541,7 +543,9 @@ const RangePickerComponent: React.FC<RangePickerProps> = ({
               {quickSelectOptions.map((option, index) => (
                 <button
                   key={index}
-                  className={`quick-option ${selectedQuickOption?.days === option.days ? 'selected' : ''}`}
+                  className={`quick-option ${
+                    selectedQuickOption?.days === option.days ? 'selected' : ''
+                  }`}
                   onClick={() => handleQuickOptionClick(option)}
                 >
                   {option.label}
