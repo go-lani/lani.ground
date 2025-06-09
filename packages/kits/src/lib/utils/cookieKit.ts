@@ -69,6 +69,8 @@ const cookieKit = {
    * @returns {string|undefined} - 쿠키의 값 또는 쿠키가 존재하지 않으면 undefined
    */
   getCookie: (name: string): string | undefined => {
+    if (typeof window === 'undefined') return;
+
     const cookieName = name + '=';
     const cookies = document.cookie.split(';');
 
