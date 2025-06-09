@@ -48,6 +48,8 @@ export default function useCookies() {
   );
 
   const getCookie = useCallback((name: string): string | undefined => {
+    if (typeof window === 'undefined') return;
+
     const cookieName = name + '=';
     const cookies = document.cookie.split(';');
 
