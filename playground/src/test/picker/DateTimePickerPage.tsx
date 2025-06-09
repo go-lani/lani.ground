@@ -146,6 +146,172 @@ export default function DateTimePickerPage() {
           ))}
         </div>
       </ExampleSection>
+
+      {/* Props 정의 섹션 */}
+      <div className="mt-4 sm:mt-6 lg:mt-8">
+        <ExampleSection title="DateTimePicker Props">
+          <div className="rounded-lg border border-purple-500/20 bg-purple-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                📄
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  Props 정의
+                </h3>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-neutral-700">
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Name
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Type
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Required
+                        </th>
+                        <th className="py-2 text-left font-medium text-gray-300">
+                          Description
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-400">
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          value
+                        </td>
+                        <td className="py-2 pr-4 font-mono">Date | null</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">선택된 날짜와 시간</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          onChange
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`(date: Date | null) => void`}</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">
+                          날짜/시간 변경 시 호출되는 콜백
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          isOpen
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">
+                          날짜/시간 선택기 열림/닫힘 상태
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          onOpenChange
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`(open: boolean) => void`}</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">열림/닫힘 상태 변경 콜백</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          calendarType
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          'scroll' | 'default'
+                        </td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          달력 표시 형태 (기본값: 'default')
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          ampm
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          AM/PM 형식 사용 여부 (기본값: false)
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          minuteStep
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          1 | 5 | 10 | 15 | 30
+                        </td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">분 단위 스텝 (기본값: 1)</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          secondStep
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          1 | 5 | 10 | 15 | 30
+                        </td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">초 단위 스텝 (기본값: 1)</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          minDate
+                        </td>
+                        <td className="py-2 pr-4 font-mono">Date</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">선택 가능한 최소 날짜</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          maxDate
+                        </td>
+                        <td className="py-2 pr-4 font-mono">Date</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">선택 가능한 최대 날짜</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          weekendColor
+                        </td>
+                        <td className="py-2 pr-4 font-mono">string</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">주말 날짜 색상</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          holidayColor
+                        </td>
+                        <td className="py-2 pr-4 font-mono">string</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">휴일 날짜 색상</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          holidays
+                        </td>
+                        <td className="py-2 pr-4 font-mono">Date[]</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">휴일 날짜 목록</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          className
+                        </td>
+                        <td className="py-2 pr-4 font-mono">string</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">추가 CSS 클래스명</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ExampleSection>
+      </div>
     </ContentLayout>
   );
 }

@@ -5,6 +5,13 @@ import App from './App';
 import './App.css';
 import Hooks from './test/Hooks';
 import ImageViewer from './test/ImageVIewer';
+import KitPage from './test/KitPage';
+import CookieKitPage from './test/kits/CookieKitPage';
+import DateKitPage from './test/kits/DateKitPage';
+import NumberKitPage from './test/kits/NumberKitPage';
+import ObjectKitPage from './test/kits/ObjectKitPage';
+import StringKitPage from './test/kits/StringKitPage';
+import ValidateKitPage from './test/kits/ValidateKitPage';
 import Modals from './test/Modal';
 import OutsideClickHandler from './test/OutsideClickHandler';
 import Picker from './test/Picker';
@@ -54,6 +61,34 @@ export const TEST_COMPONENTS = [
   {
     path: '/react-picker/custom',
     element: <CustomPickerPage />,
+  },
+  {
+    path: '/kits',
+    element: <KitPage />,
+  },
+  {
+    path: '/kits/date',
+    element: <DateKitPage />,
+  },
+  {
+    path: '/kits/number',
+    element: <NumberKitPage />,
+  },
+  {
+    path: '/kits/string',
+    element: <StringKitPage />,
+  },
+  {
+    path: '/kits/object',
+    element: <ObjectKitPage />,
+  },
+  {
+    path: '/kits/validate',
+    element: <ValidateKitPage />,
+  },
+  {
+    path: '/kits/cookie',
+    element: <CookieKitPage />,
   },
 ];
 

@@ -270,26 +270,6 @@ const dateKit = {
   },
 
   /**
-   * 주어진 날짜 객체를 UTC 기준 날짜로 변환합니다.
-   * 로컬 시간대에서 UTC로 변환합니다 (예: KST(UTC+9)에서 UTC로 변환).
-   *
-   * @param {Date} date - 변환할 날짜 객체
-   * @returns {Date} - UTC 기준으로 변환된 날짜 객체
-   */
-  toUTCDate: (date: Date) => {
-    // 로컬 시간대의 오프셋을 밀리초로 가져옵니다
-    // getTimezoneOffset()은 UTC와의 차이를 분 단위로 반환합니다 (KST의 경우 -540)
-    // 음수 값이므로 더하기 연산을 해야 합니다
-    const localOffset = date.getTimezoneOffset() * 60000;
-
-    // 로컬 시간에서 UTC로 변환 (오프셋을 더해줍니다)
-    const utcTime = date.getTime() + localOffset;
-
-    // 새로운 Date 객체 생성
-    return new Date(utcTime);
-  },
-
-  /**
    * 현재 시간이 주어진 시작 시간과 종료 시간 사이에 있는지 확인하는 함수
    *
    * @param {Object} params - 파라미터 객체

@@ -39,7 +39,7 @@ export default function TimePickerPage() {
     {
       title: 'TimePicker - Panel + Snap',
       description:
-        '패널 모드의 시간 선택기로 15분 단위 스냅 기능이 포함되어 있습니다. AM/PM 형식도 지원합니다.',
+        '패널 모드의 시간 선택기로 스냅 기능이 포함되어 있습니다. AM/PM 형식도 지원합니다.',
       icon: '🕐',
       color: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-500/5',
@@ -140,9 +140,7 @@ export default function TimePickerPage() {
                         <div
                           className={`h-1 w-1 rounded-full bg-gradient-to-r sm:h-1.5 sm:w-1.5 ${example.color} flex-shrink-0`}
                         />
-                        <span className="leading-relaxed">
-                          15분 단위 스냅 기능
-                        </span>
+                        <span className="leading-relaxed">스냅 기능</span>
                       </li>
                     )}
                   </ul>
@@ -152,6 +150,151 @@ export default function TimePickerPage() {
           ))}
         </div>
       </ExampleSection>
+
+      {/* Props 정의 섹션 */}
+      <div className="mt-4 sm:mt-6 lg:mt-8">
+        <ExampleSection title="TimePicker Props">
+          <div className="rounded-lg border border-orange-500/20 bg-orange-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                📄
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  Props 정의
+                </h3>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-neutral-700">
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Name
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Type
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Required
+                        </th>
+                        <th className="py-2 text-left font-medium text-gray-300">
+                          Description
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-400">
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          value
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          Date | string | null
+                        </td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">
+                          선택된 시간 (Date 객체 또는 문자열)
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          onChange
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`(value: Date | string | null) => void`}</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">시간 변경 시 호출되는 콜백</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          isOpen
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">시간 선택기 열림/닫힘 상태</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          onOpenChange
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`(isOpen: boolean) => void`}</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">열림/닫힘 상태 변경 콜백</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          mode
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          'default' | 'panel'
+                        </td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">UI 모드 (기본값: 'default')</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          timeUnits
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          ('hour' | 'minute' | 'second' | 'ampm')[]
+                        </td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          표시할 시간 단위 (기본값: ['hour', 'minute',
+                          'second'])
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          enableSnap
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          스냅 기능 활성화 (기본값: false)
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          minuteStep
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          1 | 5 | 10 | 15 | 30
+                        </td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">분 단위 스텝 (기본값: 1)</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          secondStep
+                        </td>
+                        <td className="py-2 pr-4 font-mono">
+                          1 | 5 | 10 | 15 | 30
+                        </td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">초 단위 스텝 (기본값: 1)</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          disabled
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">비활성화 여부 (기본값: false)</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4 font-mono text-orange-400">
+                          className
+                        </td>
+                        <td className="py-2 pr-4 font-mono">string</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">추가 CSS 클래스명</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ExampleSection>
+      </div>
     </ContentLayout>
   );
 }

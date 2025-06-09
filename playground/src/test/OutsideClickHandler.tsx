@@ -258,6 +258,86 @@ export default function OutsideClickHandlerPage() {
           </div>
         </ExampleSection>
       </div>
+
+      {/* Props 정의 섹션 */}
+      <div className="mt-4 sm:mt-6 lg:mt-8">
+        <ExampleSection title="OutsideClickHandler Props">
+          <div className="rounded-lg border border-purple-500/20 bg-purple-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                📄
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  Props 정의
+                </h3>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-neutral-700">
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Name
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Type
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Required
+                        </th>
+                        <th className="py-2 text-left font-medium text-gray-300">
+                          Description
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-400">
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          children
+                        </td>
+                        <td className="py-2 pr-4 font-mono">React.ReactNode</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">
+                          외부 클릭 감지가 적용될 자식 컴포넌트
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          onOutsideClick
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`(e: MouseEvent) => void`}</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">
+                          외부 영역 클릭 시 호출되는 콜백
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          disabled
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          외부 클릭 감지 비활성화 여부 (기본값: false)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4 font-mono text-purple-400">
+                          capture
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          이벤트 캡처링 사용 여부 (기본값: true)
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ExampleSection>
+      </div>
     </ContentLayout>
   );
 }

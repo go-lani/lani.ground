@@ -291,36 +291,268 @@ export default function HooksPage() {
               </div>
             </div>
           ))}
-
-          {/* useVisibleElement 데모 섹션 */}
-          <div className="space-y-3 sm:space-y-4" ref={ref}>
-            <h3 className="text-base font-bold text-white sm:text-lg">
-              useVisibleElement 데모
-            </h3>
-            <div className="grid gap-2 sm:gap-3">
-              {Array.from({ length: 10 }, (_, i) => (
-                <div
-                  key={i}
-                  data-visible-key={`demo-${i + 1}`}
-                  className={`rounded-lg border p-3 transition-all duration-300 sm:p-4 ${
-                    activeElement?.getAttribute('data-visible-key') ===
-                    `demo-${i + 1}`
-                      ? 'border-orange-500 bg-orange-500/10 text-orange-400'
-                      : 'border-neutral-700 bg-neutral-800/30 text-gray-400'
-                  }`}
-                >
-                  <h4 className="text-sm font-medium sm:text-base">
-                    데모 항목 {i + 1}
-                  </h4>
-                  <p className="mt-1 text-xs opacity-70 sm:text-sm">
-                    이 요소가 화면에 보이면 하이라이트됩니다.
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </ExampleSection>
+
+      {/* Hooks API 정의 섹션 */}
+      <div className="mt-4 sm:mt-6 lg:mt-8">
+        <ExampleSection title="Hooks API">
+          {/* useCookies */}
+          <div className="mb-6 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                🍪
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  useCookies API
+                </h3>
+                <div className="mt-3">
+                  <div className="mb-4">
+                    <h4 className="mb-2 text-sm font-medium text-gray-300">
+                      반환값:
+                    </h4>
+                    <div className="rounded bg-neutral-900/50 p-3">
+                      <code className="text-xs text-green-400">{`{
+  setCookie: (name: string, value: string, options?: CookieOptions) => void,
+  getCookie: (name: string) => string | undefined,
+  hasCookie: (name: string) => boolean,
+  deleteCookie: (name: string) => void
+}`}</code>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-sm font-medium text-gray-300">
+                      CookieOptions:
+                    </h4>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs sm:text-sm">
+                        <thead>
+                          <tr className="border-b border-neutral-700">
+                            <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                              Property
+                            </th>
+                            <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                              Type
+                            </th>
+                            <th className="py-2 text-left font-medium text-gray-300">
+                              Description
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-gray-400">
+                          <tr className="border-b border-neutral-800">
+                            <td className="py-2 pr-4 font-mono text-amber-400">
+                              path
+                            </td>
+                            <td className="py-2 pr-4 font-mono">string</td>
+                            <td className="py-2">쿠키 경로 (기본값: '/')</td>
+                          </tr>
+                          <tr className="border-b border-neutral-800">
+                            <td className="py-2 pr-4 font-mono text-amber-400">
+                              expires
+                            </td>
+                            <td className="py-2 pr-4 font-mono">
+                              Date | string | 'today'
+                            </td>
+                            <td className="py-2">만료일</td>
+                          </tr>
+                          <tr className="border-b border-neutral-800">
+                            <td className="py-2 pr-4 font-mono text-amber-400">
+                              maxAge
+                            </td>
+                            <td className="py-2 pr-4 font-mono">number</td>
+                            <td className="py-2">최대 수명 (초)</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2 pr-4 font-mono text-amber-400">
+                              domain
+                            </td>
+                            <td className="py-2 pr-4 font-mono">string</td>
+                            <td className="py-2">쿠키 도메인</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* useString */}
+          <div className="mb-6 rounded-lg border border-purple-500/20 bg-purple-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                ✂️
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  useString API
+                </h3>
+                <div className="mt-3">
+                  <div className="mb-4">
+                    <h4 className="mb-2 text-sm font-medium text-gray-300">
+                      반환값:
+                    </h4>
+                    <div className="rounded bg-neutral-900/50 p-3">
+                      <code className="text-xs text-green-400">{`{
+  ellipsis: ({ value, length, dir? }: EllipsisOptions) => string
+}`}</code>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-sm font-medium text-gray-300">
+                      EllipsisOptions:
+                    </h4>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs sm:text-sm">
+                        <thead>
+                          <tr className="border-b border-neutral-700">
+                            <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                              Property
+                            </th>
+                            <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                              Type
+                            </th>
+                            <th className="py-2 text-left font-medium text-gray-300">
+                              Description
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-gray-400">
+                          <tr className="border-b border-neutral-800">
+                            <td className="py-2 pr-4 font-mono text-purple-400">
+                              value
+                            </td>
+                            <td className="py-2 pr-4 font-mono">string</td>
+                            <td className="py-2">원본 문자열</td>
+                          </tr>
+                          <tr className="border-b border-neutral-800">
+                            <td className="py-2 pr-4 font-mono text-purple-400">
+                              length
+                            </td>
+                            <td className="py-2 pr-4 font-mono">number</td>
+                            <td className="py-2">자를 길이</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2 pr-4 font-mono text-purple-400">
+                              dir
+                            </td>
+                            <td className="py-2 pr-4 font-mono">
+                              'right' | 'left'
+                            </td>
+                            <td className="py-2">
+                              자르는 방향 (기본값: 'right')
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* useWindowScroll */}
+          <div className="mb-6 rounded-lg border border-blue-500/20 bg-blue-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                📜
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  useWindowScroll API
+                </h3>
+                <div className="mt-3">
+                  <div>
+                    <h4 className="mb-2 text-sm font-medium text-gray-300">
+                      반환값:
+                    </h4>
+                    <div className="rounded bg-neutral-900/50 p-3">
+                      <code className="text-xs text-green-400">{`{
+  lockScroll: () => void,
+  unlockScroll: () => void
+}`}</code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* useVisibleElement */}
+          <div className="rounded-lg border border-orange-500/20 bg-orange-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                👁️
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  useVisibleElement API
+                </h3>
+                <div className="mt-3">
+                  <div className="mb-4">
+                    <h4 className="mb-2 text-sm font-medium text-gray-300">
+                      매개변수:
+                    </h4>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs sm:text-sm">
+                        <thead>
+                          <tr className="border-b border-neutral-700">
+                            <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                              Property
+                            </th>
+                            <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                              Type
+                            </th>
+                            <th className="py-2 text-left font-medium text-gray-300">
+                              Description
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-gray-400">
+                          <tr className="border-b border-neutral-800">
+                            <td className="py-2 pr-4 font-mono text-orange-400">
+                              key
+                            </td>
+                            <td className="py-2 pr-4 font-mono">string</td>
+                            <td className="py-2">
+                              요소 식별 키 (기본값: 'visible-element')
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="py-2 pr-4 font-mono text-orange-400">
+                              activeClass
+                            </td>
+                            <td className="py-2 pr-4 font-mono">string</td>
+                            <td className="py-2">
+                              가시 요소에 추가할 CSS 클래스
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-sm font-medium text-gray-300">
+                      반환값:
+                    </h4>
+                    <div className="rounded bg-neutral-900/50 p-3">
+                      <code className="text-xs text-green-400">{`{
+  ref: React.RefObject<HTMLDivElement>,
+  activeKey: string,
+  activeElement: Element | null
+}`}</code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ExampleSection>
+      </div>
     </ContentLayout>
   );
 }

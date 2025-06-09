@@ -7,6 +7,7 @@ import DummyComponent from './mock/DummyComponent';
 
 export default function ModalPage() {
   const [isVaild, setIsValid] = useState<boolean>(false);
+  const [isOpen1, setIsOpen1] = useState<boolean>(false);
   const [isOpen2, setIsOpen2] = useState<boolean>(false);
   const [isOpen3, setIsOpen3] = useState<boolean>(false);
 
@@ -16,9 +17,9 @@ export default function ModalPage() {
 
   const examples = [
     {
-      title: 'Basic Modal',
+      title: 'Direct Modal',
       description:
-        '기본적인 모달 컴포넌트입니다. 중앙 정렬과 딤 배경이 적용되며, 스크롤 잠금 기능을 제공합니다.',
+        '항상 열려있는 다이렉트 모달입니다. 페이지 로드 시 바로 표시됩니다.',
       icon: '🪟',
       color: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-500/5',
@@ -28,7 +29,7 @@ export default function ModalPage() {
         <div className="rounded-lg bg-white p-8 text-black">
           <h3 className="mb-4 text-xl font-bold">Direct Modal</h3>
           <p className="mb-4 text-gray-600">
-            이것은 항상 열려있는 기본 모달입니다.
+            이것은 항상 열려있는 다이렉트 모달입니다.
           </p>
           <button
             type="button"
@@ -39,8 +40,42 @@ export default function ModalPage() {
           </button>
         </div>
       ),
-      features: ['중앙 정렬', '딤 배경', '스크롤 잠금 해제', '애니메이션'],
+      features: [
+        '항상 열림',
+        '다이렉트 렌더링',
+        '스크롤 잠금 해제',
+        '즉시 표시',
+      ],
     },
+    {
+      title: 'Basic Modal',
+      description:
+        '기본적인 모달 컴포넌트입니다. 버튼을 클릭해서 열고 닫을 수 있습니다.',
+      icon: '📱',
+      color: 'from-indigo-500 to-purple-500',
+      bgColor: 'bg-indigo-500/5',
+      borderColor: 'border-indigo-500/20',
+      isOpen: isOpen1,
+      onToggle: () => setIsOpen1(true),
+      onClose: () => setIsOpen1(false),
+      component: (closeModal: () => void) => (
+        <div className="rounded-lg bg-white p-8 text-black">
+          <h3 className="mb-4 text-xl font-bold">Basic Modal</h3>
+          <p className="mb-4 text-gray-600">
+            이것은 기본적인 모달 컴포넌트입니다.
+          </p>
+          <button
+            type="button"
+            className="rounded bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-600"
+            onClick={closeModal}
+          >
+            닫기
+          </button>
+        </div>
+      ),
+      features: ['버튼으로 열기/닫기', '중앙 정렬', '딤 배경', '애니메이션'],
+    },
+
     {
       title: 'Conditional Modal',
       description:
@@ -169,9 +204,9 @@ export default function ModalPage() {
                   dim="rgba(0, 0, 0, 0.8)"
                   isOpen={example.isOpen}
                   centerMode
-                  isUnlockScroll={index === 0}
-                  containerPadding={index === 2 ? '20px' : undefined}
-                  disabledOutsideClose={index === 2}
+                  isUnlockScroll={index === 1}
+                  containerPadding={index === 3 ? '20px' : undefined}
+                  disabledOutsideClose={index === 3}
                 />
 
                 {/* 기능 설명 */}
@@ -198,6 +233,134 @@ export default function ModalPage() {
           ))}
         </div>
       </ExampleSection>
+
+      {/* Props 정의 섹션 */}
+      <div className="mt-4 sm:mt-6 lg:mt-8">
+        <ExampleSection title="Modal Props">
+          <div className="rounded-lg border border-violet-500/20 bg-violet-500/5 p-4 sm:rounded-xl sm:p-6">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-800/50 text-lg sm:h-10 sm:w-10 sm:text-xl">
+                📄
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-base font-bold leading-tight text-transparent sm:text-lg">
+                  Props 정의
+                </h3>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-neutral-700">
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Name
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Type
+                        </th>
+                        <th className="py-2 pr-4 text-left font-medium text-gray-300">
+                          Required
+                        </th>
+                        <th className="py-2 text-left font-medium text-gray-300">
+                          Description
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-400">
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          component
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`(closeModal: () => Promise<void>) => JSX.Element`}</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">모달 안에 렌더링될 컴포넌트</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          isOpen
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-red-400">Required</td>
+                        <td className="py-2">모달 열림/닫힘 상태</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          onClose
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`() => unknown`}</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">모달 닫힐 때 호출되는 콜백</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          name
+                        </td>
+                        <td className="py-2 pr-4 font-mono">string</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">모달 식별자 (기본값: 'modal')</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          dim
+                        </td>
+                        <td className="py-2 pr-4 font-mono">string</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          배경 딤 색상 (예: 'rgba(0, 0, 0, 0.8)')
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          centerMode
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          모달을 화면 중앙에 배치할지 여부 (기본값: false)
+                        </td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          animation
+                        </td>
+                        <td className="py-2 pr-4 font-mono">{`{ className?: string; duration: number }`}</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">애니메이션 설정</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          containerPadding
+                        </td>
+                        <td className="py-2 pr-4 font-mono">string</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">모달 컨테이너 패딩</td>
+                      </tr>
+                      <tr className="border-b border-neutral-800">
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          isUnlockScroll
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          스크롤 잠금 해제 여부 (기본값: false)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4 font-mono text-violet-400">
+                          disabledOutsideClose
+                        </td>
+                        <td className="py-2 pr-4 font-mono">boolean</td>
+                        <td className="py-2 pr-4 text-gray-500">Optional</td>
+                        <td className="py-2">
+                          외부 클릭으로 닫기 비활성화 여부 (기본값: false)
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ExampleSection>
+      </div>
     </ContentLayout>
   );
 }

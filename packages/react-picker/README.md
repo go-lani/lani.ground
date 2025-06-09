@@ -1,5 +1,7 @@
 # @lani.ground/react-picker
 
+![npm](https://img.shields.io/npm/v/%40lani.ground%2Freact-picker)
+
 > React date/time picker library
 
 ## Installation

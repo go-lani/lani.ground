@@ -11,7 +11,7 @@ interface ComponentItem {
 export default function Lnb() {
   const location = useLocation();
   const [expandedItems, setExpandedItems] = useState<Set<string>>(
-    new Set(['/react-picker']),
+    new Set(['/react-picker', '/kits']),
   );
 
   // 패키지별 색상과 아이콘 매핑
@@ -50,6 +50,13 @@ export default function Lnb() {
       bgColor: 'bg-violet-500/10',
       hoverColor: 'hover:bg-violet-500/20',
       activeColor: 'bg-violet-600',
+    },
+    '/kits': {
+      icon: '🧰',
+      color: 'from-amber-500 to-yellow-500',
+      bgColor: 'bg-amber-500/10',
+      hoverColor: 'hover:bg-amber-500/20',
+      activeColor: 'bg-amber-600',
     },
   };
 
@@ -91,15 +98,15 @@ export default function Lnb() {
     return organized;
   }, []);
 
-  // const toggleExpanded = (path: string) => {
-  //   const newExpanded = new Set(expandedItems);
-  //   if (newExpanded.has(path)) {
-  //     newExpanded.delete(path);
-  //   } else {
-  //     newExpanded.add(path);
-  //   }
-  //   setExpandedItems(newExpanded);
-  // };
+  const toggleExpanded = (path: string) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(path)) {
+      newExpanded.delete(path);
+    } else {
+      newExpanded.add(path);
+    }
+    setExpandedItems(newExpanded);
+  };
 
   const isActive = (path: string) => location.pathname === path;
   const isParentActive = (parentPath: string, children: ComponentItem[]) => {
@@ -173,6 +180,30 @@ export default function Lnb() {
                     />
                   )}
                 </Link>
+
+                {/* 확장/축소 버튼 */}
+                {hasChildren && (
+                  <button
+                    onClick={() => toggleExpanded(component.path)}
+                    className="ml-2 rounded-lg p-2 text-gray-400 transition-colors hover:bg-neutral-700/50 hover:text-white"
+                  >
+                    <svg
+                      className={`h-4 w-4 transition-transform ${
+                        isExpanded ? 'rotate-90' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
+                )}
               </div>
 
               {hasChildren && isExpanded && (
