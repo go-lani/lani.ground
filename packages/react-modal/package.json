@@ -1,7 +1,7 @@
 {
   "name": "@lani.ground/react-modal",
   "description": "Modal components used in reactjs",
-  "version": "2.2.4",
+  "version": "3.0.0",
   "license": "MIT",
   "keywords": [
     "react",
