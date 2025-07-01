@@ -44,7 +44,7 @@
     "build": "concurrently \"npm run build:ems\" \"npm run build:cjs\"  \"npm run build:css\"",
     "build:ems": "tsc --project tsconfig.json --outDir dist/esm --module esnext",
     "build:cjs": "tsc --project tsconfig.json --outDir dist/cjs --module commonjs",
-    "build:css": "node ./helpers/copyAssets/css.js",
+    "build:css": "node ./helpers/devops/css.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -78,5 +78,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   }
 }

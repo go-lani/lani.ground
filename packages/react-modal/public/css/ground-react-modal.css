@@ -5,8 +5,8 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
 }
 
 .react-modal__container.center-mode {
@@ -14,6 +14,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .react-modal__container > div {

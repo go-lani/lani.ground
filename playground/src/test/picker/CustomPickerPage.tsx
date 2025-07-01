@@ -1,5 +1,5 @@
 import { dateKit } from '@lani.ground/kits';
-import { Modal } from '@lani.ground/react-modal';
+import { useModal } from '@lani.ground/react-modal';
 import { useState } from 'react';
 import ContentLayout from '../common/ContentLayout';
 import ExampleSection from '../common/ExampleSection';
@@ -7,11 +7,27 @@ import CustomPickerModal from '../components/picker/CustomPickerModal';
 
 export default function CustomPickerPage() {
   const { formatDate } = dateKit;
+  const { open, close, isOpen } = useModal();
 
   // Custom Picker
-  const [isCustomCalendarOpen, setIsCustomCalendarOpen] = useState(false);
   const customState = useState<[Date | null, Date | null]>([null, null]);
   const [range] = customState;
+
+  const CUSTOM_PICKER_MODAL_NAME = 'custom-picker';
+
+  const openCustomPicker = () => {
+    open({
+      name: CUSTOM_PICKER_MODAL_NAME,
+      component: (closeModal) => (
+        <CustomPickerModal rangeState={customState} closeModal={closeModal} />
+      ),
+      animation: {
+        className: 'sample',
+        duration: 300,
+      },
+      centerMode: true,
+    });
+  };
 
   const examples = [
     {
@@ -22,9 +38,8 @@ export default function CustomPickerPage() {
       color: 'from-violet-500 to-indigo-500',
       bgColor: 'bg-violet-500/5',
       borderColor: 'border-violet-500/20',
-      isOpen: isCustomCalendarOpen,
-      onToggle: () => setIsCustomCalendarOpen(true),
-      onClose: () => setIsCustomCalendarOpen(false),
+      modalName: CUSTOM_PICKER_MODAL_NAME,
+      onToggle: openCustomPicker,
       range,
       customState,
       placeholder: '날짜 범위를 선택하세요',
@@ -81,23 +96,21 @@ export default function CustomPickerPage() {
                   </button>
                 </div>
 
-                {/* 모달 컴포넌트 */}
-                <Modal
-                  name="custom-picker"
-                  component={(closeModal) => (
-                    <CustomPickerModal
-                      rangeState={example.customState}
-                      closeModal={closeModal}
+                {/* 모달 상태 표시 */}
+                <div className="mt-3 rounded-lg bg-neutral-800/30 p-3 sm:mt-4 sm:p-4">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm">
+                    <div
+                      className={`h-2 w-2 rounded-full ${
+                        isOpen(example.modalName)
+                          ? 'animate-pulse bg-green-500'
+                          : 'bg-gray-500'
+                      }`}
                     />
-                  )}
-                  onClose={example.onClose}
-                  animation={{
-                    className: 'sample',
-                    duration: 300,
-                  }}
-                  isOpen={example.isOpen}
-                  centerMode
-                />
+                    <span className="text-gray-300">
+                      상태: {isOpen(example.modalName) ? '열림' : '닫힘'}
+                    </span>
+                  </div>
+                </div>
 
                 {/* 기능 설명 */}
                 <div className="mt-3 rounded-lg bg-neutral-800/30 p-3 sm:mt-4 sm:p-4">

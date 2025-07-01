@@ -1,64 +1,65 @@
-import { Modal } from '@lani.ground/react-modal';
+import { useModal } from '@lani.ground/react-modal';
 import '@lani.ground/react-modal/css';
-import { useState } from 'react';
 
 export default function DummyComponent({
   closeModal,
 }: {
   closeModal: () => Promise<void>;
 }) {
-  const [innerModalOpen, setInnerModalOpen] = useState<boolean>(false);
+  const { open, close, isOpen } = useModal();
+
+  const INNER_MODAL_NAME = 'inner-modal';
   return (
     <div className="sample-modal-inner w-full max-w-[800px] bg-stone-700 text-white">
       <div className="relative p-4">
         <button
           type="button"
           className="cursor-pointer bg-yellow-800 p-4 text-lg font-bold text-white"
-          onClick={() => setInnerModalOpen(true)}
+          onClick={() =>
+            open({
+              name: INNER_MODAL_NAME,
+              component: (closeModal) => (
+                <div className="text-sienna relative mt-[60px] w-[300px]">
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="absolute left-[50%] top-[-70px] z-10 h-[70px] w-[70px] translate-x-[-50%] cursor-pointer"
+                  >
+                    <img
+                      src="/assets/images/icons/close.svg"
+                      alt=""
+                      className="object-fill"
+                    />
+                  </button>
+                  <div className="max-h-[300px] overflow-y-auto bg-amber-600 px-[20px]">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Ut interdum eu lectus sit amet elementum. Maecenas dictum
+                      imperdiet ipsum, sit amet venenatis turpis rutrum vitae.
+                      Aliquam id faucibus tellus. Cras facilisis sed purus eu
+                      sagittis. Integer volutpat et enim vitae feugiat.
+                      Pellentesque ac dapibus ligula. In a efficitur nibh.
+                      Interdum et malesuada fames ac ante ipsum primis in
+                      faucibus. Donec pharetra tellus nec malesuada ultrices.
+                      Duis quis pellentesque turpis, vel efficitur turpis. Sed
+                      viverra iaculis turpis, vitae pulvinar augue elementum sit
+                      amet. Pellentesque fermentum lorem et pretium pulvinar.
+                      Etiam dictum sit amet tellus vitae commodo.
+                    </p>
+                  </div>
+                </div>
+              ),
+              centerMode: true,
+              dim: 'rgba(0,0,0,0.8)',
+              animation: {
+                duration: 300,
+                className: 'sample2',
+              },
+            })
+          }
         >
-          Click Me!
+          Click Me! {isOpen(INNER_MODAL_NAME) ? '(모달 열림)' : ''}
         </button>
-        <Modal
-          name="inner-modal"
-          onClose={() => setInnerModalOpen(false)}
-          component={(closeModal) => (
-            <div className="text-sienna relative mt-[60px] w-[300px]">
-              <button
-                type="button"
-                onClick={closeModal}
-                className="absolute left-[50%] top-[-70px] z-10 h-[70px] w-[70px] translate-x-[-50%] cursor-pointer"
-              >
-                <img
-                  src="/assets/images/icons/close.svg"
-                  alt=""
-                  className="object-fill"
-                />
-              </button>
-              <div className="max-h-[300px] overflow-y-auto bg-amber-600 px-[20px]">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                  interdum eu lectus sit amet elementum. Maecenas dictum
-                  imperdiet ipsum, sit amet venenatis turpis rutrum vitae.
-                  Aliquam id faucibus tellus. Cras facilisis sed purus eu
-                  sagittis. Integer volutpat et enim vitae feugiat. Pellentesque
-                  ac dapibus ligula. In a efficitur nibh. Interdum et malesuada
-                  fames ac ante ipsum primis in faucibus. Donec pharetra tellus
-                  nec malesuada ultrices. Duis quis pellentesque turpis, vel
-                  efficitur turpis. Sed viverra iaculis turpis, vitae pulvinar
-                  augue elementum sit amet. Pellentesque fermentum lorem et
-                  pretium pulvinar. Etiam dictum sit amet tellus vitae commodo.
-                </p>
-              </div>
-            </div>
-          )}
-          centerMode
-          dim="rgba(0,0,0,0.8)"
-          animation={{
-            duration: 300,
-            className: 'sample2',
-          }}
-          isOpen={innerModalOpen}
-        />
         <button
           type="button"
           onClick={closeModal}
