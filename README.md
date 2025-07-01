@@ -25,4 +25,9 @@ or
 
 # 로컬 lerna 설치 후
 npx lerna publish
+
+or
+
+# package.json에 작성된 버전으로 배포
+npx lerna publish from-package
 ```
