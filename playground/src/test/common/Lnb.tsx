@@ -51,6 +51,13 @@ export default function Lnb() {
       hoverColor: 'hover:bg-violet-500/20',
       activeColor: 'bg-violet-600',
     },
+    '/react-device-detector': {
+      icon: '📱',
+      color: 'from-green-500 to-lime-500',
+      bgColor: 'bg-green-500/10',
+      hoverColor: 'hover:bg-green-500/20',
+      activeColor: 'bg-green-600',
+    },
     '/kits': {
       icon: '🧰',
       color: 'from-amber-500 to-yellow-500',

@@ -1,9 +1,11 @@
+import { DeviceDetectorProvider } from '@lani.ground/react-device-detector';
 import { ModalProvider } from '@lani.ground/react-modal';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import './App.css';
+import DetectDevicePage from './test/DetectDevice';
 import Hooks from './test/Hooks';
 import ImageViewer from './test/ImageVIewer';
 import KitPage from './test/KitPage';
@@ -91,6 +93,10 @@ export const TEST_COMPONENTS = [
     path: '/kits/cookie',
     element: <CookieKitPage />,
   },
+  {
+    path: '/react-device-detector',
+    element: <DetectDevicePage />,
+  },
 ];
 
 const router = createBrowserRouter([
@@ -107,8 +113,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ModalProvider>
-      <RouterProvider router={router} />
-    </ModalProvider>
+    <DeviceDetectorProvider>
+      <ModalProvider>
+        <RouterProvider router={router} />
+      </ModalProvider>
+    </DeviceDetectorProvider>
   </React.StrictMode>,
 );
