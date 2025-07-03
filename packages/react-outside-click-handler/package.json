@@ -3,6 +3,9 @@
   "description": "Handler components that make it easier to control when you click on a component other than the one you want.",
   "version": "1.1.2",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react",
     "next",

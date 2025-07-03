@@ -3,6 +3,9 @@
   "description": "A React component for viewing images in a modal",
   "version": "1.2.1",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react",
     "next",

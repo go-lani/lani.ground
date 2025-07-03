@@ -10,6 +10,9 @@
     "responsive"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://laniground.com/playground/react-device-detector",
   "bugs": {
     "url": "https://github.com/go-lani/lani.ground/issues",
@@ -75,5 +78,5 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
   },
-  "gitHead": "3065939e6b8d1f8b41305468d9e34e37d2033ff3"
+  "gitHead": "11edaf72c3a9294720880c9d0a3dc4788198c055"
 }
