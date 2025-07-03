@@ -9,7 +9,7 @@
     "element",
     "dom"
   ],
-  "homepage": "https://github.com/go-lani/lani.ground/blob/master/packages/hooks/README.md",
+  "homepage": "https://laniground.com/playground/react-hooks",
   "bugs": {
     "url": "https://github.com/go-lani/lani.ground/issues",
     "email": "go.lani.developer@gmail.com"

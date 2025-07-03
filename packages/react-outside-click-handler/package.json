@@ -10,7 +10,7 @@
     "click",
     "handler"
   ],
-  "homepage": "https://github.com/go-lani/lani.ground/blob/master/packages/react-outside-click-handler/README.md",
+  "homepage": "https://laniground.com/playground/react-outside-click-handler",
   "bugs": {
     "url": "https://github.com/go-lani/lani.ground/issues",
     "email": "go.lani.developer@gmail.com"

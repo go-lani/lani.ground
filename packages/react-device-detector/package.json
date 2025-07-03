@@ -2,6 +2,27 @@
   "name": "@lani.ground/react-device-detector",
   "description": "Responsive device detection for React with customizable breakpoints",
   "version": "1.0.0",
+  "keywords": [
+    "react",
+    "next",
+    "device",
+    "detector",
+    "responsive"
+  ],
+  "homepage": "https://laniground.com/playground/react-device-detector",
+  "bugs": {
+    "url": "https://github.com/go-lani/lani.ground/issues",
+    "email": "go.lani.developer@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/go-lani/lani.ground.git"
+  },
+  "author": {
+    "email": "go.lani.developer@gmail.com",
+    "name": "Lani",
+    "url": "https://laniground.com"
+  },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/cjs/index.d.ts",
