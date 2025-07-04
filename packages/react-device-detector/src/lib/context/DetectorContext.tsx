@@ -20,8 +20,8 @@ export const DeviceContext = createContext<IDeviceInfo | undefined>(undefined);
 const getDeviceType = (
   width: number,
   breakPoints: IBreakPoints,
-): 'mobile' | 'tablet' | 'small-desktop' | 'desktop' => {
-  if (width <= breakPoints.PHONE) return 'mobile';
+): 'phone' | 'tablet' | 'small-desktop' | 'desktop' => {
+  if (width <= breakPoints.PHONE) return 'phone';
   if (width <= breakPoints.TABLET) return 'tablet';
   if (
     breakPoints.SMALL_DESKTOP !== undefined &&
@@ -46,7 +46,7 @@ const getDeviceConfig = (
   };
 
   switch (deviceType) {
-    case 'mobile':
+    case 'phone':
       return { ...baseDeviceInfo, isPhone: true };
     case 'tablet':
       return { ...baseDeviceInfo, isTablet: true };
