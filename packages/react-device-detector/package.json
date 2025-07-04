@@ -1,7 +1,7 @@
 {
   "name": "@lani.ground/react-device-detector",
   "description": "Responsive device detection for React with customizable breakpoints",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "keywords": [
     "react",
     "next",
