@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useModalContext } from '../context/ModalContext';
+import { getScrollbarWidth, isMobileDevice } from '../utils/browser';
+import { lockScroll, unlockScroll } from '../utils/scroll';
 import Modal from './Modal';
 
 const MODAL_ROOT = 'modal-root';
@@ -8,8 +10,17 @@ const MODAL_ROOT = 'modal-root';
 export default function ModalRenderer() {
   const { modals, closeModal } = useModalContext();
   const [modalRoot, setModalRoot] = useState<Element | null>(null);
-  const scrollPositionRef = useRef<number>(0);
 
+  // refs
+  const scrollPositionRef = useRef<number>(0);
+  const scrollbarWidthRef = useRef<number>(0);
+  const isMobileRef = useRef<boolean>(false);
+  const originalStylesRef = useRef({
+    overflow: '',
+    paddingRight: '',
+  });
+
+  // 모달 루트 초기화
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -17,14 +28,16 @@ export default function ModalRenderer() {
 
     if (!$modalRoot) {
       $modalRoot = document.createElement('div');
-      $modalRoot.setAttribute('id', `${MODAL_ROOT}`);
+      $modalRoot.setAttribute('id', MODAL_ROOT);
       document.body.append($modalRoot);
     }
 
     setModalRoot($modalRoot);
+    scrollbarWidthRef.current = getScrollbarWidth();
+    isMobileRef.current = isMobileDevice();
   }, []);
 
-  // 스크롤 락이 필요한 모달이 있는지 확인 - useMemo로 최적화
+  // 스크롤 락이 필요한 모달 체크
   const hasScrollLockModal = useMemo(
     () => modals.some((modal) => !modal.disabledScrollLock),
     [modals],
@@ -35,23 +48,21 @@ export default function ModalRenderer() {
     if (typeof window === 'undefined') return;
 
     if (hasScrollLockModal) {
-      // 스크롤 락
-      scrollPositionRef.current = window.scrollY;
-      document.body.style.overflow = 'hidden';
-    } else {
-      // 스크롤 언락
-      document.body.style.overflow = '';
-      if (scrollPositionRef.current !== 0) {
-        window.scrollTo({
-          top: scrollPositionRef.current,
-          behavior: 'instant' as ScrollBehavior,
-        });
-      }
+      // 현재 스타일 저장
+      originalStylesRef.current = {
+        overflow: document.documentElement.style.overflow,
+        paddingRight: document.body.style.paddingRight,
+      };
+
+      scrollPositionRef.current = lockScroll(
+        isMobileRef.current,
+        scrollbarWidthRef.current,
+        originalStylesRef.current,
+      );
     }
 
-    // 컴포넌트 언마운트 시 스크롤 복원
     return () => {
-      document.body.style.overflow = '';
+      unlockScroll(scrollPositionRef.current, originalStylesRef.current);
     };
   }, [hasScrollLockModal]);
 
@@ -62,11 +73,9 @@ export default function ModalRenderer() {
     modals.forEach((modal) => {
       if (!callbacks.has(modal.id)) {
         callbacks.set(modal.id, async () => {
-          // 모달 onClose 콜백 먼저 호출
           if (modal.onClose) {
             modal.onClose();
           }
-          // Context에서 모달 제거
           await closeModal(modal.id);
         });
       }
@@ -75,29 +84,30 @@ export default function ModalRenderer() {
     return callbacks;
   }, [modals, closeModal]);
 
+  if (!modalRoot) return null;
+
   return (
     <>
-      {modalRoot &&
-        modals.map((modal) => {
-          const modalCloseCallback = closeModalCallbacks.get(modal.id)!;
+      {modals.map((modal) => {
+        const modalCloseCallback = closeModalCallbacks.get(modal.id)!;
 
-          return createPortal(
-            <Modal
-              key={modal.id}
-              name={modal.name || modal.id}
-              closeModal={modalCloseCallback}
-              dim={modal.dim}
-              centerMode={modal.centerMode || false}
-              animation={modal.animation}
-              containerPadding={modal.containerPadding}
-              disabledOutsideClose={modal.disabledOutsideClose || false}
-              isClosing={modal.isClosing}
-            >
-              {modal.component(modalCloseCallback)}
-            </Modal>,
-            modalRoot,
-          );
-        })}
+        return createPortal(
+          <Modal
+            key={modal.id}
+            name={modal.name || modal.id}
+            closeModal={modalCloseCallback}
+            dim={modal.dim}
+            centerMode={modal.centerMode || false}
+            animation={modal.animation}
+            containerPadding={modal.containerPadding}
+            disabledOutsideClose={modal.disabledOutsideClose || false}
+            isClosing={modal.isClosing}
+          >
+            {modal.component(modalCloseCallback)}
+          </Modal>,
+          modalRoot,
+        );
+      })}
     </>
   );
 }
