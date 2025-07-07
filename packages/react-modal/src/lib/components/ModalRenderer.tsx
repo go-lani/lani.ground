@@ -19,6 +19,7 @@ export default function ModalRenderer() {
     overflow: '',
     paddingRight: '',
   });
+  const isScrollLockedRef = useRef<boolean>(false);
 
   // 모달 루트 초기화
   useEffect(() => {
@@ -35,11 +36,19 @@ export default function ModalRenderer() {
     setModalRoot($modalRoot);
     scrollbarWidthRef.current = getScrollbarWidth();
     isMobileRef.current = isMobileDevice();
+
+    return () => {
+      // 컴포넌트 언마운트 시 스크롤 락이 걸려있다면 해제
+      if (isScrollLockedRef.current) {
+        unlockScroll(scrollPositionRef.current, originalStylesRef.current);
+        isScrollLockedRef.current = false;
+      }
+    };
   }, []);
 
   // 스크롤 락이 필요한 모달 체크
   const hasScrollLockModal = useMemo(
-    () => modals.some((modal) => !modal.disabledScrollLock),
+    () => modals.some((modal) => !modal.disabledScrollLock && !modal.isClosing),
     [modals],
   );
 
@@ -47,23 +56,32 @@ export default function ModalRenderer() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    if (hasScrollLockModal) {
+    // 스크롤 락이 필요하고 현재 락이 걸려있지 않은 경우
+    if (hasScrollLockModal && !isScrollLockedRef.current) {
       // 현재 스타일 저장
       originalStylesRef.current = {
         overflow: document.documentElement.style.overflow,
         paddingRight: document.body.style.paddingRight,
       };
 
-      scrollPositionRef.current = lockScroll(
-        isMobileRef.current,
-        scrollbarWidthRef.current,
-        originalStylesRef.current,
-      );
+      // requestAnimationFrame을 사용하여 다음 페인트 프레임에서 스크롤 락 적용
+      requestAnimationFrame(() => {
+        scrollPositionRef.current = lockScroll(
+          isMobileRef.current,
+          scrollbarWidthRef.current,
+          originalStylesRef.current,
+        );
+        isScrollLockedRef.current = true;
+      });
     }
-
-    return () => {
-      unlockScroll(scrollPositionRef.current, originalStylesRef.current);
-    };
+    // 스크롤 락이 필요없고 현재 락이 걸려있는 경우
+    else if (!hasScrollLockModal && isScrollLockedRef.current) {
+      // requestAnimationFrame을 사용하여 다음 페인트 프레임에서 스크롤 언락 적용
+      requestAnimationFrame(() => {
+        unlockScroll(scrollPositionRef.current, originalStylesRef.current);
+        isScrollLockedRef.current = false;
+      });
+    }
   }, [hasScrollLockModal]);
 
   // 모달별 closeModal 함수들을 memoization
