@@ -8,6 +8,7 @@ import DummyComponent from './mock/DummyComponent';
 export default function ModalPage() {
   const [isValid, setIsValid] = useState<boolean>(false);
   const { open, close, isOpen } = useModal();
+  const [isDirectOpen, setIsDirectOpen] = useState<boolean>(true);
 
   useEffect(() => {
     setIsValid(!!Math.round(Math.random()));
@@ -22,26 +23,31 @@ export default function ModalPage() {
   };
 
   useEffect(() => {
-    open({
-      name: MODAL_NAMES.DIRECT,
-      component: (closeModal) => (
-        <div className="rounded-lg bg-white p-8 text-black">
-          <h3 className="mb-4 text-xl font-bold">Direct Modal</h3>
-          <p className="mb-4 text-gray-600">이것은 다이렉트 모달입니다.</p>
-          <button
-            type="button"
-            className="rounded bg-purple-500 px-4 py-2 text-white hover:bg-purple-600"
-            onClick={closeModal}
-          >
-            닫기
-          </button>
-        </div>
-      ),
-      animation: { className: 'sample', duration: 300 },
-      dim: 'rgba(0, 0, 0, 0.8)',
-      centerMode: true,
-    });
-  }, [MODAL_NAMES.DIRECT, open]);
+    if (isDirectOpen) {
+      open({
+        name: MODAL_NAMES.DIRECT,
+        component: (closeModal) => (
+          <div className="rounded-lg bg-white p-8 text-black">
+            <h3 className="mb-4 text-xl font-bold">Direct Modal</h3>
+            <p className="mb-4 text-gray-600">이것은 다이렉트 모달입니다.</p>
+            <button
+              type="button"
+              className="rounded bg-purple-500 px-4 py-2 text-white hover:bg-purple-600"
+              onClick={closeModal}
+            >
+              닫기
+            </button>
+          </div>
+        ),
+        onClose: () => {
+          setIsDirectOpen(false);
+        },
+        animation: { className: 'sample', duration: 300 },
+        dim: 'rgba(0, 0, 0, 0.8)',
+        centerMode: true,
+      });
+    }
+  }, [MODAL_NAMES.DIRECT, open, isDirectOpen]);
 
   const openBasicModal = () => {
     open({
@@ -104,8 +110,8 @@ export default function ModalPage() {
         );
       },
       animation: { className: 'sample', duration: 300 },
-      dim: 'rgba(0, 0, 0, 0.8)',
-      centerMode: true,
+      disabledOutsideClose: true,
+      // disabledScrollLock: true,
     });
   };
 
@@ -209,7 +215,10 @@ export default function ModalPage() {
                     className={`w-full rounded-lg border sm:rounded-xl ${example.borderColor} bg-gradient-to-r ${example.color} p-3 text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg sm:p-4`}
                     onClick={example.onToggle}
                   >
-                    <div className="flex items-center justify-center gap-2 sm:gap-3">
+                    <button
+                      type="button"
+                      className="flex items-center justify-center gap-2 outline-double sm:gap-3"
+                    >
                       <span className="flex-shrink-0 text-base sm:text-lg">
                         {example.icon}
                       </span>
@@ -229,7 +238,7 @@ export default function ModalPage() {
                           d="M17 8l4 4m0 0l-4 4m4-4H3"
                         />
                       </svg>
-                    </div>
+                    </button>
                   </button>
                 )}
 

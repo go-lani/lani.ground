@@ -3,19 +3,20 @@
 import {
   ReactNode,
   createContext,
-  startTransition,
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import ModalRenderer from '../components/ModalRenderer';
+import { preventScrollPropagation } from '../utils/scroll';
 
 // 모달 아이템 타입 정의
 export interface ModalConfig {
   id: string;
   component: (closeModal: () => Promise<void>) => JSX.Element;
-  name?: string;
+  name: string;
   dim?: string;
   centerMode?: boolean;
   animation?: {
@@ -50,17 +51,57 @@ interface ModalProviderProps {
 export function ModalProvider({ children }: ModalProviderProps) {
   const [modals, setModals] = useState<ModalConfig[]>([]);
   const [isMounted, setIsMounted] = useState(false);
+  const eventListenersAttached = useRef(false);
 
   // 클라이언트 마운트 체크 (Next.js App Router SSR 이슈 해결)
   useEffect(() => {
     setIsMounted(true);
+    return () => {
+      // Provider 언마운트 시 모든 이벤트 리스너 정리
+      document.removeEventListener('wheel', preventScrollPropagation);
+      document.removeEventListener('touchmove', preventScrollPropagation);
+    };
   }, []);
+
+  // 이벤트 리스너 관리 함수
+  const manageEventListeners = useCallback((shouldAttach: boolean) => {
+    if (shouldAttach && !eventListenersAttached.current) {
+      document.addEventListener('wheel', preventScrollPropagation, {
+        passive: false,
+      });
+      document.addEventListener('touchmove', preventScrollPropagation, {
+        passive: false,
+      });
+      eventListenersAttached.current = true;
+    } else if (!shouldAttach && eventListenersAttached.current) {
+      document.removeEventListener('wheel', preventScrollPropagation);
+      document.removeEventListener('touchmove', preventScrollPropagation);
+      eventListenersAttached.current = false;
+    }
+  }, []);
+
+  // 모달 상태 변경 시 이벤트 리스너 관리
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const hasNonDisabledScrollLockModal = modals.some(
+      (modal) => !modal.disabledScrollLock,
+    );
+
+    manageEventListeners(hasNonDisabledScrollLockModal);
+  }, [isMounted, modals, manageEventListeners]);
 
   // 모달 열기 - 즉시 처리
   const openModal = useCallback(
     (modal: Omit<ModalConfig, 'id'>) => {
       // 서버에서는 모달을 열지 않음
       if (!isMounted) return '';
+
+      // 이미 같은 이름의 모달이 열려있는지 확인
+      const existingModal = modals.find((m) => m.name === modal.name);
+      if (existingModal) {
+        return existingModal.id; // 이미 열려있는 모달의 ID 반환
+      }
 
       const id = `modal-${Date.now()}-${Math.random()
         .toString(36)
@@ -73,7 +114,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
       setModals((prev) => [...prev, newModal]);
       return id;
     },
-    [isMounted],
+    [isMounted, modals],
   );
 
   // 모달 닫기 - 즉시 처리
@@ -130,12 +171,10 @@ export function ModalProvider({ children }: ModalProviderProps) {
 
   // 모든 모달 닫기 - 즉시 처리
   const closeAllModals = useCallback(async () => {
-    // 서버에서는 처리하지 않음
     if (!isMounted) return Promise.resolve();
 
     return new Promise<void>((resolve) => {
       setModals((prevModals) => {
-        // 모든 모달의 onClose 콜백 호출
         prevModals.forEach((modal) => {
           if (modal.onClose) {
             try {
@@ -146,10 +185,13 @@ export function ModalProvider({ children }: ModalProviderProps) {
           }
         });
         resolve();
-        return []; // 모든 모달 제거
+        return [];
       });
+
+      // 모든 모달이 닫힐 때 이벤트 리스너도 정리
+      manageEventListeners(false);
     });
-  }, [isMounted]);
+  }, [isMounted, manageEventListeners]);
 
   // 특정 모달이 열려있는지 확인
   const isModalOpen = useCallback(
@@ -172,26 +214,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
       const newPathname = window.location.pathname;
       if (newPathname !== currentPathname) {
         currentPathname = newPathname;
-
-        // setModals를 함수형으로 사용하여 최신 상태 참조
-        startTransition(() => {
-          setModals((prevModals) => {
-            // 모달이 있을 때만 처리 (성능 최적화)
-            if (prevModals.length > 0) {
-              prevModals.forEach((modal) => {
-                if (modal.onClose) {
-                  try {
-                    modal.onClose();
-                  } catch (error) {
-                    console.warn('Modal onClose callback error:', error);
-                  }
-                }
-              });
-              return [];
-            }
-            return prevModals;
-          });
-        });
+        // closeAllModals를 사용하여 모든 cleanup 로직이 실행되도록 함
+        closeAllModals();
       }
     };
 
@@ -223,7 +247,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
       window.history.pushState = originalPushState;
       window.history.replaceState = originalReplaceState;
     };
-  }, [isMounted]); // modals.length 의존성 제거
+  }, [isMounted, closeAllModals]); // closeAllModals 의존성 추가
 
   const value: ModalContextType = {
     modals,

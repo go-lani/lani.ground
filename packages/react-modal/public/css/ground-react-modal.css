@@ -7,9 +7,11 @@
   z-index: 9999;
   width: auto;
   height: auto;
+  overscroll-behavior: none;
 }
 
 .react-modal__container.center-mode {
+  inset: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

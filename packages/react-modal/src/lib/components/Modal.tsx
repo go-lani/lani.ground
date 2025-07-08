@@ -28,6 +28,7 @@ export default function Modal({
 }: Props) {
   const $modalContents = useRef<HTMLDivElement>(null);
   const [isEntered, setIsEntered] = useState(false);
+  const timerRef = useRef<number>();
 
   const classes = useMemo(
     () =>
@@ -35,22 +36,24 @@ export default function Modal({
         ? isClosing
           ? `react-modal__container__exit ${animation.className ?? ''}`
           : isEntered
-            ? `react-modal__container__enter ${animation.className ?? ''}`
-            : `react-modal__container__exit ${animation.className ?? ''}`
+          ? `react-modal__container__enter ${animation.className ?? ''}`
+          : `react-modal__container__exit ${animation.className ?? ''}`
         : '',
     [animation?.className, animation?.duration, isEntered, isClosing],
   );
 
   useEffect(() => {
     if (!isClosing) {
-      const nextTick = setTimeout(() => {
+      timerRef.current = window.setTimeout(() => {
         setIsEntered(true);
       }, 10);
-
-      return () => {
-        clearTimeout(nextTick);
-      };
     }
+
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
   }, [isClosing]);
 
   const outsideClickHandler = useCallback(
@@ -77,12 +80,14 @@ export default function Modal({
 
   useEffect(() => {
     if (disabledOutsideClose) return;
-    document.addEventListener('click', outsideClickHandler, {
+
+    const handler = outsideClickHandler;
+    document.addEventListener('click', handler, {
       capture: true,
     });
 
     return () => {
-      document.removeEventListener('click', outsideClickHandler, {
+      document.removeEventListener('click', handler, {
         capture: true,
       });
     };
